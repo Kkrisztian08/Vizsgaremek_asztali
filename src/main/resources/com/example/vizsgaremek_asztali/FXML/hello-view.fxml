@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane prefHeight="500.0" prefWidth="950.0">
+            <left>
+                <VBox prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6C8FB6;" BorderPane.alignment="CENTER">
+                    <children>
+                        <MenuButton alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="50.0" prefWidth="200.0" stylesheets="@../css/Style.css" text="Adattáblák" textFill="WHITE">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Kutyák Tábla" />
+                                <MenuItem mnemonicParsing="false" text="Macskák Tábla" />
+                            </items>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/home.png" />
+                            </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </MenuButton>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../css/Style.css" text="Catalog" textFill="WHITE">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/gallery.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../css/Style.css" text="User data" textFill="WHITE">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/user.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../css/Style.css" text="Statistic" textFill="WHITE">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/statistics.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../css/Style.css" text="Settings" textFill="WHITE">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/settings.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                        <VBox alignment="BOTTOM_LEFT" prefHeight="210.0" prefWidth="200.0">
+                            <children>
+                                <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" stylesheets="@../css/Style.css" text="Exit" textFill="WHITE">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icons/exit-sign.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <padding>
+                                        <Insets left="30.0" />
+                                    </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </left>
+            <top>
+                <HBox alignment="CENTER_LEFT" maxWidth="950.0" prefHeight="40.0" prefWidth="950.0" style="-fx-background-color: #255C99;" BorderPane.alignment="CENTER_LEFT">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/camera.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="30.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <Label graphicTextGap="10.0" prefHeight="23.0" prefWidth="189.0" text="Élethang Alapítvány" textFill="WHITE">
+                            <font>
+                                <Font name="Century Gothic Bold" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </top>
+            <center>
+                <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane prefHeight="411.0" prefWidth="754.0">
+                            <children>
+                                <BorderPane layoutY="50.0" prefHeight="409.0" prefWidth="754.0">
+                                    <bottom>
+                                        <HBox alignment="CENTER" prefHeight="68.0" prefWidth="754.0" BorderPane.alignment="CENTER">
+                                            <children>
+                                                <Button maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Hozzáadás">
+                                                    <HBox.margin>
+                                                        <Insets right="40.0" />
+                                                    </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                                </Button>
+                                                <Button maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Módosítás">
+                                                    <HBox.margin>
+                                                        <Insets right="40.0" />
+                                                    </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                                </Button>
+                                                <Button maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Törlés">
+                                                    <HBox.margin>
+                                                        <Insets right="40.0" />
+                                                    </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                                </Button>
+                                                <Button maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Print">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                            </children>
+                                        </HBox>
+                                    </bottom>
+                           <top>
+                                        <TableView maxWidth="750.0" prefHeight="342.0" prefWidth="750.0">
+                                            <columns>
+                                                <TableColumn prefWidth="75.0" text="C1" />
+                                                <TableColumn prefWidth="75.0" text="C2" />
+                                            </columns>
+                                        </TableView>
+                           </top>
+                                </BorderPane>
+                        <HBox layoutX="-2.0" maxWidth="752.0" prefHeight="50.0" prefWidth="752.0" style="-fx-background-color: #255C99;">
+                           <children>
+                              <Label alignment="CENTER" maxHeight="350.0" maxWidth="755.0" prefHeight="35.0" prefWidth="735.0" text="Kutyák Tábla" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Narrow Italic" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                            </children>
+                        </AnchorPane>
+                    </children></VBox>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
