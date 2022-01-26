@@ -1,26 +1,26 @@
 .button
 {
-    -fx-background-color : #235892;
+    -fx-background-color : #14856B;
 }
 .button:hover
 {
-    -fx-background-color : #A1C1F4 ;
+    -fx-background-color : #139e7e ;
 }
 .button:pressed
 {
-    -fx-background-color : #73A3EF ;
+    -fx-background-color : #0dbd94 ;
 }
 .menu-button
 {
-    -fx-background-color : #235892;
+    -fx-background-color : #14856B;
 }
 .menu-button:hover
 {
-    -fx-background-color : #A1C1F4 ;
+    -fx-background-color : #139e7e ;
 }
 .menu-button:pressed
 {
-    -fx-background-color : #73A3EF ;
+    -fx-background-color : #0dbd94 ;
 }
 
 .table-view .column-header,
@@ -47,4 +47,30 @@
 .table-row-cell:selected .text {
     -fx-fill : white ;
 
+}
+
+#rnd{
+    -fx-background-color: null;
+    -fx-text-fill:#139e7e;
+    -fx-font-weight:bold;
+    -fx-border-radius: 25;
+    -fx-border-color: green;
+}
+
+#rnd:hover{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color:null;
+    -fx-background-color:#14856B;
+    -fx-background-radius: 25;
+
+}
+
+.menu-item:hover
+{
+    -fx-background-color : #139e7e ;
+}
+.menu-item:pressed
+{
+    -fx-background-color : #0dbd94 ;
 }
