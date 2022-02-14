@@ -1,12 +1,13 @@
 package com.example.vizsgaremek_asztali.dogs;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Dogs {
     private int id;
     private String name;
     private String gender;
-    private Date birthday;
+    private Date likely_bday;
     private String species;
     private String external_property;
     private int interest;
@@ -17,7 +18,7 @@ public class Dogs {
         this.id = id;
         this.name = name;
         this.gender = gender;
-        this.birthday = birthday;
+        this.likely_bday = birthday;
         this.species = species;
         this.external_property = external_property;
         this.interest = interest;
@@ -45,13 +46,20 @@ public class Dogs {
         this.gender = gender;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Date getLikely_bday() {
+        return likely_bday;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public String getBdayFormated() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        return format.format(likely_bday);
     }
+
+    public void setLikely_bday(Date likely_bday) {
+        this.likely_bday = likely_bday;
+    }
+
+
 
     public String getSpecies() {
         return species;
@@ -91,5 +99,20 @@ public class Dogs {
 
     public void setVirtual_adoption_id(int virtual_adoption_id) {
         this.virtual_adoption_id = virtual_adoption_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Dogs{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthday=" + likely_bday +
+                ", species='" + species + '\'' +
+                ", external_property='" + external_property + '\'' +
+                ", interest=" + interest +
+                ", adoption_id=" + adoption_id +
+                ", virtual_adoption_id=" + virtual_adoption_id +
+                '}';
     }
 }

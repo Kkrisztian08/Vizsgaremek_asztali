@@ -8,13 +8,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ElethangApplication extends Application {
+public class ElethangApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ElethangApplication.class.getResource("FXML/dogs/dogs-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ElethangApp.class.getResource("FXML/dogs/dogs-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1100, 600);
         stage.setTitle("Élethang alapítvány");
-        stage.getIcons().add(new Image(ElethangApplication.class.getResourceAsStream("icons/logo_szerkesztve.png")));
+        stage.getIcons().add(new Image(ElethangApp.class.getResourceAsStream("icons/logo_szerkesztve.png")));
         stage.setScene(scene);
         stage.show();
     }

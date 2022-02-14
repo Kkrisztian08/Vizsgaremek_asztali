@@ -111,7 +111,7 @@
                   </GridPane>
                </top>
                <center>
-                  <TableView fx:id="kutyakTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="kutyakTable" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../css/Style.css" BorderPane.alignment="CENTER">
                     <columns>
                       <TableColumn fx:id="nevCol" prefWidth="75.0" text="Név" />
                       <TableColumn fx:id="nemCol" prefWidth="75.0" text="Nem" />
@@ -149,7 +149,7 @@
                           </Button>
                   <HBox alignment="CENTER" minHeight="70.0" minWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                      <children>
-                                <Button id="rnd" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" stylesheets="@../../css/Style.css" text="Hozzáadás">
+                                <Button id="rnd" fx:id="modifiction" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadKutya" stylesheets="@../../css/Style.css" text="Hozzáadás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -157,7 +157,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" stylesheets="@../../css/Style.css" text="Módosítás">
+                                <Button id="rnd" fx:id="modifiction" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositKutya" stylesheets="@../../css/Style.css" text="Módosítás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -165,7 +165,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" stylesheets="@../../css/Style.css" text="Törlés">
+                                <Button id="rnd" fx:id="modifiction" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onKutyaTorol" stylesheets="@../../css/Style.css" text="Törlés">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -173,7 +173,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" maxHeight="30.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" stylesheets="@../../css/Style.css" text="Print">
+                                <Button id="rnd" fx:id="modifiction" maxHeight="30.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPrintKutyakTabla" stylesheets="@../../css/Style.css" text="Print">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>

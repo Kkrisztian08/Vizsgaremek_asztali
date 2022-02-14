@@ -58,6 +58,11 @@
             <version>0.4.0</version>
         </dependency>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
@@ -92,7 +97,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.vizsgaremek_asztali/com.example.vizsgaremek_asztali.ElethangApplication
+                                com.example.vizsgaremek_asztali/com.example.vizsgaremek_asztali.ElethangApp
                             </mainClass>
                         </configuration>
                     </execution>
