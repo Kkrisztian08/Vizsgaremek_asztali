@@ -48,6 +48,7 @@ public class Dogs {
         return likely_bday;
     }
 
+    //ezzel van megformázva a dátum
     public String getBdayFormated() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         return format.format(likely_bday);
@@ -91,7 +92,7 @@ public class Dogs {
         this.adoption_id = adoption_id;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Dogs{" +
                 "id=" + id +
@@ -103,5 +104,5 @@ public class Dogs {
                 ", interest=" + interest +
                 ", adoption_id=" + adoption_id +
                 '}';
-    }
+    }*/
 }

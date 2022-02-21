@@ -103,7 +103,7 @@
                         <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
                         <TableColumn fx:id="nevCol" prefWidth="75.0" text="Név" />
                         <TableColumn fx:id="nemCol" prefWidth="75.0" text="Nem" />
-                        <TableColumn fx:id="szulIdoCol" prefWidth="75.0" text="kb szuül. idő" />
+                        <TableColumn fx:id="szulIdoCol" prefWidth="75.0" text="Születési idő" />
                         <TableColumn fx:id="fajCol" prefWidth="75.0" text="Faj" />
                         <TableColumn fx:id="kulsoCol" prefWidth="75.0" text="Külső tulajdonságok" />
                         <TableColumn fx:id="erdeklodesCol" prefWidth="75.0" text="Érdeklődés mértéke" />
