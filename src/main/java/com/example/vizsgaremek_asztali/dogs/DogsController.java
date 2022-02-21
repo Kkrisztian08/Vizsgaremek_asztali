@@ -45,6 +45,10 @@ public class DogsController extends Controller {
     private Button dogTorol;
 
     private ObservableList<Dogs> dogLista = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn leirasCol;
+    @FXML
+    private TextArea leirasTextArea;
 
     public void initialize(){
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -53,6 +57,7 @@ public class DogsController extends Controller {
         szulIdoCol.setCellValueFactory(new PropertyValueFactory<>("bdayFormated"));
         fajCol.setCellValueFactory(new PropertyValueFactory<>("species"));
         kulsoCol.setCellValueFactory(new PropertyValueFactory<>("external_property"));
+        leirasCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         erdeklodesCol.setCellValueFactory(new PropertyValueFactory<>("interest"));
         adoptionIdCol.setCellValueFactory(new PropertyValueFactory<>("adoption_id"));
         kutyakListaFeltolt();
@@ -152,5 +157,8 @@ public class DogsController extends Controller {
             dogModosit.setDisable(false);
             dogTorol.setDisable(false);
         }
+        Dogs leiraskiir= kutyakTable.getSelectionModel().getSelectedItem();
+        leirasTextArea.setText(leiraskiir.getDescription());
     }
+
 }

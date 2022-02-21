@@ -70,6 +70,10 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
+                  <TextArea fx:id="leirasTextArea" disable="true" editable="false" stylesheets="@../../css/Style.css" wrapText="true" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></TextArea>
                     </children>
                 </VBox>
             </left>
@@ -106,6 +110,7 @@
                         <TableColumn fx:id="szulIdoCol" prefWidth="75.0" text="Születési idő" />
                         <TableColumn fx:id="fajCol" prefWidth="75.0" text="Faj" />
                         <TableColumn fx:id="kulsoCol" prefWidth="75.0" text="Külső tulajdonságok" />
+                        <TableColumn fx:id="leirasCol" prefWidth="75.0" text="Leírás" />
                         <TableColumn fx:id="erdeklodesCol" prefWidth="75.0" text="Érdeklődés mértéke" />
                         <TableColumn fx:id="adoptionIdCol" prefWidth="75.0" text="Örökbefogadás id" />
                     </columns>

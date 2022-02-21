@@ -48,8 +48,9 @@
     -fx-background-color : #0dbd94 ;
 }
 
-.table-view, .column-{
-
+.text-area{
+    -fx-text-fill: black;
+    -fx-opacity: 10%;
 }
 
 

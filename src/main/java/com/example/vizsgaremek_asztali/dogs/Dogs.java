@@ -10,16 +10,18 @@ public class Dogs {
     private Date likely_bday;
     private String species;
     private String external_property;
+    private String description;
     private int interest;
     private int adoption_id;
 
-    public Dogs(int id, String name, String gender, Date birthday, String species, String external_property, int interest, int adoption_id) {
+    public Dogs(int id, String name, String gender, Date likely_bday, String species, String external_property, String description, int interest, int adoption_id) {
         this.id = id;
         this.name = name;
         this.gender = gender;
-        this.likely_bday = birthday;
+        this.likely_bday = likely_bday;
         this.species = species;
         this.external_property = external_property;
+        this.description = description;
         this.interest = interest;
         this.adoption_id = adoption_id;
     }
@@ -90,6 +92,14 @@ public class Dogs {
 
     public void setAdoption_id(int adoption_id) {
         this.adoption_id = adoption_id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /*@Override
