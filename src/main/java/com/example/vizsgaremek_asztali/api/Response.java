@@ -1,4 +1,4 @@
-package com.example.vizsgaremek_asztali;
+package com.example.vizsgaremek_asztali.api;
 
 public class Response {
     int responseCode;

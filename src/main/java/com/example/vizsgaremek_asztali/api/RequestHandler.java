@@ -1,4 +1,6 @@
-package com.example.vizsgaremek_asztali;
+package com.example.vizsgaremek_asztali.api;
+
+import com.example.vizsgaremek_asztali.api.Response;
 
 import java.io.*;
 import java.net.HttpURLConnection;

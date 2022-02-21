@@ -10,4 +10,6 @@ module com.example.vizsgaremek_asztali {
     exports com.example.vizsgaremek_asztali;
     exports com.example.vizsgaremek_asztali.dogs;
     opens com.example.vizsgaremek_asztali.dogs to javafx.fxml, com.google.gson;
+    exports com.example.vizsgaremek_asztali.api;
+    opens com.example.vizsgaremek_asztali.api to com.google.gson, javafx.fxml;
 }

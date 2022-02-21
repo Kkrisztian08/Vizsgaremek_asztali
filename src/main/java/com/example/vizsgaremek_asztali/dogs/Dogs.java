@@ -12,9 +12,8 @@ public class Dogs {
     private String external_property;
     private int interest;
     private int adoption_id;
-    private int virtual_adoption_id;
 
-    public Dogs(int id, String name, String gender, Date birthday, String species, String external_property, int interest, int adoption_id, int virtual_adoption_id) {
+    public Dogs(int id, String name, String gender, Date birthday, String species, String external_property, int interest, int adoption_id) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -23,7 +22,6 @@ public class Dogs {
         this.external_property = external_property;
         this.interest = interest;
         this.adoption_id = adoption_id;
-        this.virtual_adoption_id = virtual_adoption_id;
     }
 
     public int getId() {
@@ -93,14 +91,6 @@ public class Dogs {
         this.adoption_id = adoption_id;
     }
 
-    public int getVirtual_adoption_id() {
-        return virtual_adoption_id;
-    }
-
-    public void setVirtual_adoption_id(int virtual_adoption_id) {
-        this.virtual_adoption_id = virtual_adoption_id;
-    }
-
     @Override
     public String toString() {
         return "Dogs{" +
@@ -112,7 +102,6 @@ public class Dogs {
                 ", external_property='" + external_property + '\'' +
                 ", interest=" + interest +
                 ", adoption_id=" + adoption_id +
-                ", virtual_adoption_id=" + virtual_adoption_id +
                 '}';
     }
 }
