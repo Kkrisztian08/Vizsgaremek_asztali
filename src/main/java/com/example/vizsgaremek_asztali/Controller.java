@@ -42,7 +42,6 @@ public abstract class Controller {
         return result.get() == ButtonType.OK;
     }
 
-    //main controllerből áthelyezve
     protected void hibaKiir(Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Hiba");

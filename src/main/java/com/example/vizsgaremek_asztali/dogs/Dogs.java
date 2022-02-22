@@ -7,14 +7,14 @@ public class Dogs {
     private int id;
     private String name;
     private String gender;
-    private Date likely_bday;
+    private String likely_bday;
     private String species;
     private String external_property;
     private String description;
     private int interest;
     private int adoption_id;
 
-    public Dogs(int id, String name, String gender, Date likely_bday, String species, String external_property, String description, int interest, int adoption_id) {
+    public Dogs(int id, String name, String gender, String likely_bday, String species, String external_property, String description, int interest, int adoption_id) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -46,17 +46,17 @@ public class Dogs {
         this.gender = gender;
     }
 
-    public Date getLikely_bday() {
+    public String getLikely_bday() {
         return likely_bday;
     }
 
-    //ezzel van megformázva a dátum
+    /*ezzel van megformázva a dátum ez akkor kell ha String helyett Date van
     public String getBdayFormated() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         return format.format(likely_bday);
-    }
+    }*/
 
-    public void setLikely_bday(Date likely_bday) {
+    public void setLikely_bday(String likely_bday) {
         this.likely_bday = likely_bday;
     }
 

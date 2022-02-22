@@ -44,7 +44,8 @@ public class DogsController extends Controller {
     @FXML
     private Button dogTorol;
 
-    private ObservableList<Dogs> dogLista = FXCollections.observableArrayList();
+    //private ObservableList<Dogs> dogLista = FXCollections.observableArrayList();
+
     @FXML
     private TableColumn leirasCol;
     @FXML
@@ -54,20 +55,20 @@ public class DogsController extends Controller {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nevCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         nemCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        szulIdoCol.setCellValueFactory(new PropertyValueFactory<>("bdayFormated"));
+        szulIdoCol.setCellValueFactory(new PropertyValueFactory<>("likely_bday"));
         fajCol.setCellValueFactory(new PropertyValueFactory<>("species"));
         kulsoCol.setCellValueFactory(new PropertyValueFactory<>("external_property"));
         leirasCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         erdeklodesCol.setCellValueFactory(new PropertyValueFactory<>("interest"));
         adoptionIdCol.setCellValueFactory(new PropertyValueFactory<>("adoption_id"));
         kutyakListaFeltolt();
-        kereses();
+        //kereses();
     }
 
     private void kutyakListaFeltolt() {
         dogTorol.setDisable(true);
         dogModosit.setDisable(true);
-        /*try {
+        try {
             List<Dogs> dogsList = DogApi.get();
             kutyakTable.getItems().clear();
             for(Dogs dogs: dogsList){
@@ -75,8 +76,8 @@ public class DogsController extends Controller {
             }
         } catch (IOException e) {
             hibaKiir(e);
-        }*/
-        try {
+        }
+        /*try {
             dogLista.addAll(DogApi.get());
             kutyakTable.getItems().clear();
             for(Dogs dogs: dogLista){
@@ -84,9 +85,9 @@ public class DogsController extends Controller {
             }
         } catch (IOException e) {
             hibaKiir(e);
-        }
+        }*/
     }
-    private void kereses(){
+    /*private void kereses(){
         FilteredList<Dogs> filteredList = new FilteredList<>(dogLista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
             filteredList.setPredicate(dog -> {
@@ -114,15 +115,32 @@ public class DogsController extends Controller {
         SortedList<Dogs> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(kutyakTable.comparatorProperty());
         kutyakTable.setItems(sortedList);
-    }
+    }*/
 
     @FXML
     public void onHozzaadKutya(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/dogs/hozzaad-view.fxml", "Kutya hozzáadása",
+                    600, 400);
+            hozzadas.getStage().setOnCloseRequest(event -> kutyakListaFeltolt());
+            hozzadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+
 
     }
 
     @FXML
     public void onModositKutya(ActionEvent actionEvent) {
+        try {
+            Controller modositas = ujAblak("FXML/dogs/modosit-view.fxml", "Adatok Módosítása",
+                    600, 400);
+            modositas.getStage().setOnCloseRequest(event -> kutyakListaFeltolt());
+            modositas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
@@ -138,8 +156,8 @@ public class DogsController extends Controller {
         }
         try {
             boolean sikeres= DogApi.delete(torlendoKutya.getId());
-            alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
-            dogLista.clear();
+            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            //dogLista.clear();
             kutyakListaFeltolt();
         } catch (IOException e) {
             hibaKiir(e);
