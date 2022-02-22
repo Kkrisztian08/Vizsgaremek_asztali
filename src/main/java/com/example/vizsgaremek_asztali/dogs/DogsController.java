@@ -118,6 +118,7 @@ public class DogsController extends Controller {
 
     @FXML
     public void onHozzaadKutya(ActionEvent actionEvent) {
+
     }
 
     @FXML
@@ -158,7 +159,8 @@ public class DogsController extends Controller {
             dogTorol.setDisable(false);
         }
         Dogs leiraskiir= kutyakTable.getSelectionModel().getSelectedItem();
-        leirasTextArea.setText(leiraskiir.getDescription());
+        leirasTextArea.setText("Leírás: "+leiraskiir.getDescription()+"\n\nKül.tul.: "+leiraskiir.getExternal_property());
+
     }
 
 }
