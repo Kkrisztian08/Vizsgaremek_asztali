@@ -39,7 +39,7 @@ public class HozzaadController extends Controller {
         String kultul=kultulInput.getText().trim();
         String leiras=leirasInput.getText().trim();
         int erdeklodes=0;
-        int orokbefogadasid=1;
+        int  orokbefogadasid= 1; //Integer osztály kell és kezelni kell az api hivásban hogy ha beállitom az alap értéket pl -1-re akkor azt az SQL-ben NULL-nak vegye
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
         //String nem=nemInput.getValue();
 

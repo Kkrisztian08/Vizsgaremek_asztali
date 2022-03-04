@@ -1,3 +1,4 @@
+
 .button
 {
     -fx-background-color : #14856B;
@@ -48,10 +49,27 @@
     -fx-background-color : #0dbd94 ;
 }
 
-.text-area{
-    -fx-text-fill: black;
-    -fx-opacity: 10%;
+.text-area {
+    -fx-background-color: #139e7e;
+    -fx-text-fill: white;
+    -fx-opacity: 90%;
 }
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+
+
 
 
 

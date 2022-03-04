@@ -27,7 +27,7 @@
             <left>
                 <VBox maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0d9475;" BorderPane.alignment="CENTER">
                     <children>
-                          <Label fx:id="tablaNevLabel" alignment="CENTER" prefHeight="55.0" prefWidth="202.0" style="-fx-background-color: #0d9475;" text="Kutyák Tábla" textFill="WHITE">
+                          <Label alignment="CENTER" prefHeight="55.0" prefWidth="202.0" style="-fx-background-color: #0d9475;" text="Kutyák Tábla" textFill="WHITE">
                               <font>
                                   <Font name="Arial Narrow Italic" size="20.0" />
                               </font>
@@ -84,9 +84,9 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                  <TextArea fx:id="leirasTextArea" disable="true" editable="false" stylesheets="@../../css/Style.css" wrapText="true" VBox.vgrow="ALWAYS">
+                  <TextArea fx:id="leirasKulTulTextArea" editable="false" stylesheets="@../../css/Style.css" wrapText="true" VBox.vgrow="ALWAYS">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font size="15.0" />
                      </font></TextArea>
                     </children>
                 </VBox>
@@ -113,10 +113,13 @@
                            </font>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets bottom="12.5" top="12.5" />
+                     </padding>
                   </GridPane>
                </top>
                <center>
-                  <TableView fx:id="kutyakTable" onMouseClicked="#onSelectDog" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../css/Style.css" BorderPane.alignment="CENTER">
+                  <TableView fx:id="kutyakTable" onMouseClicked="#onSelectDog" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/Style.css" BorderPane.alignment="CENTER">
                     <columns>
                         <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
                         <TableColumn fx:id="nevCol" prefWidth="75.0" text="Név" />
@@ -179,7 +182,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" maxHeight="30.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPrintKutyakTabla" stylesheets="@../../css/Style.css" text="Print">
+                                <Button id="rnd" maxHeight="30.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPrintKutyakTabla" stylesheets="@../../css/Style.css" text="Exportálás">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -189,9 +192,6 @@
                </children>
             </HBox>
          </bottom>
-         <top>
-                <HBox alignment="CENTER_LEFT" minHeight="20.0" minWidth="1000.0" style="-fx-background-color: #14856B;" BorderPane.alignment="CENTER" />
-         </top>
         </BorderPane>
     </children>
 </AnchorPane>

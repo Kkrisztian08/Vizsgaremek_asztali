@@ -1,10 +1,13 @@
 package com.example.vizsgaremek_asztali;
 
+import com.example.vizsgaremek_asztali.dogs.HozzaadController;
+import com.example.vizsgaremek_asztali.dogs.ModositController;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,7 +39,7 @@ public abstract class Controller {
 
     protected boolean confirm(String uzenet){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Biztos?");
+        alert.setTitle("Törlés megerősitése!");
         alert.setHeaderText(uzenet);
         Optional<ButtonType> result = alert.showAndWait();
         return result.get() == ButtonType.OK;
@@ -44,7 +47,7 @@ public abstract class Controller {
 
     protected void hibaKiir(Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Hiba");
+        alert.setTitle("Hiba!");
         alert.setHeaderText(e.getClass().toString());
         alert.setContentText(e.getMessage());
         Timer alertTimer = new Timer();

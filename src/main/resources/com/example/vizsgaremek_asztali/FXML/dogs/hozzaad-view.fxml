@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import java.lang.String?>
-<?import java.lang.Integer?>
-<?import javafx.collections.FXCollections?>
 <GridPane minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.dogs.HozzaadController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -29,8 +28,7 @@
         <Label text="Faj:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
         <Label text="Külső jelemők:" GridPane.rowIndex="2" />
         <Label text="Állat jellemzése:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-        <Label text="Érdeklődés mértéke" GridPane.rowIndex="3" />
-        <Label text="Örökbefogadási id:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <Label text="Érdeklődés mértéke:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
         <TextField fx:id="nevInput" maxWidth="1.7976931348623157E308" promptText="Rex" GridPane.columnIndex="1">
             <GridPane.margin>
                 <Insets right="10.0" />
@@ -39,20 +37,15 @@
         <ComboBox fx:id="nemInput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="boy" />
-                    <String fx:value="girl" />
+                    <String fx:value="Hím" />
+                    <String fx:value="Nőstény" />
                 </FXCollections>
             </items>
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
         </ComboBox>
-        <ComboBox fx:id="orokbefogadasInput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="3">
-            <GridPane.margin>
-                <Insets right="10.0" />
-            </GridPane.margin>
-        </ComboBox>
-        <DatePicker fx:id="szulidoInput" maxWidth="1.7976931348623157E308" promptText="2022.02.22" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <DatePicker fx:id="szulidoInput" editable="false" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="66.0" promptText="2022.02.22" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
@@ -72,7 +65,7 @@
                 <Insets bottom="2.5" right="10.0" top="2.5" />
             </GridPane.margin>
         </TextArea>
-        <Spinner fx:id="kedvelésInput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <Spinner fx:id="kedvelésInput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="3">
             <valueFactory>
                 <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="5" max="10" min="1" />
             </valueFactory>

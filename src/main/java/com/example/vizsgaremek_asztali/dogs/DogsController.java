@@ -10,15 +10,17 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.FileChooser;
 
-import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
+
+import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.ss.usermodel.*;
 
 public class DogsController extends Controller {
-    @FXML
-    private TextField keresesTextField;
+
+    //táblázat
     @FXML
     private TableColumn<Dogs, String> szulIdoCol;
     @FXML
@@ -38,18 +40,20 @@ public class DogsController extends Controller {
     @FXML
     private TableColumn<Dogs, Integer> idCol;
     @FXML
-    private Label tablaNevLabel;
+    private TableColumn<Dogs, String> leirasCol;
+
     @FXML
     private Button dogModosit;
     @FXML
     private Button dogTorol;
-
-    //private ObservableList<Dogs> dogLista = FXCollections.observableArrayList();
-
     @FXML
-    private TableColumn leirasCol;
+    private TextArea leirasKulTulTextArea;
     @FXML
-    private TextArea leirasTextArea;
+    private TextField keresesTextField;
+
+    private ObservableList<Dogs> dogLista = FXCollections.observableArrayList();
+
+
 
     public void initialize(){
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -61,14 +65,15 @@ public class DogsController extends Controller {
         leirasCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         erdeklodesCol.setCellValueFactory(new PropertyValueFactory<>("interest"));
         adoptionIdCol.setCellValueFactory(new PropertyValueFactory<>("adoption_id"));
+
         kutyakListaFeltolt();
-        //kereses();
+        kereses();
     }
 
     private void kutyakListaFeltolt() {
         dogTorol.setDisable(true);
         dogModosit.setDisable(true);
-        try {
+        /*try {
             List<Dogs> dogsList = DogApi.get();
             kutyakTable.getItems().clear();
             for(Dogs dogs: dogsList){
@@ -76,18 +81,15 @@ public class DogsController extends Controller {
             }
         } catch (IOException e) {
             hibaKiir(e);
-        }
-        /*try {
+        }*/
+        try {
+            dogLista.clear();
             dogLista.addAll(DogApi.get());
-            kutyakTable.getItems().clear();
-            for(Dogs dogs: dogLista){
-                kutyakTable.getItems().add(dogs);
-            }
         } catch (IOException e) {
             hibaKiir(e);
-        }*/
+        }
     }
-    /*private void kereses(){
+    private void kereses(){
         FilteredList<Dogs> filteredList = new FilteredList<>(dogLista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
             filteredList.setPredicate(dog -> {
@@ -104,21 +106,26 @@ public class DogsController extends Controller {
                 else if(dog.getSpecies().toLowerCase().indexOf(kereses) > -1){
                     return true;
                 }
+                else if(dog.getLikely_bday().toLowerCase().indexOf(kereses) > -1){
+                    return true;
+                }
                 else if(dog.getExternal_property().toLowerCase().indexOf(kereses) > -1){
                     return true;
                 }
                 else {
                     return false;
                 }
+
             });
         });
         SortedList<Dogs> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(kutyakTable.comparatorProperty());
         kutyakTable.setItems(sortedList);
-    }*/
+    }
 
     @FXML
     public void onHozzaadKutya(ActionEvent actionEvent) {
+
         try {
             Controller hozzadas = ujAblak("FXML/dogs/hozzaad-view.fxml", "Kutya hozzáadása",
                     600, 400);
@@ -157,7 +164,7 @@ public class DogsController extends Controller {
         try {
             boolean sikeres= DogApi.delete(torlendoKutya.getId());
             alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
-            //dogLista.clear();
+            dogLista.clear();
             kutyakListaFeltolt();
         } catch (IOException e) {
             hibaKiir(e);
@@ -165,8 +172,31 @@ public class DogsController extends Controller {
     }
 
     @FXML
-    public void onPrintKutyakTabla(ActionEvent actionEvent) {
+    public void onPrintKutyakTabla(ActionEvent actionEvent) throws IOException {
+        Workbook workbook = new XSSFWorkbook();
+        Sheet spreadsheet = workbook.createSheet("kutyák tábla");
 
+        Row row = spreadsheet.createRow(0);
+
+        for (int j = 0; j < kutyakTable.getColumns().size(); j++) {
+            row.createCell(j).setCellValue(kutyakTable.getColumns().get(j).getText());
+        }
+
+        for (int i = 0; i < kutyakTable.getItems().size(); i++) {
+            row = spreadsheet.createRow(i + 1);
+            for (int j = 0; j < kutyakTable.getColumns().size(); j++) {
+                if(kutyakTable.getColumns().get(j).getCellData(i) != null) {
+                    row.createCell(j).setCellValue(kutyakTable.getColumns().get(j).getCellData(i).toString());
+                }
+                else {
+                    row.createCell(j).setCellValue("");
+                }
+            }
+        }
+            FileOutputStream fileOut = new FileOutputStream("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\exportalasok\\kutyak.xls");
+            workbook.write(fileOut);
+            fileOut.close();
+            alert("Sikeres exportálás");
     }
 
     @FXML
@@ -177,7 +207,7 @@ public class DogsController extends Controller {
             dogTorol.setDisable(false);
         }
         Dogs leiraskiir= kutyakTable.getSelectionModel().getSelectedItem();
-        leirasTextArea.setText("Leírás: "+leiraskiir.getDescription()+"\n\nKül.tul.: "+leiraskiir.getExternal_property());
+        leirasKulTulTextArea.setText("Leírás:\n"+leiraskiir.getDescription()+"\n\nKül.tul.:\n"+leiraskiir.getExternal_property());
 
     }
 

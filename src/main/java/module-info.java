@@ -5,6 +5,8 @@ module com.example.vizsgaremek_asztali {
     requires com.dlsc.formsfx;
     requires validatorfx;
     requires org.kordamp.bootstrapfx.core;
+    //requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
 
     opens com.example.vizsgaremek_asztali to javafx.fxml, com.google.gson;
     exports com.example.vizsgaremek_asztali;
