@@ -46,11 +46,11 @@
 }
 .menu-item:pressed
 {
-    -fx-background-color : #0dbd94 ;
+    -fx-background-color : #0dbd94;
 }
 
 .text-area {
-    -fx-background-color: #139e7e;
+    -fx-background-color: #0d9475;
     -fx-text-fill: white;
     -fx-opacity: 90%;
 }

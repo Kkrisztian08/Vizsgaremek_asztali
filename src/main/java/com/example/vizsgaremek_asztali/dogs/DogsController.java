@@ -10,10 +10,17 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.swing.filechooser.FileFilter;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
+import java.nio.file.spi.FileTypeDetector;
 
 import org.apache.poi.xssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
@@ -171,32 +178,55 @@ public class DogsController extends Controller {
         }
     }
 
+
     @FXML
-    public void onPrintKutyakTabla(ActionEvent actionEvent) throws IOException {
-        Workbook workbook = new XSSFWorkbook();
-        Sheet spreadsheet = workbook.createSheet("kutyák tábla");
-
-        Row row = spreadsheet.createRow(0);
-
-        for (int j = 0; j < kutyakTable.getColumns().size(); j++) {
-            row.createCell(j).setCellValue(kutyakTable.getColumns().get(j).getText());
+    public void onExportKutyakTabla(ActionEvent actionEvent) throws FileNotFoundException, IOException {
+        String fileDictName = "Kutyák tábla.xlsx";
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Exportálás"); //name for chooser
+        fileChooser.setAcceptAllFileFilterUsed(false); //to show or not all other files
+        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("MS Excel", "xlsx"));
+        fileChooser.setSelectedFile(new File(fileDictName)); //when you want to show the name of file into the chooser
+        fileChooser.setVisible(true);
+        int result = fileChooser.showOpenDialog(fileChooser);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            fileDictName = fileChooser.getSelectedFile().getAbsolutePath();
+        } else {
+            return;
         }
+        File file = new File(fileDictName);
+        if (file.exists() == false) {
+            Workbook workbook = new XSSFWorkbook();
+            Sheet spreadsheet = workbook.createSheet("kutyák tábla");
 
-        for (int i = 0; i < kutyakTable.getItems().size(); i++) {
-            row = spreadsheet.createRow(i + 1);
+            Row row = spreadsheet.createRow(0);
+
             for (int j = 0; j < kutyakTable.getColumns().size(); j++) {
-                if(kutyakTable.getColumns().get(j).getCellData(i) != null) {
-                    row.createCell(j).setCellValue(kutyakTable.getColumns().get(j).getCellData(i).toString());
-                }
-                else {
-                    row.createCell(j).setCellValue("");
+                row.createCell(j).setCellValue(kutyakTable.getColumns().get(j).getText());
+            }
+
+            for (int i = 0; i < kutyakTable.getItems().size(); i++) {
+                row = spreadsheet.createRow(i + 1);
+                for (int j = 0; j < kutyakTable.getColumns().size(); j++) {
+                    if(kutyakTable.getColumns().get(j).getCellData(i) != null) {
+                        row.createCell(j).setCellValue(kutyakTable.getColumns().get(j).getCellData(i).toString());
+                    }
+                    else {
+                        row.createCell(j).setCellValue("");
+                    }
                 }
             }
+            try (
+                    //Write the workbook in file system
+                    FileOutputStream fileOut = new FileOutputStream(file)){
+                    workbook.write(fileOut);
+                    alert("Sikeres exportálás");
+            }
+        } else {
+            alert("Sikertelen exportálás! A file már létezik!");
         }
-            FileOutputStream fileOut = new FileOutputStream("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\exportalasok\\kutyak.xls");
-            workbook.write(fileOut);
-            fileOut.close();
-            alert("Sikeres exportálás");
+
+
     }
 
     @FXML

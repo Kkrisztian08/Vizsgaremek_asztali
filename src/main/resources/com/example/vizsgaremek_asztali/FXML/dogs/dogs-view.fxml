@@ -182,7 +182,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" maxHeight="30.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPrintKutyakTabla" stylesheets="@../../css/Style.css" text="Exportálás">
+                                <Button id="rnd" maxHeight="30.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onExportKutyakTabla" stylesheets="@../../css/Style.css" text="Exportálás">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
