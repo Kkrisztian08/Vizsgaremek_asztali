@@ -16,6 +16,8 @@ public class ElethangApp extends Application {
         stage.setTitle("Élethang alapítvány");
         stage.getIcons().add(new Image(ElethangApp.class.getResourceAsStream("icons/logo_szerkesztve.png")));
         stage.setScene(scene);
+        Controller c = fxmlLoader.getController();
+        c.setStage(stage);
         stage.show();
     }
 

@@ -1,4 +1,3 @@
-
 .button
 {
     -fx-background-color : #14856B;
@@ -30,6 +29,7 @@
     -fx-font-weight:bold;
     -fx-border-radius: 25;
     -fx-border-color: green;
+    -fx-font-size: 14;
 }
 
 #rnd:hover{
@@ -38,6 +38,7 @@
     -fx-border-color:null;
     -fx-background-color:#14856B;
     -fx-background-radius: 25;
+    -fx-font-size: 14;
 
 }
 .menu-item:hover
@@ -67,6 +68,15 @@
 .text-area .scroll-pane .content{
     -fx-background-color: transparent;
 }
+
+#keres {
+    -fx-border-color: red;
+    -fx-border-width: 0 0 0 0; // top, right, bottom, left
+    -fx-background-color: white;
+
+}
+
+
 
 
 

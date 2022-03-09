@@ -35,28 +35,35 @@ public class HozzaadController extends Controller {
         String nev=nevInput.getText().trim();
         String faj=fajInput.getText().trim();
         LocalDate szuldatum=szulidoInput.getValue();
-        String formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String formazottSzuldatum;
         String kultul=kultulInput.getText().trim();
         String leiras=leirasInput.getText().trim();
         int erdeklodes=0;
-        int  orokbefogadasid= 1; //Integer osztály kell és kezelni kell az api hivásban hogy ha beállitom az alap értéket pl -1-re akkor azt az SQL-ben NULL-nak vegye
+        Integer  orokbefogadasid= null; //Integer osztály kell és kezelni kell az api hivásban hogy ha beállitom az alap értéket pl -1-re akkor azt az SQL-ben NULL-nak vegye
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
         //String nem=nemInput.getValue();
 
+       
        if (nev.isEmpty()){
            alert("A név megadása kötelező");
+           nevInput.getStyleClass().add("error");
            return;
+       }else {
+           nevInput.getStyleClass().remove("error");
        }
+
+
        if (nemIndex == -1){
            alert("A nem kiválasztása köztelező");
            return;
        }
        String nem = nemInput.getValue();
 
-       if (szuldatum.equals(null)){
+       if (szuldatum==null){
            alert("A dátum megadása kötelező");
            return;
        }
+       formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
 
        if (faj.isEmpty()){

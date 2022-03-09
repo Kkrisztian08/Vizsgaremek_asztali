@@ -1,6 +1,7 @@
 package com.example.vizsgaremek_asztali.dogs;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.ElethangApp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -10,24 +11,18 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javax.swing.filechooser.FileFilter;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.File;
-import java.nio.file.spi.FileTypeDetector;
 
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import org.apache.poi.xssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
 
 public class DogsController extends Controller {
-
-    //táblázat
     @FXML
     private TableColumn<Dogs, String> szulIdoCol;
     @FXML
@@ -48,7 +43,6 @@ public class DogsController extends Controller {
     private TableColumn<Dogs, Integer> idCol;
     @FXML
     private TableColumn<Dogs, String> leirasCol;
-
     @FXML
     private Button dogModosit;
     @FXML
@@ -57,10 +51,7 @@ public class DogsController extends Controller {
     private TextArea leirasKulTulTextArea;
     @FXML
     private TextField keresesTextField;
-
-    private ObservableList<Dogs> dogLista = FXCollections.observableArrayList();
-
-
+    private ObservableList<Dogs> kutyakLista = FXCollections.observableArrayList();
 
     public void initialize(){
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -72,7 +63,6 @@ public class DogsController extends Controller {
         leirasCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         erdeklodesCol.setCellValueFactory(new PropertyValueFactory<>("interest"));
         adoptionIdCol.setCellValueFactory(new PropertyValueFactory<>("adoption_id"));
-
         kutyakListaFeltolt();
         kereses();
     }
@@ -80,24 +70,16 @@ public class DogsController extends Controller {
     private void kutyakListaFeltolt() {
         dogTorol.setDisable(true);
         dogModosit.setDisable(true);
-        /*try {
-            List<Dogs> dogsList = DogApi.get();
-            kutyakTable.getItems().clear();
-            for(Dogs dogs: dogsList){
-                kutyakTable.getItems().add(dogs);
-            }
-        } catch (IOException e) {
-            hibaKiir(e);
-        }*/
         try {
-            dogLista.clear();
-            dogLista.addAll(DogApi.get());
+            kutyakLista.clear();
+            kutyakLista.addAll(DogApi.get());
         } catch (IOException e) {
             hibaKiir(e);
         }
     }
+
     private void kereses(){
-        FilteredList<Dogs> filteredList = new FilteredList<>(dogLista, b -> true);
+        FilteredList<Dogs> filteredList = new FilteredList<>(kutyakLista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
             filteredList.setPredicate(dog -> {
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
@@ -129,7 +111,6 @@ public class DogsController extends Controller {
         sortedList.comparatorProperty().bind(kutyakTable.comparatorProperty());
         kutyakTable.setItems(sortedList);
     }
-
     @FXML
     public void onHozzaadKutya(ActionEvent actionEvent) {
 
@@ -141,10 +122,7 @@ public class DogsController extends Controller {
         } catch (Exception e) {
             hibaKiir(e);
         }
-
-
     }
-
     @FXML
     public void onModositKutya(ActionEvent actionEvent) {
         try {
@@ -156,7 +134,6 @@ public class DogsController extends Controller {
             hibaKiir(e);
         }
     }
-
     @FXML
     public void onKutyaTorol(ActionEvent actionEvent) {
         int selectedIndex = kutyakTable.getSelectionModel().getSelectedIndex();
@@ -171,30 +148,31 @@ public class DogsController extends Controller {
         try {
             boolean sikeres= DogApi.delete(torlendoKutya.getId());
             alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
-            dogLista.clear();
+            kutyakLista.clear();
             kutyakListaFeltolt();
         } catch (IOException e) {
             hibaKiir(e);
         }
     }
-
-
     @FXML
-    public void onExportKutyakTabla(ActionEvent actionEvent) throws FileNotFoundException, IOException {
-        String fileDictName = "Kutyák tábla.xlsx";
+    public void onExportKutyakTabla(ActionEvent actionEvent) throws IOException {
+        String filenev = "Kutyák tábla";
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Exportálás"); //name for chooser
-        fileChooser.setAcceptAllFileFilterUsed(false); //to show or not all other files
+        fileChooser.setDialogTitle("Exportálás");
+        fileChooser.setAcceptAllFileFilterUsed(false);
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("MS Excel", "xlsx"));
-        fileChooser.setSelectedFile(new File(fileDictName)); //when you want to show the name of file into the chooser
+        fileChooser.setSelectedFile(new File(filenev));
         fileChooser.setVisible(true);
-        int result = fileChooser.showOpenDialog(fileChooser);
+        int result = fileChooser.showSaveDialog(fileChooser);
         if (result == JFileChooser.APPROVE_OPTION) {
-            fileDictName = fileChooser.getSelectedFile().getAbsolutePath();
+            filenev = fileChooser.getSelectedFile().getAbsolutePath();
+            if (!filenev.endsWith(".xlsx")) {
+                filenev+=".xlsx";
+            }
         } else {
             return;
         }
-        File file = new File(fileDictName);
+        File file = new File(filenev);
         if (file.exists() == false) {
             Workbook workbook = new XSSFWorkbook();
             Sheet spreadsheet = workbook.createSheet("kutyák tábla");
@@ -216,19 +194,14 @@ public class DogsController extends Controller {
                     }
                 }
             }
-            try (
-                    //Write the workbook in file system
-                    FileOutputStream fileOut = new FileOutputStream(file)){
+            try (FileOutputStream fileOut = new FileOutputStream(file)){
                     workbook.write(fileOut);
                     alert("Sikeres exportálás");
             }
         } else {
-            alert("Sikertelen exportálás! A file már létezik!");
+            alerthiba("Sikertelen exportálás! A file már létezik!");
         }
-
-
     }
-
     @FXML
     public void onSelectDog(Event event) {
         int selectedIndex = kutyakTable.getSelectionModel().getSelectedIndex();
@@ -241,4 +214,21 @@ public class DogsController extends Controller {
 
     }
 
+    @FXML
+    public void onMacskakClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onKutyakClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák tábla",
+                    1100, 600);
+            hozzadas.getStage().setOnCloseRequest(event -> kutyakListaFeltolt());
+            hozzadas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+
+    }
 }

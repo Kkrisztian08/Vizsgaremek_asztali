@@ -22,41 +22,47 @@ public abstract class Controller {
         return stage;
     }
 
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
     //hozzaad controllerből áthelyezve
     protected void alert(String uzenet) {
         Alert alert = new Alert(Alert.AlertType.NONE);
+        setAlertIcon(alert);
         alert.setContentText(uzenet);
         alert.getButtonTypes().add(ButtonType.OK);
         alert.show();
     }
 
-    protected void alertWait(String uzenet) {
-        Alert alert = new Alert(Alert.AlertType.NONE);
+    protected void alerthiba(String uzenet) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        setAlertIcon(alert);
         alert.setContentText(uzenet);
-        alert.getButtonTypes().add(ButtonType.OK);
-        alert.showAndWait();
+        alert.show();
     }
 
     protected boolean confirm(String uzenet){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Törlés megerősitése!");
         alert.setHeaderText(uzenet);
+        setAlertIcon(alert);
         Optional<ButtonType> result = alert.showAndWait();
         return result.get() == ButtonType.OK;
     }
 
+    private void setAlertIcon(Alert alert){
+        Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+        alertStage.getIcons().add(new Image(ElethangApp.class.getResourceAsStream("icons/logo_szerkesztve.png")));
+    }
+
     protected void hibaKiir(Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        setAlertIcon(alert);
         alert.setTitle("Hiba!");
         alert.setHeaderText(e.getClass().toString());
         alert.setContentText(e.getMessage());
-        Timer alertTimer = new Timer();
-        alertTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Platform.runLater(() -> alert.show());
-            }
-        }, 500);
+        Platform.runLater(alert::show);
     }
 
     public static Controller ujAblak(String fxml, String title, int width, int height) throws IOException {
@@ -65,6 +71,7 @@ public abstract class Controller {
         Scene scene = new Scene(fxmlLoader.load(), width, height);
         stage.setTitle(title);
         stage.setScene(scene);
+        stage.getIcons().add(new Image(ElethangApp.class.getResourceAsStream("icons/logo_szerkesztve.png")));
         Controller controller = fxmlLoader.getController();
         controller.stage = stage;
         return controller;

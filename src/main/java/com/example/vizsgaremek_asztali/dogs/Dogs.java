@@ -12,9 +12,9 @@ public class Dogs {
     private String external_property;
     private String description;
     private int interest;
-    private int adoption_id;
+    private Integer adoption_id;
 
-    public Dogs(int id, String name, String gender, String likely_bday, String species, String external_property, String description, int interest, int adoption_id) {
+    public Dogs(int id, String name, String gender, String likely_bday, String species, String external_property, String description, int interest, Integer adoption_id) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -86,11 +86,11 @@ public class Dogs {
         this.interest = interest;
     }
 
-    public int getAdoption_id() {
+    public Integer getAdoption_id() {
         return adoption_id;
     }
 
-    public void setAdoption_id(int adoption_id) {
+    public void setAdoption_id(Integer adoption_id) {
         this.adoption_id = adoption_id;
     }
 

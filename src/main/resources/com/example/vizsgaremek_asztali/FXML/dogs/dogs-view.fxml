@@ -34,8 +34,8 @@
                           </Label>
                         <MenuButton alignment="CENTER" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" popupSide="RIGHT" stylesheets="@../../css/Style.css" text="Adattáblák" textFill="WHITE">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Kutyák Tábla" />
-                                <MenuItem mnemonicParsing="false" text="Macskák Tábla" />
+                                <MenuItem mnemonicParsing="false" onAction="#onKutyakClick" text="Kutyák Tábla" />
+                                <MenuItem mnemonicParsing="false" onAction="#onMacskakClick" text="Macskák Tábla" />
                             </items>
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
@@ -103,7 +103,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="keresesTextField" prefHeight="26.0" prefWidth="318.0" promptText="Search..." GridPane.columnIndex="1">
+                        <TextField id="keres" fx:id="keresesTextField" prefHeight="26.0" prefWidth="318.0" promptText="Search..." stylesheets="@../../css/Style.css" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets right="7.0" />
                            </GridPane.margin></TextField>
@@ -158,7 +158,7 @@
                           </Button>
                   <HBox alignment="CENTER" minHeight="70.0" minWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                      <children>
-                                <Button id="rnd" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadKutya" stylesheets="@../../css/Style.css" text="Hozzáadás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadKutya" stylesheets="@../../css/Style.css" text="Hozzáadás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -166,7 +166,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="dogModosit" disable="true" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositKutya" stylesheets="@../../css/Style.css" text="Módosítás">
+                                <Button id="rnd" fx:id="dogModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositKutya" stylesheets="@../../css/Style.css" text="Módosítás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -174,7 +174,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="dogTorol" disable="true" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onKutyaTorol" stylesheets="@../../css/Style.css" text="Törlés">
+                                <Button id="rnd" fx:id="dogTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onKutyaTorol" stylesheets="@../../css/Style.css" text="Törlés">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -182,7 +182,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" maxHeight="30.0" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onExportKutyakTabla" stylesheets="@../../css/Style.css" text="Exportálás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onExportKutyakTabla" stylesheets="@../../css/Style.css" text="Exportálás">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>

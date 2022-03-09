@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<GridPane minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.dogs.HozzaadController">
+<GridPane minHeight="400.0" minWidth="600.0" style="-fx-background-color: white;" stylesheets="@../../css/Hozzaad.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.dogs.HozzaadController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -29,7 +38,7 @@
         <Label text="Külső jelemők:" GridPane.rowIndex="2" />
         <Label text="Állat jellemzése:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
         <Label text="Érdeklődés mértéke:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <TextField fx:id="nevInput" maxWidth="1.7976931348623157E308" promptText="Rex" GridPane.columnIndex="1">
+        <TextField id="nev" fx:id="nevInput" maxWidth="1.7976931348623157E308" promptText="Rex" stylesheets="@../../css/Hozzaad.css" GridPane.columnIndex="1">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
@@ -50,7 +59,7 @@
                 <Insets right="10.0" />
             </GridPane.margin>
         </DatePicker>
-        <TextField fx:id="fajInput" maxWidth="1.7976931348623157E308" promptText="Bulldog" GridPane.columnIndex="3" GridPane.rowIndex="1">
+        <TextField id="nev" fx:id="fajInput" maxWidth="1.7976931348623157E308" promptText="Bulldog" stylesheets="@../../css/Hozzaad.css" GridPane.columnIndex="3" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
@@ -73,7 +82,7 @@
                 <Insets right="10.0" />
             </GridPane.margin>
         </Spinner>
-        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onHozzaadas" text="Hozzáadás" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+        <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#onHozzaadas" stylesheets="@../../css/Style.css" text="Hozzáadás" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="4">
             <GridPane.margin>
                 <Insets left="50.0" right="50.0" />
             </GridPane.margin>
