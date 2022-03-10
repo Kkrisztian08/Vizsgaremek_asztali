@@ -32,7 +32,7 @@
                                   <Font name="Arial Narrow Italic" size="20.0" />
                               </font>
                           </Label>
-                        <MenuButton alignment="CENTER" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" popupSide="RIGHT" stylesheets="@../../css/Style.css" text="Adattáblák" textFill="WHITE">
+                        <MenuButton alignment="CENTER" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" popupSide="RIGHT" stylesheets="@../../css/Fooldal.css" text="Adattáblák" textFill="WHITE">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#onKutyakClick" text="Kutyák Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onMacskakClick" text="Macskák Tábla" />
@@ -54,7 +54,7 @@
                         <Insets />
                      </VBox.margin>
                         </MenuButton>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/Style.css" text="Felhasználói adatok" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/Fooldal.css" text="Felhasználói adatok" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -69,7 +69,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/Style.css" text="Statisztikák" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/Fooldal.css" text="Statisztikák" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -84,7 +84,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                  <TextArea fx:id="leirasKulTulTextArea" editable="false" stylesheets="@../../css/Style.css" wrapText="true" VBox.vgrow="ALWAYS">
+                  <TextArea fx:id="leirasKulTulTextArea" editable="false" stylesheets="@../../css/Fooldal.css" wrapText="true" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="15.0" />
                      </font></TextArea>
@@ -103,7 +103,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
                     </rowConstraints>
                      <children>
-                        <TextField id="keres" fx:id="keresesTextField" prefHeight="26.0" prefWidth="318.0" promptText="Search..." stylesheets="@../../css/Style.css" GridPane.columnIndex="1">
+                        <TextField id="keres" fx:id="keresesTextField" prefHeight="26.0" prefWidth="318.0" promptText="Search..." stylesheets="@../../css/Fooldal.css" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets right="7.0" />
                            </GridPane.margin></TextField>
@@ -119,7 +119,7 @@
                   </GridPane>
                </top>
                <center>
-                  <TableView fx:id="kutyakTable" onMouseClicked="#onSelectDog" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/Style.css" BorderPane.alignment="CENTER">
+                  <TableView fx:id="kutyakTable" onMouseClicked="#onSelectDog" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/Fooldal.css" BorderPane.alignment="CENTER">
                     <columns>
                         <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
                         <TableColumn fx:id="nevCol" prefWidth="75.0" text="Név" />
@@ -141,7 +141,7 @@
          <bottom>
             <HBox alignment="CENTER_LEFT" minHeight="70.0" minWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                          <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="73.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/Style.css" text="Kilépés" textFill="WHITE">
+                          <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="73.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/Fooldal.css" text="Kilépés" textFill="WHITE">
                               <graphic>
                                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                       <image>
@@ -158,7 +158,7 @@
                           </Button>
                   <HBox alignment="CENTER" minHeight="70.0" minWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                      <children>
-                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadKutya" stylesheets="@../../css/Style.css" text="Hozzáadás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadKutya" stylesheets="@../../css/Fooldal.css" text="Hozzáadás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -166,7 +166,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="dogModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositKutya" stylesheets="@../../css/Style.css" text="Módosítás">
+                                <Button id="rnd" fx:id="dogModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositKutya" stylesheets="@../../css/Fooldal.css" text="Módosítás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -174,7 +174,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="dogTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onKutyaTorol" stylesheets="@../../css/Style.css" text="Törlés">
+                                <Button id="rnd" fx:id="dogTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onKutyaTorol" stylesheets="@../../css/Fooldal.css" text="Törlés">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -182,7 +182,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onExportKutyakTabla" stylesheets="@../../css/Style.css" text="Exportálás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onExportKutyakTabla" stylesheets="@../../css/Fooldal.css" text="Exportálás">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>

@@ -2,8 +2,11 @@ package com.example.vizsgaremek_asztali.dogs;
 
 import com.example.vizsgaremek_asztali.Controller;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -25,11 +28,9 @@ public class HozzaadController extends Controller {
     private TextArea kultulInput;
     @FXML
     private ComboBox<String> nemInput;
+
+
     @FXML
-    private ComboBox<Integer> orokbefogadasInput;
-
-
-   @FXML
     public void onHozzaadas(ActionEvent actionEvent) {
         String nev=nevInput.getText().trim();
         String faj=fajInput.getText().trim();
@@ -42,46 +43,55 @@ public class HozzaadController extends Controller {
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
         //String nem=nemInput.getValue();
 
-       
+       boolean hiba =false;
+       StringBuilder alertBuilder=new StringBuilder();
+
+
        if (nev.isEmpty()){
-           alert("A név megadása kötelező");
+           //alert("A név megadása kötelező");
            nevInput.getStyleClass().add("error");
-           return;
-       }else {
-           nevInput.getStyleClass().remove("error");
+           alertBuilder.append("A név megadása kötelező").append(System.lineSeparator());
+           hiba=true;
        }
 
 
        if (nemIndex == -1){
-           alert("A nem kiválasztása köztelező");
-           return;
+           //alert("A nem kiválasztása köztelező");
+           nemInput.getStyleClass().add("error");
+           alertBuilder.append("A nem kiválasztása köztelező").append(System.lineSeparator());
+           hiba=true;
        }
        String nem = nemInput.getValue();
 
        if (szuldatum==null){
-           alert("A dátum megadása kötelező");
-           return;
+           //alert("A dátum megadása kötelező");
+           szulidoInput.getStylesheets().addAll(new File("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\src\\main\\resources\\com\\example\\vizsgaremek_asztali\\css\\Hibaki.css").toURI().toString());
+           alertBuilder.append("A dátum megadása kötelező").append(System.lineSeparator());
+           hiba=true;
        }
-       formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
 
 
        if (faj.isEmpty()){
-           alert("A faj megadása kötelező");
-           return;
+           //alert("A faj megadása kötelező");
+           fajInput.getStyleClass().add("error");
+           alertBuilder.append("A faj megadása kötelező").append(System.lineSeparator());
+           hiba=true;
        }
 
        if (kultul.isEmpty()){
-           alert("A külső tulajdonság megadása kötelező");
-           return;
-       }
-       if (formazottSzuldatum.isEmpty()){
-           alert("A születési dátum megadása kötelező");
-           return;
+           //alert("A külső tulajdonság megadása kötelező");
+           kultulInput.getStyleClass().add("error");
+           alertBuilder.append("A külső tulajdonság megadása kötelező").append(System.lineSeparator());
+           hiba=true;
        }
 
+
        if (leiras.isEmpty()){
-           alert("A leírás megadása kötelező");
-           return;
+           //alert("A leírás megadása kötelező");
+           leirasInput.getStyleClass().add("error");
+           alertBuilder.append("A leírás megadása kötelező").append(System.lineSeparator());
+           hiba=true;
        }
 
         try {
@@ -96,8 +106,11 @@ public class HozzaadController extends Controller {
             return;
         }
 
-
-
+        if (hiba) {
+            alert(alertBuilder.toString());
+            return;
+        }
+        formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         try {
             Dogs ujKutya = new Dogs(0,nev,nem,formazottSzuldatum,faj,kultul,leiras,erdeklodes,orokbefogadasid);
             Dogs letrehozott = DogApi.post(ujKutya);
@@ -112,4 +125,18 @@ public class HozzaadController extends Controller {
     }
 
 
+
+    @FXML
+    public void aioshf(Event event) {
+        Control control = (Control) event.getSource();
+        control.getStyleClass().remove("error");
+    }
+
+
+    @FXML
+    public void valami(ActionEvent actionEvent) {
+        Control control = (Control) actionEvent.getSource();
+        control.getStylesheets().removeAll(new File("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\src\\main\\resources\\com\\example\\vizsgaremek_asztali\\css\\Hibaki.css").toURI().toString());
+        control.getStyleClass().remove("error");
+    }
 }
