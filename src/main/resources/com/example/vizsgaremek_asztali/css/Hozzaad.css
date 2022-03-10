@@ -2,28 +2,122 @@
     -fx-border-color: #14856B;
     -fx-border-width: 0 0 1 0; // top, right, bottom, left
     -fx-background-color: white;
+    -fx-border-radius: 10;
 }
+
 
 
 .text-field.error {
     -fx-border-color: red ;
     -fx-border-radius: 10;
-    -fx-border-width: 1 1 1 1;
+    -fx-border-width: 0 0 1 0;
 }
 
 .text-area{
     -fx-border-color: #14856B;
     -fx-border-width: 0 0 1 0; // top, right, bottom, left
     -fx-background-color: white;
+    -fx-border-radius: 10;
 }
+
 .date-picker{
     -fx-border-color: #14856B;
-    -fx-border-width: 0 0 1 0; // top, right, bottom, left
+    -fx-border-width: 0 0 0 0; // top, right, bottom, left
     -fx-background-color: white;
+    -fx-border-radius: 10;
 }
 .date-picker .arrow-button {
     -fx-background-color: white;
     -fx-background-radius: 0;
+    -fx-border-color: #14856B;
+    -fx-border-radius: 10;
 }
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #14856B;
+}
+.date-picker .arrow-button:hover{
+    -fx-background-color: #7abdad;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+.date-picker .arrow-button:pressed{
+    -fx-background-color: #65b0a0;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.date-picker-popup  {
+    -fx-border-color: transparent;
+}
+.date-picker-popup .month-year-pane {
+    -fx-background-color:  #14856B;
+}
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: #14856B;
+}
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: red;
+}
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+    -fx-background-color: #14856B;
+}
+
+
+
+.combo-box {
+    -fx-background-color: transparent;
+    -fx-border-radius: 10;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #14856B;
+}
+.combo-box.error {
+    -fx-background-color: transparent;
+    -fx-border-radius: 10;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: red;
+}
+.date-picker .arrow-button.error {
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-border-color: red;
+    -fx-border-radius: 10;
+}
+.combo-box.error {
+    -fx-background-color: transparent;
+    -fx-border-radius: 10;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: red;
+}
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-border-color: #14856B;
+    -fx-border-radius: 10;
+}
+.spinner{
+    -fx-background-color: white;
+}
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #7abdad;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+.spinner .increment-arrow-button:hover:pressed,
+.spinner .decrement-arrow-button:hover:pressed,
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed{
+    -fx-background-color: #65b0a0;
+    -fx-border: transparent;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow {
+    -fx-background-color: #14856B;
+}
+
 
 

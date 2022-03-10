@@ -4,7 +4,6 @@ import com.example.vizsgaremek_asztali.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -79,6 +78,7 @@ public class HozzaadController extends Controller {
            alert("A születési dátum megadása kötelező");
            return;
        }
+
        if (leiras.isEmpty()){
            alert("A leírás megadása kötelező");
            return;
