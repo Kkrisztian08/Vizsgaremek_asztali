@@ -1,6 +1,7 @@
 package com.example.vizsgaremek_asztali.cats;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.dogs.Dogs;
 import com.example.vizsgaremek_asztali.dogs.DogsController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -110,6 +111,14 @@ public class CatsController extends Controller {
 
     @FXML
     public void onSelectCat(Event event) {
+        int selectedIndex = macskakTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex != -1) {
+            catModosit.setDisable(false);
+            catTorol.setDisable(false);
+        }
+        Cats leiraskiir= macskakTable.getSelectionModel().getSelectedItem();
+        leirasKulTulTextArea.setText("Leírás:\n"+leiraskiir.getDescription()+"\n\nKül.tul.:\n"+leiraskiir.getExternal_property());
+
     }
 
     @FXML
