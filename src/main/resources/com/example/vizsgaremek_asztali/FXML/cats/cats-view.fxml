@@ -121,7 +121,7 @@
                     <center>
                         <TableView fx:id="macskakTable" onMouseClicked="#onSelectCat" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/Fooldal.css" BorderPane.alignment="CENTER">
                             <columns>
-                                <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
+                                <TableColumn fx:id="idColmacska" prefWidth="75.0" text="Id" />
                                 <TableColumn fx:id="nevCol" prefWidth="75.0" text="Név" />
                                 <TableColumn fx:id="nemCol" prefWidth="75.0" text="Nem" />
                                 <TableColumn fx:id="szulIdoCol" prefWidth="75.0" text="Születési idő" />

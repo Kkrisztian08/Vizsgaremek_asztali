@@ -1,7 +1,6 @@
 package com.example.vizsgaremek_asztali.cats;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.dogs.Dogs;
 import com.example.vizsgaremek_asztali.dogs.DogsController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,8 +32,6 @@ public class CatsController extends Controller {
     @FXML
     private TableView<Cats> macskakTable;
     @FXML
-    private TableColumn<Cats,Integer> idCol;
-    @FXML
     private TableColumn<Cats,String>  leirasCol;
     @FXML
     private TableColumn<Cats,String>  nevCol;
@@ -43,20 +40,22 @@ public class CatsController extends Controller {
     @FXML
     private TableColumn<Cats,Integer> erdeklodesCol;
     private DogsController dogsController;
-    private ObservableList<Cats> macskakLista = FXCollections.observableArrayList();
+    private final ObservableList<Cats> macskakLista = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Cats,Integer> idColmacska;
 
 
     public void initialize(){
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nevCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        nemCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        szulIdoCol.setCellValueFactory(new PropertyValueFactory<>("likely_bday"));
-        kulsoCol.setCellValueFactory(new PropertyValueFactory<>("external_property"));
-        leirasCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-        erdeklodesCol.setCellValueFactory(new PropertyValueFactory<>("interest"));
-        adoptionIdCol.setCellValueFactory(new PropertyValueFactory<>("adoption_id"));
+        this.idColmacska.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.nevCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        this.nemCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        this.szulIdoCol.setCellValueFactory(new PropertyValueFactory<>("likely_bday"));
+        this.kulsoCol.setCellValueFactory(new PropertyValueFactory<>("external_property"));
+        this.leirasCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        this.erdeklodesCol.setCellValueFactory(new PropertyValueFactory<>("interest"));
+        this.adoptionIdCol.setCellValueFactory(new PropertyValueFactory<>("adoption_id"));
         macskakListaFeltolt();
-        //kereses();
+        kereses();
     }
 
     public void macskakListaFeltolt() {
