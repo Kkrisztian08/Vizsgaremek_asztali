@@ -63,7 +63,7 @@ public class DogsController extends Controller {
         kereses();
     }
 
-    private void kutyakListaFeltolt() {
+    public void kutyakListaFeltolt() {
         dogTorol.setDisable(true);
         dogModosit.setDisable(true);
         try {
@@ -220,9 +220,9 @@ public class DogsController extends Controller {
     @FXML
     public void onMacskakClick(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák tábla",
+            Controller hozzadas = ujAblak("FXML/cats/cats-view.fxml", "Macskák tábla",
                     1100, 600);
-            hozzadas.getStage().setOnCloseRequest(event -> kutyakListaFeltolt());
+            //hozzadas.getStage().setOnCloseRequest(event -> macskakListaFeltolt());
             hozzadas.getStage().show();
             this.stage.close();
         } catch (Exception e) {
