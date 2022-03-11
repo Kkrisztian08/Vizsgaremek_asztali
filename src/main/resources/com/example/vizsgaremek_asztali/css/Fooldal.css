@@ -69,15 +69,6 @@
     -fx-background-color: transparent;
 }
 
-#keres {
-    -fx-border-color: red;
-    -fx-border-width: 0 0 0 0; // top, right, bottom, left
-    -fx-background-color: white;
-
-}
-
-
-
 
 
 

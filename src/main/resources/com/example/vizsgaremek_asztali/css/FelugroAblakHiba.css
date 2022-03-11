@@ -38,30 +38,31 @@
 }
 
 .date-picker-popup .month-year-pane {
-    -fx-background-color:  #14856B;
+    -fx-background-color: #851432;
 }
 .date-picker-popup .month-year-pane .label {
-    -fx-text-fill: #14856B;
+    -fx-text-fill: #b70535;
 }
 .date-picker-popup .spinner .button .left-arrow,
 .date-picker-popup .spinner .button .right-arrow {
-    -fx-background-color: #14856B;
+    -fx-background-color: #fc0202;
 }
 .date-picker .cell {
     -fx-background-color: white;
 }
 .date-picker .cell:hover {
-    -fx-background-color: #14856B;
+    -fx-background-color: #9d0e29;
 }
 .date-picker .cell:focused {
-    -fx-background-color: #18a283;
+    -fx-background-color: #bd1616;
     -fx-text-fill: white;
 }
 .date-picker .selected {
-    -fx-background-color: #18a283;
+    -fx-background-color: #c22828;
     -fx-text-fill: white;
 }
 .date-picker .selected:focused {
-    -fx-background-color: #18a283;
+    -fx-background-color: #e54c4c;
     -fx-text-fill: white;
 }
+
