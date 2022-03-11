@@ -1,12 +1,8 @@
 package com.example.vizsgaremek_asztali.dogs;
 
 import com.example.vizsgaremek_asztali.api.Api;
-import com.example.vizsgaremek_asztali.api.ApiError;
-import com.example.vizsgaremek_asztali.api.RequestHandler;
-import com.example.vizsgaremek_asztali.api.Response;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -31,9 +27,10 @@ public class DogApi {
         return Api.delete(API_URL, id).getResponseCode() == 240;
     }
 
-    public static Dogs put(Dogs modosit, int id) throws IOException {
+    public static Dogs put(Dogs modosit) throws IOException {
         String modositandoJson = jsonConverted.toJson(modosit);
-        String json = Api.put(API_URL, modositandoJson, id);
+        String json = Api.put(API_URL,modosit.getId(), modositandoJson);
         return jsonConverted.fromJson(json, Dogs.class);
     }
+
 }

@@ -19,7 +19,7 @@ public class HozzaadController extends Controller {
     @FXML
     private DatePicker szulidoInput;
     @FXML
-    private Spinner<Integer> kedvelésInput;
+    private Spinner<Integer> kedvelesInput;
     @FXML
     private TextField fajInput;
     @FXML
@@ -39,9 +39,8 @@ public class HozzaadController extends Controller {
         String kultul=kultulInput.getText().trim();
         String leiras=leirasInput.getText().trim();
         int erdeklodes=0;
-        Integer  orokbefogadasid= null; //Integer osztály kell és kezelni kell az api hivásban hogy ha beállitom az alap értéket pl -1-re akkor azt az SQL-ben NULL-nak vegye
+        Integer  orokbefogadasid= null;
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
-        //String nem=nemInput.getValue();
 
        boolean hiba =false;
        StringBuilder alertBuilder=new StringBuilder();
@@ -95,7 +94,7 @@ public class HozzaadController extends Controller {
        }
 
         try {
-            erdeklodes =  kedvelésInput.getValue();
+            erdeklodes =  kedvelesInput.getValue();
         } catch (Exception ex){
             System.out.println(ex);
             alert("Az kedmelés mértéke csak 1 és 10 közötti szám lehet");
@@ -127,14 +126,14 @@ public class HozzaadController extends Controller {
 
 
     @FXML
-    public void aioshf(Event event) {
+    public void hibaVege(Event event) {
         Control control = (Control) event.getSource();
         control.getStyleClass().remove("error");
     }
 
 
     @FXML
-    public void valami(ActionEvent actionEvent) {
+    public void hibakMegszuntet(ActionEvent actionEvent) {
         Control control = (Control) actionEvent.getSource();
         control.getStylesheets().removeAll(new File("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\src\\main\\resources\\com\\example\\vizsgaremek_asztali\\css\\Hibaki.css").toURI().toString());
         control.getStyleClass().remove("error");

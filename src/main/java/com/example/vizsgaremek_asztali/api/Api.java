@@ -39,7 +39,7 @@ public class Api {public static String get(String url) throws IOException {
         }
         return respone;
     }
-    public static String put(String url, String modositJson, int id) throws IOException {
+    public static String put(String url,int id, String modositJson) throws IOException {
         Gson jsonConverter = new Gson();
         Response response = RequestHandler.put(url + "/" + id, modositJson);
         String json = response.getContent();

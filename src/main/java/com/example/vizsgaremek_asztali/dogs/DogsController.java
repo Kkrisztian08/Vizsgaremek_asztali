@@ -121,10 +121,17 @@ public class DogsController extends Controller {
     }
     @FXML
     public void onModositKutya(ActionEvent actionEvent) {
+        int selectedIndex = kutyakTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
+            return;
+        }
+        Dogs modositando = kutyakTable.getSelectionModel().getSelectedItem();
         try {
-            Controller modositas = ujAblak("FXML/dogs/modosit-view.fxml", "Adatok Módosítása",
-                    600, 400);
-            modositas.getStage().setOnCloseRequest(event -> kutyakListaFeltolt());
+            ModositController modositas = (ModositController) ujAblak("FXML/dogs/modosit-view.fxml", "Adatok Módosítása",
+                    700, 450);
+            modositas.setModositando(modositando);
+            modositas.getStage().setOnHiding(event -> kutyakTable.refresh());
             modositas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);
