@@ -1,6 +1,7 @@
 package com.example.vizsgaremek_asztali.dogs;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.cats.CatsController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -47,6 +48,7 @@ public class DogsController extends Controller {
     private TextArea leirasKulTulTextArea;
     @FXML
     private TextField keresesTextField;
+    private CatsController catsController;
     private ObservableList<Dogs> kutyakLista = FXCollections.observableArrayList();
 
     public void initialize(){

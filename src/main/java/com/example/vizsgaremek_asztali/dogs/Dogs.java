@@ -60,8 +60,6 @@ public class Dogs {
         this.likely_bday = likely_bday;
     }
 
-
-
     public String getSpecies() {
         return species;
     }
@@ -102,17 +100,4 @@ public class Dogs {
         this.description = description;
     }
 
-    /*@Override
-    public String toString() {
-        return "Dogs{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", birthday=" + likely_bday +
-                ", species='" + species + '\'' +
-                ", external_property='" + external_property + '\'' +
-                ", interest=" + interest +
-                ", adoption_id=" + adoption_id +
-                '}';
-    }*/
 }
