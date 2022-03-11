@@ -1,7 +1,5 @@
 package com.example.vizsgaremek_asztali;
 
-import com.example.vizsgaremek_asztali.dogs.HozzaadController;
-import com.example.vizsgaremek_asztali.dogs.ModositController;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,8 +10,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public abstract class Controller {
     protected Stage stage;

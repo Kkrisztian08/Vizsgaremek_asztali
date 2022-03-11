@@ -1,6 +1,8 @@
-package com.example.vizsgaremek_asztali.dogs;
+package com.example.vizsgaremek_asztali.cats;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.dogs.DogApi;
+import com.example.vizsgaremek_asztali.dogs.Dogs;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -10,16 +12,11 @@ import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
-public class HozzaadController extends Controller {
-
-
+public class CatHozzaadController extends Controller {
     @FXML
     private TextField nevInput;
     @FXML
     private DatePicker szulidoInput;
-    @FXML
-    private Spinner<Integer> kedvelesInput;
     @FXML
     private TextField fajInput;
     @FXML
@@ -27,13 +24,13 @@ public class HozzaadController extends Controller {
     @FXML
     private TextArea kultulInput;
     @FXML
+    private Spinner<Integer> kedvelesInput;
+    @FXML
     private ComboBox<String> nemInput;
-
 
     @FXML
     public void onHozzaadas(ActionEvent actionEvent) {
         String nev=nevInput.getText().trim();
-        String faj=fajInput.getText().trim();
         LocalDate szuldatum=szulidoInput.getValue();
         String formazottSzuldatum;
         String kultul=kultulInput.getText().trim();
@@ -42,56 +39,51 @@ public class HozzaadController extends Controller {
         Integer  orokbefogadasid= null;
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
 
-       boolean hiba =false;
-       StringBuilder alertBuilder=new StringBuilder();
+        boolean hiba =false;
+        StringBuilder alertBuilder=new StringBuilder();
 
 
-       if (nev.isEmpty()){
-           //alert("A név megadása kötelező");
-           nevInput.getStyleClass().add("error");
-           alertBuilder.append("A név megadása kötelező").append(System.lineSeparator());
-           hiba=true;
-       }
+        if (nev.isEmpty()){
+            //alert("A név megadása kötelező");
+            nevInput.getStyleClass().add("error");
+            alertBuilder.append("A név megadása kötelező").append(System.lineSeparator());
+            hiba=true;
+        }
 
 
-       if (nemIndex == -1){
-           //alert("A nem kiválasztása köztelező");
-           nemInput.getStyleClass().add("error");
-           alertBuilder.append("A nem kiválasztása köztelező").append(System.lineSeparator());
-           hiba=true;
-       }
-       String nem = nemInput.getValue();
+        if (nemIndex == -1){
+            //alert("A nem kiválasztása köztelező");
+            nemInput.getStyleClass().add("error");
+            alertBuilder.append("A nem kiválasztása köztelező").append(System.lineSeparator());
+            hiba=true;
+        }
+        String nem = nemInput.getValue();
 
-       if (szuldatum==null){
-           //alert("A dátum megadása kötelező");
-           szulidoInput.getStylesheets().addAll(new File("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\src\\main\\resources\\com\\example\\vizsgaremek_asztali\\css\\FelugroAblakHiba.css").toURI().toString());
-           alertBuilder.append("A dátum megadása kötelező").append(System.lineSeparator());
-           hiba=true;
-       }
-
-
-
-       if (faj.isEmpty()){
-           //alert("A faj megadása kötelező");
-           fajInput.getStyleClass().add("error");
-           alertBuilder.append("A faj megadása kötelező").append(System.lineSeparator());
-           hiba=true;
-       }
-
-       if (kultul.isEmpty()){
-           //alert("A külső tulajdonság megadása kötelező");
-           kultulInput.getStyleClass().add("error");
-           alertBuilder.append("A külső tulajdonság megadása kötelező").append(System.lineSeparator());
-           hiba=true;
-       }
+        if (szuldatum==null){
+            //alert("A dátum megadása kötelező");
+            szulidoInput.getStylesheets().addAll(new File("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\src\\main\\resources\\com\\example\\vizsgaremek_asztali\\css\\FelugroAblakHiba.css").toURI().toString());
+            alertBuilder.append("A dátum megadása kötelező").append(System.lineSeparator());
+            hiba=true;
+        }
 
 
-       if (leiras.isEmpty()){
-           //alert("A leírás megadása kötelező");
-           leirasInput.getStyleClass().add("error");
-           alertBuilder.append("A leírás megadása kötelező").append(System.lineSeparator());
-           hiba=true;
-       }
+
+
+
+        if (kultul.isEmpty()){
+            //alert("A külső tulajdonság megadása kötelező");
+            kultulInput.getStyleClass().add("error");
+            alertBuilder.append("A külső tulajdonság megadása kötelező").append(System.lineSeparator());
+            hiba=true;
+        }
+
+
+        if (leiras.isEmpty()){
+            //alert("A leírás megadása kötelező");
+            leirasInput.getStyleClass().add("error");
+            alertBuilder.append("A leírás megadása kötelező").append(System.lineSeparator());
+            hiba=true;
+        }
 
         try {
             erdeklodes =  kedvelesInput.getValue();
@@ -111,8 +103,8 @@ public class HozzaadController extends Controller {
         }
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         try {
-            Dogs ujKutya = new Dogs(0,nev,nem,formazottSzuldatum,faj,kultul,leiras,erdeklodes,orokbefogadasid);
-            Dogs letrehozott = DogApi.post(ujKutya);
+            Cats ujMacska = new Cats(0,nev,nem,formazottSzuldatum,kultul,leiras,erdeklodes,orokbefogadasid);
+            Cats letrehozott = CatApi.post(ujMacska);
             if (letrehozott != null){
                 alert("Sikeres hozzáadás");
             } else {
@@ -122,8 +114,6 @@ public class HozzaadController extends Controller {
             hibaKiir(e);
         }
     }
-
-
 
     @FXML
     public void hibaVege(Event event) {

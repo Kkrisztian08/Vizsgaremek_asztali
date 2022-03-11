@@ -1,24 +1,20 @@
 package com.example.vizsgaremek_asztali.cats;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.dogs.DogApi;
-import com.example.vizsgaremek_asztali.dogs.Dogs;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class HozzaadController extends Controller {
+public class CatModositController extends Controller {
     @FXML
     private TextField nevInput;
     @FXML
     private DatePicker szulidoInput;
-    @FXML
-    private TextField fajInput;
     @FXML
     private TextArea leirasInput;
     @FXML
@@ -27,17 +23,20 @@ public class HozzaadController extends Controller {
     private Spinner<Integer> kedvelesInput;
     @FXML
     private ComboBox<String> nemInput;
+    @FXML
+    private ComboBox<Integer> orokbefogadasInput;
+    private Cats modositando;
 
     @FXML
-    public void onHozzaadas(ActionEvent actionEvent) {
+    public void onCatsModositas(ActionEvent actionEvent) {
         String nev=nevInput.getText().trim();
         LocalDate szuldatum=szulidoInput.getValue();
         String formazottSzuldatum;
         String kultul=kultulInput.getText().trim();
         String leiras=leirasInput.getText().trim();
         int erdeklodes=0;
-        Integer  orokbefogadasid= null;
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
+        Integer orobefogadasIndex=orokbefogadasInput.getSelectionModel().getSelectedIndex();// ez majd akkor kell ha már megvan adoption osztáyl
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -49,7 +48,6 @@ public class HozzaadController extends Controller {
             alertBuilder.append("A név megadása kötelező").append(System.lineSeparator());
             hiba=true;
         }
-
 
         if (nemIndex == -1){
             //alert("A nem kiválasztása köztelező");
@@ -65,10 +63,6 @@ public class HozzaadController extends Controller {
             alertBuilder.append("A dátum megadása kötelező").append(System.lineSeparator());
             hiba=true;
         }
-
-
-
-
 
         if (kultul.isEmpty()){
             //alert("A külső tulajdonság megadása kötelező");
@@ -87,31 +81,51 @@ public class HozzaadController extends Controller {
 
         try {
             erdeklodes =  kedvelesInput.getValue();
-        } catch (Exception ex){
+        }catch (NullPointerException ex){
+            //alert("A hossz megadása kötelező");
+            kedvelesInput.getStyleClass().add("error");
+            alertBuilder.append("Az érdeklődés mértékének megadása kötelező").append(System.lineSeparator());
+            hiba=true;
+        }
+        catch (Exception ex){
             System.out.println(ex);
-            alert("Az kedmelés mértéke csak 1 és 10 közötti szám lehet");
-            return;
+            //alert("Az kedvelés mértéke csak 1 és 10 közötti szám lehet");
+            kedvelesInput.getStyleClass().add("error");
+            alertBuilder.append("Az kedvelés mértéke csak 1 és 10 közötti szám lehet").append(System.lineSeparator());
+            hiba=true;
         }
         if (erdeklodes < 1 || erdeklodes > 10) {
-            alert("Az kedmelés mértéke csak 1 és 10 közötti szám lehet");
-            return;
+            //alert("Az kedvelés mértéke csak 1 és 10 közötti szám lehet");
+            kedvelesInput.getStyleClass().add("error");
+            alertBuilder.append("Az kedvelés mértéke csak 1 és 10 közötti szám lehet").append(System.lineSeparator());
+            hiba=true;
         }
 
         if (hiba) {
             alert(alertBuilder.toString());
             return;
         }
+        Integer orokbefogadasId = orokbefogadasInput.getValue();
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        modositando.setName(nev);
+        modositando.setLikely_bday(formazottSzuldatum);
+        modositando.setGender(nem);
+        modositando.setExternal_property(kultul);
+        modositando.setDescription(leiras);
+        modositando.setInterest(erdeklodes);
+        modositando.setAdoption_id(orokbefogadasId);
+
         try {
-            Cats ujMacska = new Cats(0,nev,nem,formazottSzuldatum,kultul,leiras,erdeklodes,orokbefogadasid);
-            Cats letrehozott = CatApi.post(ujMacska);
-            if (letrehozott != null){
-                alert("Sikeres hozzáadás");
+            Cats modositott= CatApi.put(modositando);
+            if (modositott !=null){
+                alertWait("Sikeres módosítás");
+                this.stage.close();
             } else {
-                alert("Sikeretelen hozzáadás");
+                alert("Sikertelen módosítás");
             }
-        } catch (Exception e) {
-            hibaKiir(e);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -128,4 +142,27 @@ public class HozzaadController extends Controller {
         control.getStylesheets().removeAll(new File("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\src\\main\\resources\\com\\example\\vizsgaremek_asztali\\css\\FelugroAblakHiba.css").toURI().toString());
         control.getStyleClass().remove("error");
     }
+
+    public Cats getModositando() {
+        return modositando;
+    }
+
+    public void setModositando(Cats modositando) {
+        this.modositando = modositando;
+        ertekekBeallitasa();
+    }
+
+    private void ertekekBeallitasa() {
+        nevInput.setText(modositando.getName());
+        kultulInput.setText(modositando.getExternal_property());
+        leirasInput.setText(modositando.getDescription());
+        kedvelesInput.getValueFactory().setValue(modositando.getInterest());
+        nemInput.setValue(modositando.getGender());
+        orokbefogadasInput.setValue(modositando.getAdoption_id());
+        LocalDate datum=LocalDate.parse(modositando.getLikely_bday());
+        szulidoInput.setValue(datum);
+    }
+
+
+
 }

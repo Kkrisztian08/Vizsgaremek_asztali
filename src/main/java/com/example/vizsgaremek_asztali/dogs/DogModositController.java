@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class ModositController extends Controller {
+public class DogModositController extends Controller {
     @FXML
     private TextField nevInput;
     @FXML
@@ -39,9 +39,8 @@ public class ModositController extends Controller {
         String kultul=kultulInput.getText().trim();
         String leiras=leirasInput.getText().trim();
         int erdeklodes=0;
-        Integer  orokbefogadasid= null;
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
-        Integer orobefogadasIndex=orokbefogadasInput.getSelectionModel().getSelectedIndex();
+        Integer orobefogadasIndex=orokbefogadasInput.getSelectionModel().getSelectedIndex(); // ez majd akkor kell ha már megvan adoption osztáyl
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -121,7 +120,7 @@ public class ModositController extends Controller {
             alert(alertBuilder.toString());
             return;
         }
-        int orokbefogadasId = orokbefogadasInput.getValue();
+        Integer orokbefogadasId = orokbefogadasInput.getValue();
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         modositando.setName(nev);

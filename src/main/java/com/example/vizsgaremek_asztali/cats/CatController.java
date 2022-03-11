@@ -1,8 +1,7 @@
 package com.example.vizsgaremek_asztali.cats;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.dogs.Dogs;
-import com.example.vizsgaremek_asztali.dogs.DogsController;
+import com.example.vizsgaremek_asztali.dogs.DogController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -15,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 
-public class CatsController extends Controller {
+public class CatController extends Controller {
     @FXML
     private TextArea leirasKulTulTextArea;
     @FXML
@@ -40,7 +39,7 @@ public class CatsController extends Controller {
     private TableColumn<Cats,String>  nemCol;
     @FXML
     private TableColumn<Cats,Integer> erdeklodesCol;
-    private DogsController dogsController;
+    private DogController dogsController;
     private final ObservableList<Cats> macskakLista = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Cats,Integer> idColmacska;
@@ -58,7 +57,6 @@ public class CatsController extends Controller {
         macskakListaFeltolt();
         kereses();
     }
-
     public void macskakListaFeltolt() {
         catTorol.setDisable(true);
         catModosit.setDisable(true);
@@ -101,12 +99,22 @@ public class CatsController extends Controller {
     }
 
     @FXML
-    public void onMacskakClick(ActionEvent actionEvent) {
-
-    }
-
-    @FXML
     public void onModositMacska(ActionEvent actionEvent) {
+        int selectedIndex = macskakTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
+            return;
+        }
+        Cats modositandomacska = macskakTable.getSelectionModel().getSelectedItem();
+        try {
+            CatModositController modosita = (CatModositController) ujAblak("FXML/cats/modosit-view.fxml", "Adatok Módosítása",
+                    700, 450);
+            modosita.setModositando(modositandomacska);
+            modosita.getStage().setOnHiding(event -> macskakTable.refresh());
+            modosita.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
@@ -119,19 +127,6 @@ public class CatsController extends Controller {
         Cats leiraskiir= macskakTable.getSelectionModel().getSelectedItem();
         leirasKulTulTextArea.setText("Leírás:\n"+leiraskiir.getDescription()+"\n\nKül.tul.:\n"+leiraskiir.getExternal_property());
 
-    }
-
-    @FXML
-    public void onKutyakClick(ActionEvent actionEvent) {
-        try {
-            Controller hozzadas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák tábla",
-                    1100, 600);
-            //hozzadas.getStage().setOnCloseRequest(event -> dogsController.kutyakListaFeltolt());
-            hozzadas.getStage().show();
-            this.stage.close();
-        } catch (Exception e) {
-            hibaKiir(e);
-        }
     }
 
     @FXML
@@ -152,5 +147,23 @@ public class CatsController extends Controller {
 
     @FXML
     public void onExportMacskaTabla(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onKutyakClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák tábla",
+                    1100, 600);
+            hozzadas.getStage().setOnCloseRequest(event -> dogsController.kutyakListaFeltolt());
+            hozzadas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+
+    @FXML
+    public void onMacskakClick(ActionEvent actionEvent) {
+
     }
 }

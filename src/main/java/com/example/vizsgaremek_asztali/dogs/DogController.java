@@ -1,7 +1,7 @@
 package com.example.vizsgaremek_asztali.dogs;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.cats.CatsController;
+import com.example.vizsgaremek_asztali.cats.CatController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -19,7 +19,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.poi.xssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
 
-public class DogsController extends Controller {
+public class DogController extends Controller {
     @FXML
     private TableColumn<Dogs, String> szulIdoCol;
     @FXML
@@ -48,7 +48,7 @@ public class DogsController extends Controller {
     private TextArea leirasKulTulTextArea;
     @FXML
     private TextField keresesTextField;
-    private CatsController catsController;
+    private CatController catsController;
     private ObservableList<Dogs> kutyakLista = FXCollections.observableArrayList();
 
     public void initialize(){
@@ -130,7 +130,7 @@ public class DogsController extends Controller {
         }
         Dogs modositando = kutyakTable.getSelectionModel().getSelectedItem();
         try {
-            ModositController modositas = (ModositController) ujAblak("FXML/dogs/modosit-view.fxml", "Adatok Módosítása",
+            DogModositController modositas = (DogModositController) ujAblak("FXML/dogs/modosit-view.fxml", "Adatok Módosítása",
                     700, 450);
             modositas.setModositando(modositando);
             modositas.getStage().setOnHiding(event -> kutyakTable.refresh());
@@ -224,7 +224,7 @@ public class DogsController extends Controller {
         try {
             Controller hozzadas = ujAblak("FXML/cats/cats-view.fxml", "Macskák tábla",
                     1100, 600);
-            //hozzadas.getStage().setOnCloseRequest(event -> macskakListaFeltolt());
+            hozzadas.getStage().setOnCloseRequest(event -> catsController.macskakListaFeltolt());
             hozzadas.getStage().show();
             this.stage.close();
         } catch (Exception e) {
