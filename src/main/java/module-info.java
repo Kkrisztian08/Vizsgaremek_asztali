@@ -16,4 +16,6 @@ module com.example.vizsgaremek_asztali {
     opens com.example.vizsgaremek_asztali.api to com.google.gson, javafx.fxml;
     exports com.example.vizsgaremek_asztali.cats;
     opens com.example.vizsgaremek_asztali.cats to com.google.gson, javafx.fxml;
+    exports com.example.vizsgaremek_asztali.adoption;
+    opens com.example.vizsgaremek_asztali.adoption to com.google.gson, javafx.fxml;
 }

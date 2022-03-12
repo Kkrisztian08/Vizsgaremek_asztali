@@ -55,12 +55,12 @@ public abstract class Controller {
         return result.get() == ButtonType.OK;
     }
 
-    private void setAlertIcon(Alert alert){
+    private static void setAlertIcon(Alert alert){
         Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
         alertStage.getIcons().add(new Image(ElethangApp.class.getResourceAsStream("icons/logo_szerkesztve.png")));
     }
 
-    protected void hibaKiir(Exception e) {
+    protected static void hibaKiir(Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         setAlertIcon(alert);
         alert.setTitle("Hiba!");

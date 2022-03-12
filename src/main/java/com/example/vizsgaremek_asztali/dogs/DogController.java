@@ -42,15 +42,15 @@ public class DogController extends Controller {
     @FXML
     private TableColumn<Dogs, String> leirasCol;
     @FXML
-    private Button dogModosit;
+    private  Button dogModosit;
     @FXML
-    private Button dogTorol;
+    private  Button dogTorol;
     @FXML
     private TextArea leirasKulTulTextArea;
     @FXML
     private TextField keresesTextField;
     private CatController catsController;
-    private ObservableList<Dogs> kutyakLista = FXCollections.observableArrayList();
+    private  ObservableList<Dogs> kutyakLista = FXCollections.observableArrayList();
 
     public void initialize(){
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -66,7 +66,7 @@ public class DogController extends Controller {
         kereses();
     }
 
-    public void kutyakListaFeltolt() {
+    public  void kutyakListaFeltolt() {
         dogTorol.setDisable(true);
         dogModosit.setDisable(true);
         try {
