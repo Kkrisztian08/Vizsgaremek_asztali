@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.swing.JFileChooser;
@@ -200,8 +201,12 @@ public class DogController extends Controller {
                 }
             }
             try (FileOutputStream fileOut = new FileOutputStream(file)){
-                    workbook.write(fileOut);
-                    alert("Sikeres exportálás");
+                workbook.write(fileOut);
+                alert("Sikeres exportálás");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         } else {
             alerthiba("Sikertelen exportálás! A file már létezik!");

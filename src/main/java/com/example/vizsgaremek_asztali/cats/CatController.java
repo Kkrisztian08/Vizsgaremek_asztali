@@ -11,7 +11,15 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class CatController extends Controller {
@@ -99,6 +107,18 @@ public class CatController extends Controller {
     }
 
     @FXML
+    public void onHozzaadMacska(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/cats/hozzaad-view.fxml", "Macska hozzáadása",
+                    600, 400);
+            hozzadas.getStage().setOnCloseRequest(event -> macskakListaFeltolt());
+            hozzadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+
+    @FXML
     public void onModositMacska(ActionEvent actionEvent) {
         int selectedIndex = macskakTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex == -1){
@@ -118,6 +138,80 @@ public class CatController extends Controller {
     }
 
     @FXML
+    public void onMacskaTorol(ActionEvent actionEvent) {
+        int selectedIndex = macskakTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
+            return;
+        }
+        Cats torlendoMacska = macskakTable.getSelectionModel().getSelectedItem();
+        if (!confirm("Valóban törölni szeretné "  +torlendoMacska.getName() + " kutya adatait")){
+            return;
+        }
+        try {
+            boolean sikeres= CatApi.delete(torlendoMacska.getId());
+            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            macskakLista.clear();
+            macskakListaFeltolt();
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
+    }
+
+    @FXML
+    public void onExportMacskaTabla(ActionEvent actionEvent) {
+        String filenev = "Macskak tábla";
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Exportálás");
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("MS Excel", "xlsx"));
+        fileChooser.setSelectedFile(new File(filenev));
+        fileChooser.setVisible(true);
+        int result = fileChooser.showSaveDialog(fileChooser);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            filenev = fileChooser.getSelectedFile().getAbsolutePath();
+            if (!filenev.endsWith(".xlsx")) {
+                filenev+=".xlsx";
+            }
+        } else {
+            return;
+        }
+        File file = new File(filenev);
+        if (file.exists() == false) {
+            Workbook workbook = new XSSFWorkbook();
+            Sheet spreadsheet = workbook.createSheet("kutyák tábla");
+
+            Row row = spreadsheet.createRow(0);
+
+            for (int j = 0; j < macskakTable.getColumns().size(); j++) {
+                row.createCell(j).setCellValue(macskakTable.getColumns().get(j).getText());
+            }
+
+            for (int i = 0; i < macskakTable.getItems().size(); i++) {
+                row = spreadsheet.createRow(i + 1);
+                for (int j = 0; j < macskakTable.getColumns().size(); j++) {
+                    if(macskakTable.getColumns().get(j).getCellData(i) != null) {
+                        row.createCell(j).setCellValue(macskakTable.getColumns().get(j).getCellData(i).toString());
+                    }
+                    else {
+                        row.createCell(j).setCellValue("");
+                    }
+                }
+            }
+            try (FileOutputStream fileOut = new FileOutputStream(file)){
+                workbook.write(fileOut);
+                alert("Sikeres exportálás");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            alerthiba("Sikertelen exportálás! A file már létezik ezen a helyen!");
+        }
+    }
+
+    @FXML
     public void onSelectCat(Event event) {
         int selectedIndex = macskakTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
@@ -127,26 +221,6 @@ public class CatController extends Controller {
         Cats leiraskiir= macskakTable.getSelectionModel().getSelectedItem();
         leirasKulTulTextArea.setText("Leírás:\n"+leiraskiir.getDescription()+"\n\nKül.tul.:\n"+leiraskiir.getExternal_property());
 
-    }
-
-    @FXML
-    public void onMacskaTorol(ActionEvent actionEvent) {
-    }
-
-    @FXML
-    public void onHozzaadMacska(ActionEvent actionEvent) {
-        try {
-            Controller hozzadas = ujAblak("FXML/cats/hozzaad-view.fxml", "Macska hozzáadása",
-                    600, 400);
-            hozzadas.getStage().setOnCloseRequest(event -> macskakListaFeltolt());
-            hozzadas.getStage().show();
-        } catch (Exception e) {
-            hibaKiir(e);
-        }
-    }
-
-    @FXML
-    public void onExportMacskaTabla(ActionEvent actionEvent) {
     }
 
     @FXML
