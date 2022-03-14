@@ -1,6 +1,10 @@
 package com.example.vizsgaremek_asztali.adoptionType;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.adoption.AdoptionApi;
+import com.example.vizsgaremek_asztali.adoption.Adoptions;
+import com.example.vizsgaremek_asztali.cats.CatModositController;
+import com.example.vizsgaremek_asztali.cats.Cats;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -38,11 +42,11 @@ public class AdoptionTypeController extends Controller {
     public void initialize(){
         typeidCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-        kutyakListaFeltolt();
+        typeListaFeltolt();
         kereses();
     }
 
-    public  void kutyakListaFeltolt() {
+    public  void typeListaFeltolt() {
         typeModosit.setDisable(true);
         typeTorol.setDisable(true);
         try {
@@ -77,14 +81,54 @@ public class AdoptionTypeController extends Controller {
 
     @FXML
     public void onHozzaadType(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/adoptionTypes/hozzaad-view.fxml", "Típus hozzáadása",
+                    500, 230);
+            hozzadas.getStage().setOnCloseRequest(event -> typeListaFeltolt());
+            hozzadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
     public void onModositType(ActionEvent actionEvent) {
+        int selectedIndex = tipusTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
+            return;
+        }
+        AdoptionType modositandomacska = tipusTable.getSelectionModel().getSelectedItem();
+        try {
+            AdoptionTypeModositController modosita = (AdoptionTypeModositController) ujAblak("FXML/adoptionTypes/modosit-view.fxml", "Adatok Módosítása",
+                    500, 230);
+            modosita.setModositando(modositandomacska);
+            modosita.getStage().setOnHiding(event -> tipusTable.refresh());
+            modosita.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
     public void onTypeTorol(ActionEvent actionEvent) {
+        int selectedIndex = tipusTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
+            return;
+        }
+        AdoptionType torlendoAdoptionType = tipusTable.getSelectionModel().getSelectedItem();
+        if (!confirm("Valóban törölni szeretné a következő örökbefogadási típust: "  +torlendoAdoptionType.getType() + "?")){
+            return;
+        }
+        try {
+            boolean sikeres= AdoptionTypeApi.delete(torlendoAdoptionType.getId());
+            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            typeLista.clear();
+            typeListaFeltolt();
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
@@ -134,6 +178,11 @@ public class AdoptionTypeController extends Controller {
 
     @FXML
     public void onSelectType(Event event) {
+        int selectedIndex = tipusTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex != -1) {
+            typeTorol.setDisable(false);
+            typeModosit.setDisable(false);
+        }
     }
 
     @FXML
