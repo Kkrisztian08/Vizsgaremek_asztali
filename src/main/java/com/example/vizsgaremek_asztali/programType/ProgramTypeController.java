@@ -3,7 +3,6 @@ package com.example.vizsgaremek_asztali.programType;
 import com.example.vizsgaremek_asztali.Controller;
 import com.example.vizsgaremek_asztali.event.EventApi;
 import com.example.vizsgaremek_asztali.event.EventModositController;
-import com.example.vizsgaremek_asztali.event.Events;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -18,7 +17,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -100,9 +98,9 @@ public class ProgramTypeController extends Controller {
         }
         ProgramTypes modositando = pTypeTable.getSelectionModel().getSelectedItem();
         try {
-            EventModositController modositas = (EventModositController) ujAblak("FXML/programTypes/modosit-view.fxml", "Adatok Módosítása",
+            ProgramTypeModositController modositas = (ProgramTypeModositController) ujAblak("FXML/programTypes/modosit-view.fxml", "Adatok Módosítása",
                     500, 474);
-            //modositas.setModositando(modositando);
+            modositas.setModositando(modositando);
             modositas.getStage().setOnHiding(event -> pTypeTable.refresh());
             modositas.getStage().show();
         } catch (Exception e) {

@@ -29,7 +29,7 @@ public class ProgramTypeApi {
         return Api.delete(API_URL, id).getResponseCode() == 240;
     }
 
-    public static ProgramTypes put(Events modosit) throws IOException {
+    public static ProgramTypes put(ProgramTypes modosit) throws IOException {
         String modositandoJson = jsonConverted.toJson(modosit);
         String json = Api.put(API_URL,modosit.getId(), modositandoJson);
         return jsonConverted.fromJson(json, ProgramTypes.class);
