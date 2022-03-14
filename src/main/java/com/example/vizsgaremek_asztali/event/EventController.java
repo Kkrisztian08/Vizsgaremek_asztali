@@ -32,14 +32,14 @@ public class EventController extends Controller {
     @FXML
     private TableColumn<Events,String> elnevezesCol;
     @FXML
+    private TableColumn<Events,String> datumCol;
+    @FXML
     private TableView<Events> eventTable;
     @FXML
     private Button eventTorol;
     @FXML
     private Button eventModosit;
     private ObservableList<Events> eventsLista = FXCollections.observableArrayList();
-    @FXML
-    private TableColumn<Events,String> datumCol;
 
     public void initialize(){
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -240,6 +240,14 @@ public class EventController extends Controller {
 
     @FXML
     public void onProgramtypeClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/programTypes/programTypes-view.fxml", "Program Típus Tábla",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
@@ -269,10 +277,4 @@ public class EventController extends Controller {
             hibaKiir(e);
         }
     }
-
-
-
-
-
-
 }

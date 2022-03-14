@@ -230,6 +230,14 @@ public class AdoptionController extends Controller {
 
     @FXML
     public void onProgramtypeClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/programTypes/programTypes-view.fxml", "Program Típus Tábla",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
