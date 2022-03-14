@@ -1,14 +1,10 @@
 package com.example.vizsgaremek_asztali.cats;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.dogs.DogApi;
-import com.example.vizsgaremek_asztali.dogs.Dogs;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 

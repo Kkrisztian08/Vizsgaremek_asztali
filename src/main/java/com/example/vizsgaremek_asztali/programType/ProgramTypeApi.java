@@ -1,10 +1,8 @@
 package com.example.vizsgaremek_asztali.programType;
 
 import com.example.vizsgaremek_asztali.api.Api;
-import com.example.vizsgaremek_asztali.event.Events;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;

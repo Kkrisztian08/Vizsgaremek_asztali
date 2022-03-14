@@ -1,8 +1,6 @@
 package com.example.vizsgaremek_asztali.programType;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.event.EventApi;
-import com.example.vizsgaremek_asztali.event.EventModositController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

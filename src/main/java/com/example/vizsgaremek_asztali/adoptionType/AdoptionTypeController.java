@@ -1,10 +1,6 @@
 package com.example.vizsgaremek_asztali.adoptionType;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.adoption.AdoptionApi;
-import com.example.vizsgaremek_asztali.adoption.Adoptions;
-import com.example.vizsgaremek_asztali.cats.CatModositController;
-import com.example.vizsgaremek_asztali.cats.Cats;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
-
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;

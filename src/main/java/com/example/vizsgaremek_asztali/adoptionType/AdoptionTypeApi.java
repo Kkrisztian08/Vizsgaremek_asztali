@@ -1,10 +1,8 @@
 package com.example.vizsgaremek_asztali.adoptionType;
 
 import com.example.vizsgaremek_asztali.api.Api;
-import com.example.vizsgaremek_asztali.cats.Cats;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;

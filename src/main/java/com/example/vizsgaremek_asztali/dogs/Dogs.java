@@ -1,8 +1,5 @@
 package com.example.vizsgaremek_asztali.dogs;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Dogs {
     private int id;
     private String name;

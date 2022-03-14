@@ -1,8 +1,6 @@
 package com.example.vizsgaremek_asztali.programType;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.adoptionType.AdoptionType;
-import com.example.vizsgaremek_asztali.adoptionType.AdoptionTypeApi;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;

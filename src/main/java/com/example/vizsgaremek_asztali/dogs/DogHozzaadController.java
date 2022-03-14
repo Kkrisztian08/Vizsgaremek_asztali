@@ -1,7 +1,6 @@
 package com.example.vizsgaremek_asztali.dogs;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.ElethangApp;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
