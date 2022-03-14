@@ -188,9 +188,9 @@ public class AdoptionTypeController extends Controller {
     @FXML
     public void onMacskakClick(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/cats/cats-view.fxml", "Macskák tábla",
+            Controller oldalvaltas = ujAblak("FXML/cats/cats-view.fxml", "Macskák Tábla",
                     1100, 600);
-            hozzadas.getStage().show();
+            oldalvaltas.getStage().show();
             this.stage.close();
         } catch (Exception e) {
             hibaKiir(e);
@@ -200,9 +200,9 @@ public class AdoptionTypeController extends Controller {
     @FXML
     public void onKutyakClick(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák tábla",
+            Controller oldalvaltas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák Tábla",
                     1100, 600);
-            hozzadas.getStage().show();
+            oldalvaltas.getStage().show();
             this.stage.close();
         } catch (Exception e) {
             hibaKiir(e);
@@ -215,7 +215,15 @@ public class AdoptionTypeController extends Controller {
     }
 
     @FXML
-    public void onEvenetClick(ActionEvent actionEvent) {
+    public void onEventClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/events/events-view.fxml", "Események Tábla",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
@@ -225,9 +233,9 @@ public class AdoptionTypeController extends Controller {
     @FXML
     public void onAdoptionTypeClick(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/adoptionTypes/adoptionTypes-view.fxml", "Örökbefogadási Típus tábla",
+            Controller oldalvaltas = ujAblak("FXML/adoptionTypes/adoptionTypes-view.fxml", "Örökbefogadási Típus Tábla",
                     1100, 600);
-            hozzadas.getStage().show();
+            oldalvaltas.getStage().show();
             this.stage.close();
         } catch (Exception e) {
             hibaKiir(e);
@@ -241,9 +249,9 @@ public class AdoptionTypeController extends Controller {
     @FXML
     public void onAdoptionClick(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/adoptions/adoptions-view.fxml", "Örökbefogadás tábla",
+            Controller oldalvaltas = ujAblak("FXML/adoptions/adoptions-view.fxml", "Örökbefogadás Tábla",
                     1100, 600);
-            hozzadas.getStage().show();
+            oldalvaltas.getStage().show();
             this.stage.close();
         } catch (Exception e) {
             hibaKiir(e);

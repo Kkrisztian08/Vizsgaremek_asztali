@@ -8,6 +8,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -20,13 +21,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.adoption.AdoptionController">
+<AnchorPane maxHeight="1.7976931348623157E308" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.event.EventController">
     <children>
         <BorderPane maxHeight="1.7976931348623157E308" minHeight="530.0" minWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <VBox maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0d9475;" BorderPane.alignment="CENTER">
                     <children>
-                        <Label alignment="CENTER" prefHeight="55.0" prefWidth="202.0" style="-fx-background-color: #0d9475;" text="Örökbefogadások Tábla" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="55.0" prefWidth="202.0" style="-fx-background-color: #0d9475;" text="Események Tábla" textFill="WHITE">
                             <font>
                                 <Font name="Arial Narrow Italic" size="20.0" />
                             </font>
@@ -89,6 +90,10 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
+                        <TextArea fx:id="leirasTextArea" editable="false" stylesheets="@../../css/TablazatosOldalak.css" wrapText="true" VBox.vgrow="ALWAYS">
+                            <font>
+                                <Font size="15.0" />
+                            </font></TextArea>
                     </children>
                 </VBox>
             </left>
@@ -120,12 +125,12 @@
                         </GridPane>
                     </top>
                     <center>
-                        <TableView fx:id="adoptionTable" onMouseClicked="#onSelectAdoption" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/TablazatosOldalak.css" BorderPane.alignment="CENTER">
+                        <TableView fx:id="eventTable" onMouseClicked="#onSelectEvent" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/TablazatosOldalak.css" BorderPane.alignment="CENTER">
                             <columns>
-                                <TableColumn fx:id="adoptionIdCol" prefWidth="75.0" text="Id" />
-                                <TableColumn fx:id="adoptionTypeIdCol" prefWidth="75.0" text="Örökbefogadási típus id" />
-                                <TableColumn fx:id="userIdCol" prefWidth="75.0" text="User id" />
-                                <TableColumn fx:id="beginCol" prefWidth="75.0" text="Örökbefogadás kezdete" />
+                                <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
+                                <TableColumn fx:id="elnevezesCol" prefWidth="75.0" text="Elnevezés" />
+                                <TableColumn fx:id="leirasCol" prefWidth="75.0" text="Leírás" />
+                        <TableColumn fx:id="datumCol" prefWidth="75.0" text="Dátum" />
                             </columns>
                             <columnResizePolicy>
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -154,7 +159,7 @@
                         </Button>
                         <HBox alignment="CENTER" minHeight="70.0" minWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                             <children>
-                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadAdoption" stylesheets="@../../css/TablazatosOldalak.css" text="Hozzáadás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadEvent" stylesheets="@../../css/TablazatosOldalak.css" text="Hozzáadás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -162,7 +167,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="adoptionModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositAdoption" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás">
+                                <Button id="rnd" fx:id="eventModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositEvent" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -170,7 +175,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="adoptionTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onAdoptionTorol" stylesheets="@../../css/TablazatosOldalak.css" text="Törlés">
+                                <Button id="rnd" fx:id="eventTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onEventTorol" stylesheets="@../../css/TablazatosOldalak.css" text="Törlés">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -178,7 +183,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onExportAdoptionTabla" stylesheets="@../../css/TablazatosOldalak.css" text="Exportálás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onExportTabla" stylesheets="@../../css/TablazatosOldalak.css" text="Exportálás">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
