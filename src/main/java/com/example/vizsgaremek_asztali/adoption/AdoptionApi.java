@@ -16,7 +16,7 @@ public class AdoptionApi {
 
     public static List<Adoptions> get() throws IOException {
         String json = Api.get(API_URL);
-        Type type = new TypeToken<List<Cats>>(){}.getType();
+        Type type = new TypeToken<List<Adoptions>>(){}.getType();
         return jsonConverted.fromJson(json,type);
     }
     public static Adoptions post(Adoptions uj) throws IOException {

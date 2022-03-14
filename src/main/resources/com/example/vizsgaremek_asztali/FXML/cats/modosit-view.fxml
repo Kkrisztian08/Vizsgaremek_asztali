@@ -102,7 +102,13 @@
         </Button>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #14856B;" GridPane.columnSpan="4" />
       <ComboBox fx:id="orokbefogadasInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" stylesheets="@../../css/FelugroAblakok.css" GridPane.columnIndex="2" GridPane.rowIndex="4">
-         <GridPane.margin>
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Hím" />
+                  <String fx:value="Nőstény" />
+              </FXCollections>
+          </items>
+          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin></ComboBox>
       <Spinner fx:id="kedvelesInput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="2">

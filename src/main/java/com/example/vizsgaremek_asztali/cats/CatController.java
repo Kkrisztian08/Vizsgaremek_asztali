@@ -55,14 +55,14 @@ public class CatController extends Controller {
 
 
     public void initialize(){
-        this.idColmacska.setCellValueFactory(new PropertyValueFactory<>("id"));
-        this.nevCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        this.nemCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        this.szulIdoCol.setCellValueFactory(new PropertyValueFactory<>("likely_bday"));
-        this.kulsoCol.setCellValueFactory(new PropertyValueFactory<>("external_property"));
-        this.leirasCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-        this.erdeklodesCol.setCellValueFactory(new PropertyValueFactory<>("interest"));
-        this.adoptionIdCol.setCellValueFactory(new PropertyValueFactory<>("adoption_id"));
+        idColmacska.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nevCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nemCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        szulIdoCol.setCellValueFactory(new PropertyValueFactory<>("likely_bday"));
+        kulsoCol.setCellValueFactory(new PropertyValueFactory<>("external_property"));
+        leirasCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        erdeklodesCol.setCellValueFactory(new PropertyValueFactory<>("interest"));
+        adoptionIdCol.setCellValueFactory(new PropertyValueFactory<>("adoption_id"));
         macskakListaFeltolt();
         kereses();
     }
@@ -79,21 +79,21 @@ public class CatController extends Controller {
     private void kereses() {
         FilteredList<Cats> filteredList = new FilteredList<>(macskakLista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
-            filteredList.setPredicate(dog -> {
+            filteredList.setPredicate(cat -> {
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
                     return true;
                 }
                 String kereses = newValue.toLowerCase();
-                if (dog.getName().toLowerCase().indexOf(kereses) > -1) {
+                if (cat.getName().toLowerCase().indexOf(kereses) > -1) {
                     return true;
                 }
-                else if(dog.getGender().toLowerCase().indexOf(kereses) > -1){
+                else if(cat.getGender().toLowerCase().indexOf(kereses) > -1){
                     return true;
                 }
-                else if(dog.getLikely_bday().toLowerCase().indexOf(kereses) > -1){
+                else if(cat.getLikely_bday().toLowerCase().indexOf(kereses) > -1){
                     return true;
                 }
-                else if(dog.getExternal_property().toLowerCase().indexOf(kereses) > -1){
+                else if(cat.getExternal_property().toLowerCase().indexOf(kereses) > -1){
                     return true;
                 }
                 else {
