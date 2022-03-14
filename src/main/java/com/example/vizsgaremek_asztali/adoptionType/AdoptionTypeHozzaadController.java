@@ -1,7 +1,6 @@
 package com.example.vizsgaremek_asztali.adoptionType;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.cats.Cats;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -24,7 +23,7 @@ public class AdoptionTypeHozzaadController extends Controller {
         if (tipus.isEmpty()){
             //alert("A név megadása kötelező");
             tipusInput.getStyleClass().add("error");
-            alertBuilder.append("A név megadása kötelező").append(System.lineSeparator());
+            alertBuilder.append("A típus megadása kötelező").append(System.lineSeparator());
             hiba=true;
         }
 

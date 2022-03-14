@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane minHeight="230.0" minWidth="500.0" style="-fx-background-color: white;" stylesheets="@../../css/FelugroAblakok.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.adoptionType.AdoptionTypeModositController">
+<GridPane minHeight="230.0" minWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.adoptionType.AdoptionTypeModositController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -45,4 +46,8 @@
          </GridPane.margin>
       </TextField>
     </children>
+   <stylesheets>
+      <URL value="@../../css/FelugroAblakok.css" />
+      <URL value="@../../css/FelugroAblakHiba.css" />
+   </stylesheets>
 </GridPane>

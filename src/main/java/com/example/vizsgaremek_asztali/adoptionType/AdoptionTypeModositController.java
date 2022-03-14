@@ -1,14 +1,11 @@
 package com.example.vizsgaremek_asztali.adoptionType;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.dogs.DogApi;
-import com.example.vizsgaremek_asztali.dogs.Dogs;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Control;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
 
 
@@ -28,7 +25,7 @@ public class AdoptionTypeModositController extends Controller {
         if (tipus.isEmpty()){
             //alert("A név megadása kötelező");
             tipusInput.getStyleClass().add("error");
-            alertBuilder.append("A név megadása kötelező").append(System.lineSeparator());
+            alertBuilder.append("A típus megadása kötelező").append(System.lineSeparator());
             hiba=true;
         }
 
