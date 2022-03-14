@@ -20,4 +20,6 @@ module com.example.vizsgaremek_asztali {
     opens com.example.vizsgaremek_asztali.adoption to com.google.gson, javafx.fxml;
     exports com.example.vizsgaremek_asztali.adoptionType;
     opens com.example.vizsgaremek_asztali.adoptionType to com.google.gson, javafx.fxml;
+    exports com.example.vizsgaremek_asztali.event;
+    opens com.example.vizsgaremek_asztali.event to com.google.gson, javafx.fxml;
 }
