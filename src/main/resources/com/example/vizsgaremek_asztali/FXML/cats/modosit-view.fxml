@@ -92,7 +92,7 @@
                 <Insets bottom="2.5" right="10.0" top="2.5" />
             </GridPane.margin>
         </TextArea>
-        <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#onCatsModositas" stylesheets="@../../css/Fooldal.css" text="Módosítás" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+        <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#onCatsModositas" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="5">
             <GridPane.margin>
                 <Insets left="50.0" right="50.0" />
             </GridPane.margin>

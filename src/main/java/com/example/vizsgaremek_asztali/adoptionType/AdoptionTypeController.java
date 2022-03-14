@@ -1,8 +1,6 @@
 package com.example.vizsgaremek_asztali.adoptionType;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.dogs.DogApi;
-import com.example.vizsgaremek_asztali.dogs.Dogs;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -12,7 +10,14 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.stage.FileChooser;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class AdoptionTypeController extends Controller {
@@ -84,6 +89,47 @@ public class AdoptionTypeController extends Controller {
 
     @FXML
     public void onExportTypeTabla(ActionEvent actionEvent) {
+        //String filenev = "Örököbefogadási Tipus tábla";
+        FileChooser choose = new FileChooser();
+        choose.setTitle("Exportálás");
+        choose.getExtensionFilters().add(new FileChooser.ExtensionFilter("MS Excel", "*.xlsx"));
+        File file = choose.showSaveDialog(stage);
+        if(!file.getName().endsWith(".xlsx")) {
+            file = new File(file.getAbsolutePath() + ".xlsx");
+        }
+
+        if (file.exists() == false) {
+            Workbook workbook = new XSSFWorkbook();
+            Sheet spreadsheet = workbook.createSheet("kutyák tábla");
+
+            Row row = spreadsheet.createRow(0);
+
+            for (int j = 0; j < tipusTable.getColumns().size(); j++) {
+                row.createCell(j).setCellValue(tipusTable.getColumns().get(j).getText());
+            }
+
+            for (int i = 0; i < tipusTable.getItems().size(); i++) {
+                row = spreadsheet.createRow(i + 1);
+                for (int j = 0; j < tipusTable.getColumns().size(); j++) {
+                    if(tipusTable.getColumns().get(j).getCellData(i) != null) {
+                        row.createCell(j).setCellValue(tipusTable.getColumns().get(j).getCellData(i).toString());
+                    }
+                    else {
+                        row.createCell(j).setCellValue("");
+                    }
+                }
+            }
+            try (FileOutputStream fileOut = new FileOutputStream(file)){
+                workbook.write(fileOut);
+                alert("Sikeres exportálás");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            alerthiba("Sikertelen exportálás! A file már létezik ezen a helyen!");
+        }
     }
 
     @FXML

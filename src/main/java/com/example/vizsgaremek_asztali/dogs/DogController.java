@@ -160,7 +160,7 @@ public class DogController extends Controller {
     }
     @FXML
     public void onExportKutyakTabla(ActionEvent actionEvent) throws IOException {
-        String filenev = "Kutyák tábla";
+        //String filenev = "Kutyák tábla";
         FileChooser choose = new FileChooser();
         choose.setTitle("Exportálás");
         choose.getExtensionFilters().add(new FileChooser.ExtensionFilter("MS Excel", "*.xlsx"));

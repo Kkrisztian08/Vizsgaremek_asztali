@@ -10,12 +10,11 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -136,23 +135,15 @@ public class AdoptionController extends Controller {
 
     @FXML
     public void onExportAdoptionTabla(ActionEvent actionEvent) {
-        String filenev = "Örököbefogadás tábla";
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Exportálás");
-        fileChooser.setAcceptAllFileFilterUsed(false);
-        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("MS Excel", "xlsx"));
-        fileChooser.setSelectedFile(new File(filenev));
-        fileChooser.setVisible(true);
-        int result = fileChooser.showSaveDialog(fileChooser);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            filenev = fileChooser.getSelectedFile().getAbsolutePath();
-            if (!filenev.endsWith(".xlsx")) {
-                filenev+=".xlsx";
-            }
-        } else {
-            return;
+        //String filenev = "Örököbefogadás tábla";
+        FileChooser choose = new FileChooser();
+        choose.setTitle("Exportálás");
+        choose.getExtensionFilters().add(new FileChooser.ExtensionFilter("MS Excel", "*.xlsx"));
+        File file = choose.showSaveDialog(stage);
+        if(!file.getName().endsWith(".xlsx")) {
+            file = new File(file.getAbsolutePath() + ".xlsx");
         }
-        File file = new File(filenev);
+
         if (file.exists() == false) {
             Workbook workbook = new XSSFWorkbook();
             Sheet spreadsheet = workbook.createSheet("kutyák tábla");

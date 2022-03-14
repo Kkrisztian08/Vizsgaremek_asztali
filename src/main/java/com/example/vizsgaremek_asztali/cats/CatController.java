@@ -158,7 +158,7 @@ public class CatController extends Controller {
 
     @FXML
     public void onExportMacskaTabla(ActionEvent actionEvent) {
-        String filenev = "Macskak tábla";
+        //String filenev = "Macskak tábla";
         FileChooser choose = new FileChooser();
         choose.setTitle("Exportálás");
         choose.getExtensionFilters().add(new FileChooser.ExtensionFilter("MS Excel", "*.xlsx"));
