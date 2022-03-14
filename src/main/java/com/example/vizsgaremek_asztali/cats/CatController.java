@@ -1,7 +1,6 @@
 package com.example.vizsgaremek_asztali.cats;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.dogs.DogController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -11,12 +10,11 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -48,7 +46,6 @@ public class CatController extends Controller {
     private TableColumn<Cats,String>  nemCol;
     @FXML
     private TableColumn<Cats,Integer> erdeklodesCol;
-    private DogController dogsController;
     private final ObservableList<Cats> macskakLista = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Cats,Integer> idColmacska;
@@ -162,22 +159,14 @@ public class CatController extends Controller {
     @FXML
     public void onExportMacskaTabla(ActionEvent actionEvent) {
         String filenev = "Macskak tábla";
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Exportálás");
-        fileChooser.setAcceptAllFileFilterUsed(false);
-        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("MS Excel", "xlsx"));
-        fileChooser.setSelectedFile(new File(filenev));
-        fileChooser.setVisible(true);
-        int result = fileChooser.showSaveDialog(fileChooser);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            filenev = fileChooser.getSelectedFile().getAbsolutePath();
-            if (!filenev.endsWith(".xlsx")) {
-                filenev+=".xlsx";
-            }
-        } else {
-            return;
+        FileChooser choose = new FileChooser();
+        choose.setTitle("Exportálás");
+        choose.getExtensionFilters().add(new FileChooser.ExtensionFilter("MS Excel", "*.xlsx"));
+        File file = choose.showSaveDialog(stage);
+        if(!file.getName().endsWith(".xlsx")) {
+            file = new File(file.getAbsolutePath() + ".xlsx");
         }
-        File file = new File(filenev);
+
         if (file.exists() == false) {
             Workbook workbook = new XSSFWorkbook();
             Sheet spreadsheet = workbook.createSheet("kutyák tábla");
@@ -225,11 +214,10 @@ public class CatController extends Controller {
     }
 
     @FXML
-    public void onKutyakClick(ActionEvent actionEvent) {
+    public void onMacskakClick(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák tábla",
+            Controller hozzadas = ujAblak("FXML/cats/cats-view.fxml", "Macskák tábla",
                     1100, 600);
-            hozzadas.getStage().setOnCloseRequest(event -> dogsController.kutyakListaFeltolt());
             hozzadas.getStage().show();
             this.stage.close();
         } catch (Exception e) {
@@ -238,7 +226,55 @@ public class CatController extends Controller {
     }
 
     @FXML
-    public void onMacskakClick(ActionEvent actionEvent) {
+    public void onKutyakClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák tábla",
+                    1100, 600);
+            hozzadas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
 
+    }
+
+    @FXML
+    public void onProgramApplicationClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onEvenetClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onProgramtypeClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onAdoptionTypeClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/adoptionTypes/adoptionTypes-view.fxml", "Örökbefogadási Típus tábla",
+                    1100, 600);
+            hozzadas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+
+    @FXML
+    public void onProgramHourAndDayClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onAdoptionClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/adoptions/adoptions-view.fxml", "Örökbefogadás tábla",
+                    1100, 600);
+            hozzadas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 }

@@ -1,8 +1,12 @@
 package com.example.vizsgaremek_asztali.adoptionType;
 
+import com.google.gson.annotations.SerializedName;
+
 public class AdoptionType {
     private int id;
+    @SerializedName("type")
     private String type;
+
 
     public AdoptionType(int id, String type) {
         this.id = id;

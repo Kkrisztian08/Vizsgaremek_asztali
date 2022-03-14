@@ -1,12 +1,11 @@
 package com.example.vizsgaremek_asztali.dogs;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.ElethangApp;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -64,7 +63,7 @@ public class DogHozzaadController extends Controller {
 
        if (szuldatum==null){
            //alert("A dátum megadása kötelező");
-           szulidoInput.getStylesheets().addAll(new File("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\src\\main\\resources\\com\\example\\vizsgaremek_asztali\\css\\FelugroAblakHiba.css").toURI().toString());
+           szulidoInput.getStyleClass().add("error");
            alertBuilder.append("A dátum megadása kötelező").append(System.lineSeparator());
            hiba=true;
        }
@@ -135,7 +134,6 @@ public class DogHozzaadController extends Controller {
     @FXML
     public void hibakMegszuntet(ActionEvent actionEvent) {
         Control control = (Control) actionEvent.getSource();
-        control.getStylesheets().removeAll(new File("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\src\\main\\resources\\com\\example\\vizsgaremek_asztali\\css\\FelugroAblakHiba.css").toURI().toString());
         control.getStyleClass().remove("error");
     }
 }

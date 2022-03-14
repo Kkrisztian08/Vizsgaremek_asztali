@@ -6,11 +6,6 @@
     -fx-border-radius: 10;
 }
 
-.text-field.error {
-    -fx-border-color: red ;
-    -fx-border-radius: 10;
-    -fx-border-width: 1 1 1 1;
-}
 
 .text-area{
     -fx-border-color: #14856B;
@@ -27,12 +22,6 @@
     -fx-background-color: white;
     -fx-background-insets: 0;
     -fx-background-radius: 0;
-}
-.text-area.error{
-    -fx-border-color: red;
-    -fx-border-width: 1 0 1 0; // top, right, bottom, left
--fx-background-color: white;
-    -fx-border-radius: 10;
 }
 
 
@@ -97,7 +86,6 @@
 }
 
 
-
 .combo-box {
     -fx-background-color: transparent;
     -fx-border-radius: 10;
@@ -105,12 +93,6 @@
     -fx-border-color: #14856B;
 }
 
-.combo-box.error {
-    -fx-background-color: transparent;
-    -fx-border-radius: 10;
-    -fx-border-width: 1 1 1 1;
-    -fx-border-color: red;
-}
 .combo-box .combo-box-popup .list-view .list-cell:hover,
 .combo-box .combo-box-popup .list-view .list-cell:selected {
     -fx-background-color: #14856B;

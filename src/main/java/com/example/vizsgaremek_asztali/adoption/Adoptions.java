@@ -1,9 +1,15 @@
 package com.example.vizsgaremek_asztali.adoption;
 
+
+import com.google.gson.annotations.SerializedName;
+
 public class Adoptions {
     private int id;
+    @SerializedName("adoption_type_id")
     private int adoptionTypeId;
+    @SerializedName("user_id")
     private int userId;
+    @SerializedName("adoption_beginning")
     private String begin;
 
     public Adoptions(int id, int adoptionTypeId, int userId, String begin) {

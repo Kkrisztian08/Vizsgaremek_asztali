@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AdoptionTypeApi {
     private static final String BASE_URL="http://127.0.0.1:8000";
-    private static final String API_URL = BASE_URL + "/api/type";
+    private static final String API_URL = BASE_URL + "/api/adoptiontype";
     private static Gson jsonConverted = new Gson();
 
     public static List<AdoptionType> get() throws IOException {

@@ -91,9 +91,67 @@ public class AdoptionTypeController extends Controller {
     }
 
     @FXML
-    public void onKutyakClick(ActionEvent actionEvent) {
-    }
-    @FXML
     public void onMacskakClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/cats/cats-view.fxml", "Macskák tábla",
+                    1100, 600);
+            hozzadas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+
+    @FXML
+    public void onKutyakClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák tábla",
+                    1100, 600);
+            hozzadas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+
+    }
+
+    @FXML
+    public void onProgramApplicationClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onEvenetClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onProgramtypeClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onAdoptionTypeClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/adoptionTypes/adoptionTypes-view.fxml", "Örökbefogadási Típus tábla",
+                    1100, 600);
+            hozzadas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+
+    @FXML
+    public void onProgramHourAndDayClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void onAdoptionClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/adoptions/adoptions-view.fxml", "Örökbefogadás tábla",
+                    1100, 600);
+            hozzadas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 }
