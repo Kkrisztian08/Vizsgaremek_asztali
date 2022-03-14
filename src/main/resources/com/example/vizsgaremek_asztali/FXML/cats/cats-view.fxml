@@ -34,6 +34,7 @@
                         </Label>
                         <MenuButton alignment="CENTER" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" popupSide="RIGHT" stylesheets="@../../css/TablazatosOldalak.css" text="Adattáblák" textFill="WHITE">
                             <items>
+                                <MenuItem mnemonicParsing="false" onAction="#onUsersClick" text="Felhasználók Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onKutyakClick" text="Kutyák Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onMacskakClick" text="Macskák Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onAdoptionClick" text="Öröbefogadás Tábla" />

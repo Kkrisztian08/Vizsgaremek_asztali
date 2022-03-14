@@ -61,5 +61,11 @@ public class ProgramTypeModositController extends Controller {
 
     public void setModositando(ProgramTypes modositando) {
         this.modositando = modositando;
+        ertekekBeallitasa();
+    }
+
+    private void ertekekBeallitasa() {
+        tipusInput.setText(modositando.getMegnevezes());
+
     }
 }

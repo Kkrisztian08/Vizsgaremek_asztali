@@ -265,4 +265,8 @@ public class AdoptionTypeController extends Controller {
             hibaKiir(e);
         }
     }
+
+    @FXML
+    public void onUsersClick(ActionEvent actionEvent) {
+    }
 }

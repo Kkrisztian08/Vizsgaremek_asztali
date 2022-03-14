@@ -277,4 +277,8 @@ public class EventController extends Controller {
             hibaKiir(e);
         }
     }
+
+    @FXML
+    public void onUsersClick(ActionEvent actionEvent) {
+    }
 }

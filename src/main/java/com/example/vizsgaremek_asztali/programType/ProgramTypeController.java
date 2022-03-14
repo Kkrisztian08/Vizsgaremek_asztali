@@ -99,7 +99,7 @@ public class ProgramTypeController extends Controller {
         ProgramTypes modositando = pTypeTable.getSelectionModel().getSelectedItem();
         try {
             ProgramTypeModositController modositas = (ProgramTypeModositController) ujAblak("FXML/programTypes/modosit-view.fxml", "Adatok Módosítása",
-                    500, 474);
+                    500, 230);
             modositas.setModositando(modositando);
             modositas.getStage().setOnHiding(event -> pTypeTable.refresh());
             modositas.getStage().show();
@@ -116,11 +116,11 @@ public class ProgramTypeController extends Controller {
             return;
         }
         ProgramTypes torlendoEvent = pTypeTable.getSelectionModel().getSelectedItem();
-        if (!confirm("Valóban törölni szeretné a(z)"  +torlendoEvent.getMegnevezes() + " nevű programot?")){
+        if (!confirm("Valóban törölni szeretné a(z) "  +torlendoEvent.getMegnevezes() + " nevű programot?")){
             return;
         }
         try {
-            boolean sikeres= EventApi.delete(torlendoEvent.getId());
+            boolean sikeres= ProgramTypeApi.delete(torlendoEvent.getId());
             alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
             pTypeLista.clear();
             pTypeListaFeltolt();
@@ -261,5 +261,9 @@ public class ProgramTypeController extends Controller {
         } catch (Exception e) {
             hibaKiir(e);
         }
+    }
+
+    @FXML
+    public void onUsersClick(ActionEvent actionEvent) {
     }
 }

@@ -293,4 +293,8 @@ public class CatController extends Controller {
             hibaKiir(e);
         }
     }
+
+    @FXML
+    public void onUsersClick(ActionEvent actionEvent) {
+    }
 }
