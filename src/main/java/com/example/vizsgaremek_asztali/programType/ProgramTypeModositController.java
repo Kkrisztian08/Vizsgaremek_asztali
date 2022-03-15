@@ -6,7 +6,6 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Control;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
 
 public class ProgramTypeModositController extends Controller {
