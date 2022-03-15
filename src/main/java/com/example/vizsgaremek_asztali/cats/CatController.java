@@ -240,6 +240,14 @@ public class CatController extends Controller {
 
     @FXML
     public void onProgramApplicationClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/programApplications/programApplications-view.fxml", "Progma Jelentkezés Tábla",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML

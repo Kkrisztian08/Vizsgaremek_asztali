@@ -7,9 +7,9 @@ public class ProgramApplication {
     @SerializedName("program_hour_and_day_id")
     private int programHDid;
     @SerializedName("user_id ")
-    private  int userid;
+    private int userid;
     @SerializedName("program_type_id")
-    private  int programTypeid;
+    private int programTypeid;
 
     public ProgramApplication(int id, int programHDid, int userid, int programTypeid) {
         this.id = id;

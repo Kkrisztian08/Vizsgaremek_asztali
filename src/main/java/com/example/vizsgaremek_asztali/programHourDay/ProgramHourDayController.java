@@ -128,7 +128,7 @@ public class ProgramHourDayController extends Controller {
             return;
         }
         try {
-            boolean sikeres= ProgramTypeApi.delete(torlendoEvent.getId());
+            boolean sikeres= ProgramHourDayApi.delete(torlendoEvent.getId());
             alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
             pHDLista.clear();
             pHDListaFeltolt();
@@ -217,6 +217,14 @@ public class ProgramHourDayController extends Controller {
 
     @FXML
     public void onProgramApplicationClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/programApplications/programApplications-view.fxml", "Progma Jelentkezés Tábla",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML

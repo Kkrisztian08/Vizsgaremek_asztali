@@ -32,7 +32,7 @@ public class AdoptionModositController extends Controller {
 
         if (szuldatum==null){
             //alert("A dátum megadása kötelező");
-            szulidoInput.getStylesheets().addAll(new File("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\src\\main\\resources\\com\\example\\vizsgaremek_asztali\\css\\FelugroAblakHiba.css").toURI().toString());
+            szulidoInput.getStyleClass().add("error");
             alertBuilder.append("A dátum megadása kötelező").append(System.lineSeparator());
             hiba=true;
         }
@@ -66,7 +66,6 @@ public class AdoptionModositController extends Controller {
     @FXML
     public void hibakMegszuntet(ActionEvent actionEvent) {
         Control control = (Control) actionEvent.getSource();
-        control.getStylesheets().removeAll(new File("C:\\Users\\kkris\\IdeaProjects\\Vizsgaremek_asztali\\src\\main\\resources\\com\\example\\vizsgaremek_asztali\\css\\FelugroAblakHiba.css").toURI().toString());
         control.getStyleClass().remove("error");
     }
 
