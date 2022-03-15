@@ -162,7 +162,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="pTypeModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositPHD" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás">
+                                <Button id="rnd" fx:id="pHDModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositPHD" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -170,7 +170,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="pTypeTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPHDTorol" stylesheets="@../../css/TablazatosOldalak.css" text="Törlés">
+                                <Button id="rnd" fx:id="pHDTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPHDTorol" stylesheets="@../../css/TablazatosOldalak.css" text="Törlés">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>

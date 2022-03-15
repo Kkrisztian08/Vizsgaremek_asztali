@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ProgramHourDayApi {
     private static final String BASE_URL="http://127.0.0.1:8000";
-    private static final String API_URL = BASE_URL + "/api/type";
+    private static final String API_URL = BASE_URL + "/api/hourday";
     private static Gson jsonConverted = new Gson();
 
     public static List<ProgramHourDay> get() throws IOException {

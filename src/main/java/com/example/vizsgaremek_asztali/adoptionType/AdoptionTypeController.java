@@ -248,6 +248,14 @@ public class AdoptionTypeController extends Controller {
 
     @FXML
     public void onProgramHourAndDayClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/programHourDays/programHourDays-view.fxml", "Program Óra és Idő Tábla",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
