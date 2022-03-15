@@ -26,4 +26,6 @@ module com.example.vizsgaremek_asztali {
     opens com.example.vizsgaremek_asztali.programType to com.google.gson, javafx.fxml;
     exports com.example.vizsgaremek_asztali.programHourDay;
     opens com.example.vizsgaremek_asztali.programHourDay to com.google.gson, javafx.fxml;
+    exports com.example.vizsgaremek_asztali.programApplication;
+    opens com.example.vizsgaremek_asztali.programApplication to com.google.gson, javafx.fxml;
 }

@@ -32,7 +32,7 @@ public class ProgramHourDayModositController extends Controller {
         if (idopont.isEmpty()) {
             //alert("A név megadása kötelező");
             idoInput.getStyleClass().add("error");
-            alertBuilder.append("Az elnevezés megadása kötelező").append(System.lineSeparator());
+            alertBuilder.append("Az időpont megadása kötelező").append(System.lineSeparator());
             hiba = true;
         }
 

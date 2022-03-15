@@ -1,14 +1,12 @@
 package com.example.vizsgaremek_asztali.programHourDay;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.event.EventApi;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -31,7 +29,7 @@ public class ProgramHourDayHozzaadController extends Controller {
         if (idopont.isEmpty()){
             //alert("A név megadása kötelező");
             idoInput.getStyleClass().add("error");
-            alertBuilder.append("Az elnevezés megadása kötelező").append(System.lineSeparator());
+            alertBuilder.append("Az időpont megadása kötelező").append(System.lineSeparator());
             hiba=true;
         }
 
