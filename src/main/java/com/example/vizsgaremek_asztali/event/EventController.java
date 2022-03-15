@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,22 +23,22 @@ public class EventController extends Controller {
     @FXML
     private TextField keresesTextField;
     @FXML
-    private TableColumn<Events,Integer> idCol;
+    private TableColumn<Event,Integer> idCol;
     @FXML
-    private TableColumn<Events,String> leirasCol;
+    private TableColumn<Event,String> leirasCol;
     @FXML
     private TextArea leirasTextArea;
     @FXML
-    private TableColumn<Events,String> elnevezesCol;
+    private TableColumn<Event,String> elnevezesCol;
     @FXML
-    private TableColumn<Events,String> datumCol;
+    private TableColumn<Event,String> datumCol;
     @FXML
-    private TableView<Events> eventTable;
+    private TableView<Event> eventTable;
     @FXML
     private Button eventTorol;
     @FXML
     private Button eventModosit;
-    private ObservableList<Events> eventsLista = FXCollections.observableArrayList();
+    private ObservableList<Event> eventsLista = FXCollections.observableArrayList();
 
     public void initialize(){
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -62,7 +61,7 @@ public class EventController extends Controller {
     }
 
     private void kereses(){
-        FilteredList<Events> filteredList = new FilteredList<>(eventsLista, b -> true);
+        FilteredList<Event> filteredList = new FilteredList<>(eventsLista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
             filteredList.setPredicate(events -> {
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
@@ -83,7 +82,7 @@ public class EventController extends Controller {
                 }
             });
         });
-        SortedList<Events> sortedList = new SortedList<>(filteredList);
+        SortedList<Event> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(eventTable.comparatorProperty());
         eventTable.setItems(sortedList);
     }
@@ -107,7 +106,7 @@ public class EventController extends Controller {
             alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        Events modositando = eventTable.getSelectionModel().getSelectedItem();
+        Event modositando = eventTable.getSelectionModel().getSelectedItem();
         try {
             EventModositController modositas = (EventModositController) ujAblak("FXML/events/modosit-view.fxml", "Adatok Módosítása",
                     500, 474);
@@ -126,7 +125,7 @@ public class EventController extends Controller {
             alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        Events torlendoEvent = eventTable.getSelectionModel().getSelectedItem();
+        Event torlendoEvent = eventTable.getSelectionModel().getSelectedItem();
         if (!confirm("Valóban törölni szeretné a(z)"  +torlendoEvent.getElnevezes() + " nevű eseményt?")){
             return;
         }
@@ -185,13 +184,13 @@ public class EventController extends Controller {
     }
 
     @FXML
-    public void onSelectEvent(Event event) {
+    public void onSelectEvent(javafx.event.Event event) {
         int selectedIndex = eventTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
             eventTorol.setDisable(false);
             eventModosit.setDisable(false);
         }
-        Events leiraskiir= eventTable.getSelectionModel().getSelectedItem();
+        Event leiraskiir= eventTable.getSelectionModel().getSelectedItem();
         leirasTextArea.setText("Leírás:\n"+leiraskiir.getLeiras());
 
     }

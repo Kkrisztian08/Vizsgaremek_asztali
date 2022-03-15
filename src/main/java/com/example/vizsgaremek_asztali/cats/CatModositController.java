@@ -25,7 +25,7 @@ public class CatModositController extends Controller {
     private ComboBox<String> nemInput;
     @FXML
     private ComboBox<Integer> orokbefogadasInput;
-    private Cats modositando;
+    private Cat modositando;
 
     @FXML
     public void onCatsModositas(ActionEvent actionEvent) {
@@ -117,7 +117,7 @@ public class CatModositController extends Controller {
         modositando.setAdoption_id(orokbefogadasId);
 
         try {
-            Cats modositott= CatApi.put(modositando);
+            Cat modositott= CatApi.put(modositando);
             if (modositott !=null){
                 alertWait("Sikeres módosítás");
                 this.stage.close();
@@ -143,11 +143,11 @@ public class CatModositController extends Controller {
         control.getStyleClass().remove("error");
     }
 
-    public Cats getModositando() {
+    public Cat getModositando() {
         return modositando;
     }
 
-    public void setModositando(Cats modositando) {
+    public void setModositando(Cat modositando) {
         this.modositando = modositando;
         ertekekBeallitasa();
     }

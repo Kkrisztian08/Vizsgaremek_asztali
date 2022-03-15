@@ -2,12 +2,12 @@ package com.example.vizsgaremek_asztali.programType;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProgramTypes {
+public class ProgramType {
     private int id;
     @SerializedName("program_topic")
     private String megnevezes;
 
-    public ProgramTypes(int id, String megnevezes) {
+    public ProgramType(int id, String megnevezes) {
         this.id = id;
         this.megnevezes = megnevezes;
     }

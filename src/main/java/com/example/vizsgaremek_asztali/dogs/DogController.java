@@ -20,25 +20,25 @@ import org.apache.poi.ss.usermodel.*;
 
 public class DogController extends Controller {
     @FXML
-    private TableColumn<Dogs, String> szulIdoCol;
+    private TableColumn<Dog, String> szulIdoCol;
     @FXML
-    private TableColumn<Dogs, Integer> adoptionIdCol;
+    private TableColumn<Dog, Integer> adoptionIdCol;
     @FXML
-    private TableColumn<Dogs,String> fajCol;
+    private TableColumn<Dog,String> fajCol;
     @FXML
-    private TableColumn<Dogs,String> kulsoCol;
+    private TableColumn<Dog,String> kulsoCol;
     @FXML
-    private TableView<Dogs> kutyakTable;
+    private TableView<Dog> kutyakTable;
     @FXML
-    private TableColumn<Dogs,String> nevCol;
+    private TableColumn<Dog,String> nevCol;
     @FXML
-    private TableColumn<Dogs,String> nemCol;
+    private TableColumn<Dog,String> nemCol;
     @FXML
-    private TableColumn<Dogs, Integer> erdeklodesCol;
+    private TableColumn<Dog, Integer> erdeklodesCol;
     @FXML
-    private TableColumn<Dogs, Integer> idCol;
+    private TableColumn<Dog, Integer> idCol;
     @FXML
-    private TableColumn<Dogs, String> leirasCol;
+    private TableColumn<Dog, String> leirasCol;
     @FXML
     private  Button dogModosit;
     @FXML
@@ -47,7 +47,7 @@ public class DogController extends Controller {
     private TextArea leirasKulTulTextArea;
     @FXML
     private TextField keresesTextField;
-    private  ObservableList<Dogs> kutyakLista = FXCollections.observableArrayList();
+    private  ObservableList<Dog> kutyakLista = FXCollections.observableArrayList();
 
     public void initialize(){
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -75,7 +75,7 @@ public class DogController extends Controller {
     }
 
     private void kereses(){
-        FilteredList<Dogs> filteredList = new FilteredList<>(kutyakLista, b -> true);
+        FilteredList<Dog> filteredList = new FilteredList<>(kutyakLista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
             filteredList.setPredicate(dog -> {
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
@@ -103,7 +103,7 @@ public class DogController extends Controller {
 
             });
         });
-        SortedList<Dogs> sortedList = new SortedList<>(filteredList);
+        SortedList<Dog> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(kutyakTable.comparatorProperty());
         kutyakTable.setItems(sortedList);
     }
@@ -125,7 +125,7 @@ public class DogController extends Controller {
             alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        Dogs modositando = kutyakTable.getSelectionModel().getSelectedItem();
+        Dog modositando = kutyakTable.getSelectionModel().getSelectedItem();
         try {
             DogModositController modositas = (DogModositController) ujAblak("FXML/dogs/modosit-view.fxml", "Adatok Módosítása",
                     700, 450);
@@ -143,7 +143,7 @@ public class DogController extends Controller {
             alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        Dogs torlendoKutya = kutyakTable.getSelectionModel().getSelectedItem();
+        Dog torlendoKutya = kutyakTable.getSelectionModel().getSelectedItem();
         if (!confirm("Valóban törölni szeretné "  +torlendoKutya.getName() + " kutya adatait")){
             return;
         }
@@ -207,7 +207,7 @@ public class DogController extends Controller {
             dogModosit.setDisable(false);
             dogTorol.setDisable(false);
         }
-        Dogs leiraskiir= kutyakTable.getSelectionModel().getSelectedItem();
+        Dog leiraskiir= kutyakTable.getSelectionModel().getSelectedItem();
         leirasKulTulTextArea.setText("Leírás:\n"+leiraskiir.getDescription()+"\n\nKül.tul.:\n"+leiraskiir.getExternal_property());
 
     }

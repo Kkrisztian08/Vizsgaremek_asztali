@@ -3,7 +3,7 @@ package com.example.vizsgaremek_asztali.adoption;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Adoptions {
+public class Adoption {
     private int id;
     @SerializedName("adoption_type_id")
     private int adoptionTypeId;
@@ -12,7 +12,7 @@ public class Adoptions {
     @SerializedName("adoption_beginning")
     private String begin;
 
-    public Adoptions(int id, int adoptionTypeId, int userId, String begin) {
+    public Adoption(int id, int adoptionTypeId, int userId, String begin) {
         this.id = id;
         this.adoptionTypeId = adoptionTypeId;
         this.userId = userId;

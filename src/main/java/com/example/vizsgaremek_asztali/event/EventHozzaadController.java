@@ -2,7 +2,6 @@ package com.example.vizsgaremek_asztali.event;
 
 import com.example.vizsgaremek_asztali.Controller;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
@@ -60,8 +59,8 @@ public class EventHozzaadController extends Controller {
 
         formazottSzuldatum=datum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         try {
-            Events ujEvent = new Events(0,elnevezes,leiras,formazottSzuldatum);
-            Events letrehozott = EventApi.post(ujEvent);
+            Event ujEvent = new Event(0,elnevezes,leiras,formazottSzuldatum);
+            Event letrehozott = EventApi.post(ujEvent);
             if (letrehozott != null){
                 alert("Sikeres hozzáadás");
             } else {
@@ -73,7 +72,7 @@ public class EventHozzaadController extends Controller {
     }
 
     @FXML
-    public void hibaVege(Event event) {
+    public void hibaVege(javafx.event.Event event) {
         Control control = (Control) event.getSource();
         control.getStyleClass().remove("error");
     }

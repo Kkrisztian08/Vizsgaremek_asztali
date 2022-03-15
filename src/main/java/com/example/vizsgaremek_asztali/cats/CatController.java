@@ -27,28 +27,28 @@ public class CatController extends Controller {
     @FXML
     private TextField keresesTextField;
     @FXML
-    private TableColumn<Cats,String> szulIdoCol;
+    private TableColumn<Cat,String> szulIdoCol;
     @FXML
-    private TableColumn<Cats,Integer> adoptionIdCol;
+    private TableColumn<Cat,Integer> adoptionIdCol;
     @FXML
     private Button catModosit;
     @FXML
-    private TableColumn<Cats,String> kulsoCol;
+    private TableColumn<Cat,String> kulsoCol;
     @FXML
     private Button catTorol;
     @FXML
-    private TableView<Cats> macskakTable;
+    private TableView<Cat> macskakTable;
     @FXML
-    private TableColumn<Cats,String>  leirasCol;
+    private TableColumn<Cat,String>  leirasCol;
     @FXML
-    private TableColumn<Cats,String>  nevCol;
+    private TableColumn<Cat,String>  nevCol;
     @FXML
-    private TableColumn<Cats,String>  nemCol;
+    private TableColumn<Cat,String>  nemCol;
     @FXML
-    private TableColumn<Cats,Integer> erdeklodesCol;
-    private final ObservableList<Cats> macskakLista = FXCollections.observableArrayList();
+    private TableColumn<Cat,Integer> erdeklodesCol;
+    private final ObservableList<Cat> macskakLista = FXCollections.observableArrayList();
     @FXML
-    private TableColumn<Cats,Integer> idColmacska;
+    private TableColumn<Cat,Integer> idColmacska;
 
 
     public void initialize(){
@@ -74,7 +74,7 @@ public class CatController extends Controller {
         }
     }
     private void kereses() {
-        FilteredList<Cats> filteredList = new FilteredList<>(macskakLista, b -> true);
+        FilteredList<Cat> filteredList = new FilteredList<>(macskakLista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
             filteredList.setPredicate(cat -> {
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
@@ -99,7 +99,7 @@ public class CatController extends Controller {
 
             });
         });
-        SortedList<Cats> sortedList = new SortedList<>(filteredList);
+        SortedList<Cat> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(macskakTable.comparatorProperty());
         macskakTable.setItems(sortedList);
     }
@@ -123,7 +123,7 @@ public class CatController extends Controller {
             alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        Cats modositandomacska = macskakTable.getSelectionModel().getSelectedItem();
+        Cat modositandomacska = macskakTable.getSelectionModel().getSelectedItem();
         try {
             CatModositController modosita = (CatModositController) ujAblak("FXML/cats/modosit-view.fxml", "Adatok Módosítása",
                     700, 450);
@@ -142,7 +142,7 @@ public class CatController extends Controller {
             alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        Cats torlendoMacska = macskakTable.getSelectionModel().getSelectedItem();
+        Cat torlendoMacska = macskakTable.getSelectionModel().getSelectedItem();
         if (!confirm("Valóban törölni szeretné "  +torlendoMacska.getName() + " kutya adatait")){
             return;
         }
@@ -208,7 +208,7 @@ public class CatController extends Controller {
             catModosit.setDisable(false);
             catTorol.setDisable(false);
         }
-        Cats leiraskiir= macskakTable.getSelectionModel().getSelectedItem();
+        Cat leiraskiir= macskakTable.getSelectionModel().getSelectedItem();
         leirasKulTulTextArea.setText("Leírás:\n"+leiraskiir.getDescription()+"\n\nKül.tul.:\n"+leiraskiir.getExternal_property());
 
     }

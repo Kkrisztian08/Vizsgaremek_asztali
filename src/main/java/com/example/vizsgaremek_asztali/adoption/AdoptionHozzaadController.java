@@ -42,8 +42,8 @@ public class AdoptionHozzaadController extends Controller {
         }
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         try {
-            Adoptions ujAdoption = new Adoptions(0,adoptionTypeIndex , userIndex ,formazottSzuldatum);
-            Adoptions letrehozott = AdoptionApi.post(ujAdoption);
+            Adoption ujAdoption = new Adoption(0,adoptionTypeIndex , userIndex ,formazottSzuldatum);
+            Adoption letrehozott = AdoptionApi.post(ujAdoption);
             if (letrehozott != null){
                 alert("Sikeres hozzáadás");
             } else {

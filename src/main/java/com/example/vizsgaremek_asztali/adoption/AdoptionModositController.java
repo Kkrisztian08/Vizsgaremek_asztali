@@ -18,7 +18,7 @@ public class AdoptionModositController extends Controller {
     private ComboBox<Integer> adoptionTypeIdInput;
     @FXML
     private ComboBox<Integer> userIdInput;
-    private Adoptions modositando;
+    private Adoption modositando;
 
     @FXML
     public void onModositas(ActionEvent actionEvent) {
@@ -51,7 +51,7 @@ public class AdoptionModositController extends Controller {
         modositando.setBegin(formazottSzuldatum);
 
         try {
-            Adoptions modositott= AdoptionApi.put(modositando);
+            Adoption modositott= AdoptionApi.put(modositando);
             if (modositott !=null){
                 alertWait("Sikeres módosítás");
                 this.stage.close();
@@ -70,11 +70,11 @@ public class AdoptionModositController extends Controller {
         control.getStyleClass().remove("error");
     }
 
-    public Adoptions getModositando() {
+    public Adoption getModositando() {
         return modositando;
     }
 
-    public void setModositando(Adoptions modositando) {
+    public void setModositando(Adoption modositando) {
         this.modositando = modositando;
         ertekekBeallitasa();
     }

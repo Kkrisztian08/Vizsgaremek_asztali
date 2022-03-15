@@ -109,8 +109,8 @@ public class DogHozzaadController extends Controller {
         }
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         try {
-            Dogs ujKutya = new Dogs(0,nev,nem,formazottSzuldatum,faj,kultul,leiras,erdeklodes,orokbefogadasid);
-            Dogs letrehozott = DogApi.post(ujKutya);
+            Dog ujKutya = new Dog(0,nev,nem,formazottSzuldatum,faj,kultul,leiras,erdeklodes,orokbefogadasid);
+            Dog letrehozott = DogApi.post(ujKutya);
             if (letrehozott != null){
                 alert("Sikeres hozzáadás");
             } else {

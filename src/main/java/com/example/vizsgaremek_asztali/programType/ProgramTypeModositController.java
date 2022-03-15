@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ProgramTypeModositController extends Controller {
     @FXML
     private TextField tipusInput;
-    private ProgramTypes modositando;
+    private ProgramType modositando;
 
     @FXML
     public void onModositas(ActionEvent actionEvent) {
@@ -36,7 +36,7 @@ public class ProgramTypeModositController extends Controller {
 
 
         try {
-            ProgramTypes modositott= ProgramTypeApi.put(modositando);
+            ProgramType modositott= ProgramTypeApi.put(modositando);
             if (modositott !=null){
                 alertWait("Sikeres módosítás");
                 this.stage.close();
@@ -54,11 +54,11 @@ public class ProgramTypeModositController extends Controller {
         control.getStyleClass().remove("error");
     }
 
-    public ProgramTypes getModositando() {
+    public ProgramType getModositando() {
         return modositando;
     }
 
-    public void setModositando(ProgramTypes modositando) {
+    public void setModositando(ProgramType modositando) {
         this.modositando = modositando;
         ertekekBeallitasa();
     }

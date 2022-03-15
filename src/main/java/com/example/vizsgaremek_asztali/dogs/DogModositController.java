@@ -26,7 +26,7 @@ public class DogModositController extends Controller {
     private ComboBox<String> nemInput;
     @FXML
     private ComboBox<Integer> orokbefogadasInput;
-    private Dogs modositando;
+    private Dog modositando;
 
     @FXML
     public void onModositas(ActionEvent actionEvent) {
@@ -131,7 +131,7 @@ public class DogModositController extends Controller {
         modositando.setAdoption_id(orokbefogadasId);
 
         try {
-            Dogs modositott=DogApi.put(modositando);
+            Dog modositott=DogApi.put(modositando);
             if (modositott !=null){
                 alertWait("Sikeres módosítás");
                 this.stage.close();
@@ -157,11 +157,11 @@ public class DogModositController extends Controller {
         control.getStyleClass().remove("error");
     }
 
-    public Dogs getModositando() {
+    public Dog getModositando() {
         return modositando;
     }
 
-    public void setModositando(Dogs modositando) {
+    public void setModositando(Dog modositando) {
         this.modositando = modositando;
         ertekekBeallitasa();
     }

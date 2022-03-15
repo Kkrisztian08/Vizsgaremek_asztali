@@ -31,8 +31,8 @@ public class ProgramTypeHozzaadController extends Controller {
             return;
         }
         try {
-            ProgramTypes ujTipus = new ProgramTypes(0,tipus);
-            ProgramTypes letrehozott = ProgramTypeApi.post(ujTipus);
+            ProgramType ujTipus = new ProgramType(0,tipus);
+            ProgramType letrehozott = ProgramTypeApi.post(ujTipus);
             if (letrehozott != null){
                 alert("Sikeres hozzáadás");
             } else {

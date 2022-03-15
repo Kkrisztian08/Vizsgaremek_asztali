@@ -2,7 +2,6 @@ package com.example.vizsgaremek_asztali.event;
 
 import com.example.vizsgaremek_asztali.Controller;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
@@ -17,7 +16,7 @@ public class EventModositController extends Controller {
     private TextField elnevezesInput;
     @FXML
     private TextArea leirasInput;
-    private Events modositando;
+    private Event modositando;
     @FXML
     private DatePicker datumInput;
 
@@ -63,7 +62,7 @@ public class EventModositController extends Controller {
         modositando.setDatum(formazottSzuldatum);
 
         try {
-            Events modositott = EventApi.put(modositando);
+            Event modositott = EventApi.put(modositando);
             if (modositott != null) {
                 alertWait("Sikeres módosítás");
                 this.stage.close();
@@ -76,16 +75,16 @@ public class EventModositController extends Controller {
     }
 
     @FXML
-    public void hibaVege(Event event) {
+    public void hibaVege(javafx.event.Event event) {
         Control control = (Control) event.getSource();
         control.getStyleClass().remove("error");
     }
 
-    public Events getModositando() {
+    public Event getModositando() {
         return modositando;
     }
 
-    public void setModositando(Events modositando) {
+    public void setModositando(Event modositando) {
         this.modositando = modositando;
         ertekekBeallitasa();
     }

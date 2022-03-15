@@ -1,22 +1,20 @@
-package com.example.vizsgaremek_asztali.dogs;
+package com.example.vizsgaremek_asztali.cats;
 
-public class Dogs {
+public class Cat {
     private int id;
     private String name;
     private String gender;
     private String likely_bday;
-    private String species;
     private String external_property;
     private String description;
     private int interest;
     private Integer adoption_id;
 
-    public Dogs(int id, String name, String gender, String likely_bday, String species, String external_property, String description, int interest, Integer adoption_id) {
+    public Cat(int id, String name, String gender, String likely_bday, String external_property, String description, int interest, Integer adoption_id) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.likely_bday = likely_bday;
-        this.species = species;
         this.external_property = external_property;
         this.description = description;
         this.interest = interest;
@@ -47,22 +45,8 @@ public class Dogs {
         return likely_bday;
     }
 
-    /*ezzel van megformázva a dátum ez akkor kell ha String helyett Date van
-    public String getBdayFormated() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        return format.format(likely_bday);
-    }*/
-
     public void setLikely_bday(String likely_bday) {
         this.likely_bday = likely_bday;
-    }
-
-    public String getSpecies() {
-        return species;
-    }
-
-    public void setSpecies(String species) {
-        this.species = species;
     }
 
     public String getExternal_property() {
@@ -71,6 +55,14 @@ public class Dogs {
 
     public void setExternal_property(String external_property) {
         this.external_property = external_property;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getInterest() {
@@ -88,13 +80,4 @@ public class Dogs {
     public void setAdoption_id(Integer adoption_id) {
         this.adoption_id = adoption_id;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
 }

@@ -22,22 +22,22 @@ import java.io.IOException;
 
 public class AdoptionController extends Controller {
     @FXML
-    private TableView<Adoptions> adoptionTable;
+    private TableView<Adoption> adoptionTable;
     @FXML
     private TextField keresesTextField;
     @FXML
-    private TableColumn<Adoptions,Integer> userIdCol;
+    private TableColumn<Adoption,Integer> userIdCol;
     @FXML
-    private TableColumn<Adoptions,Integer> adoptionIdCol;
+    private TableColumn<Adoption,Integer> adoptionIdCol;
     @FXML
-    private TableColumn<Adoptions,String> beginCol;
+    private TableColumn<Adoption,String> beginCol;
     @FXML
     private Button adoptionModosit;
     @FXML
     private Button adoptionTorol;
     @FXML
-    private TableColumn<Adoptions,Integer> adoptionTypeIdCol;
-    private  ObservableList<Adoptions> adoptionsLista = FXCollections.observableArrayList();
+    private TableColumn<Adoption,Integer> adoptionTypeIdCol;
+    private  ObservableList<Adoption> adoptionsLista = FXCollections.observableArrayList();
 
 
 
@@ -60,7 +60,7 @@ public class AdoptionController extends Controller {
         }
     }
     private void kereses() {
-        FilteredList<Adoptions> filteredList = new FilteredList<>(adoptionsLista, b -> true);
+        FilteredList<Adoption> filteredList = new FilteredList<>(adoptionsLista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
             filteredList.setPredicate(adoptions -> {
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
@@ -76,7 +76,7 @@ public class AdoptionController extends Controller {
 
             });
         });
-        SortedList<Adoptions> sortedList = new SortedList<>(filteredList);
+        SortedList<Adoption> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(adoptionTable.comparatorProperty());
         adoptionTable.setItems(sortedList);
     }
@@ -100,7 +100,7 @@ public class AdoptionController extends Controller {
             alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        Adoptions modositandoAdoption = adoptionTable.getSelectionModel().getSelectedItem();
+        Adoption modositandoAdoption = adoptionTable.getSelectionModel().getSelectedItem();
         try {
             AdoptionModositController modosita = (AdoptionModositController) ujAblak("FXML/adoptions/modosit-view.fxml", "Adatok Módosítása",
                     700, 450);
@@ -119,7 +119,7 @@ public class AdoptionController extends Controller {
             alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        Adoptions torlendoAdoption = adoptionTable.getSelectionModel().getSelectedItem();
+        Adoption torlendoAdoption = adoptionTable.getSelectionModel().getSelectedItem();
         if (!confirm("Valóban törölni szeretné "  +torlendoAdoption.getId() + "-s ID-val rendelkező örökbefogadást?")){
             return;
         }

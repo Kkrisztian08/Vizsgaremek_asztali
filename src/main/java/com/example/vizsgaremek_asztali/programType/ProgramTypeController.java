@@ -22,18 +22,18 @@ import java.io.IOException;
 
 public class ProgramTypeController extends Controller {
     @FXML
-    private TableView<ProgramTypes> pTypeTable;
+    private TableView<ProgramType> pTypeTable;
     @FXML
     private TextField keresesTextField;
     @FXML
-    private TableColumn<ProgramTypes,Integer> idCol;
+    private TableColumn<ProgramType,Integer> idCol;
     @FXML
-    private TableColumn<ProgramTypes,String> megnevezesCol;
+    private TableColumn<ProgramType,String> megnevezesCol;
     @FXML
     private Button pTypeTorol;
     @FXML
     private Button pTypeModosit;
-    private ObservableList<ProgramTypes> pTypeLista = FXCollections.observableArrayList();
+    private ObservableList<ProgramType> pTypeLista = FXCollections.observableArrayList();
 
 
     public void initialize(){
@@ -55,7 +55,7 @@ public class ProgramTypeController extends Controller {
     }
 
     private void kereses(){
-        FilteredList<ProgramTypes> filteredList = new FilteredList<>(pTypeLista, b -> true);
+        FilteredList<ProgramType> filteredList = new FilteredList<>(pTypeLista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
             filteredList.setPredicate(events -> {
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
@@ -70,7 +70,7 @@ public class ProgramTypeController extends Controller {
                 }
             });
         });
-        SortedList<ProgramTypes> sortedList = new SortedList<>(filteredList);
+        SortedList<ProgramType> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(pTypeTable.comparatorProperty());
         pTypeTable.setItems(sortedList);
     }
@@ -94,7 +94,7 @@ public class ProgramTypeController extends Controller {
             alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        ProgramTypes modositando = pTypeTable.getSelectionModel().getSelectedItem();
+        ProgramType modositando = pTypeTable.getSelectionModel().getSelectedItem();
         try {
             ProgramTypeModositController modositas = (ProgramTypeModositController) ujAblak("FXML/programTypes/modosit-view.fxml", "Adatok Módosítása",
                     500, 230);
@@ -113,7 +113,7 @@ public class ProgramTypeController extends Controller {
             alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        ProgramTypes torlendoEvent = pTypeTable.getSelectionModel().getSelectedItem();
+        ProgramType torlendoEvent = pTypeTable.getSelectionModel().getSelectedItem();
         if (!confirm("Valóban törölni szeretné a(z) "  +torlendoEvent.getMegnevezes() + " nevű programot?")){
             return;
         }

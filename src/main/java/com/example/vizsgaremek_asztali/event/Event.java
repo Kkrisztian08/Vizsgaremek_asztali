@@ -2,7 +2,7 @@ package com.example.vizsgaremek_asztali.event;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Events {
+public class Event {
 
     private int id;
     @SerializedName("event_name")
@@ -12,7 +12,7 @@ public class Events {
     @SerializedName("date")
     private String datum;
 
-    public Events(int id, String elnevezes, String leiras, String datum) {
+    public Event(int id, String elnevezes, String leiras, String datum) {
         this.id = id;
         this.elnevezes = elnevezes;
         this.leiras = leiras;

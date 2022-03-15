@@ -99,8 +99,8 @@ public class CatHozzaadController extends Controller {
         }
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         try {
-            Cats ujMacska = new Cats(0,nev,nem,formazottSzuldatum,kultul,leiras,erdeklodes,orokbefogadasid);
-            Cats letrehozott = CatApi.post(ujMacska);
+            Cat ujMacska = new Cat(0,nev,nem,formazottSzuldatum,kultul,leiras,erdeklodes,orokbefogadasid);
+            Cat letrehozott = CatApi.post(ujMacska);
             if (letrehozott != null){
                 alert("Sikeres hozzáadás");
             } else {

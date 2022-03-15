@@ -12,25 +12,25 @@ public class DogApi {
     private static final String API_URL = BASE_URL + "/api/dog";
     private static Gson jsonConverted = new Gson();
 
-    public static List<Dogs> get() throws IOException {
+    public static List<Dog> get() throws IOException {
         String json = Api.get(API_URL);
-        Type type = new TypeToken<List<Dogs>>(){}.getType();
+        Type type = new TypeToken<List<Dog>>(){}.getType();
         return jsonConverted.fromJson(json,type);
     }
-    public static Dogs post(Dogs uj) throws IOException {
+    public static Dog post(Dog uj) throws IOException {
         String ujJson = jsonConverted.toJson(uj);
         String json = Api.post(API_URL, ujJson);
-        return jsonConverted.fromJson(json, Dogs.class);
+        return jsonConverted.fromJson(json, Dog.class);
     }
 
     public static boolean delete(int id) throws IOException {
         return Api.delete(API_URL, id).getResponseCode() == 240;
     }
 
-    public static Dogs put(Dogs modosit) throws IOException {
+    public static Dog put(Dog modosit) throws IOException {
         String modositandoJson = jsonConverted.toJson(modosit);
         String json = Api.put(API_URL,modosit.getId(), modositandoJson);
-        return jsonConverted.fromJson(json, Dogs.class);
+        return jsonConverted.fromJson(json, Dog.class);
     }
 
 }
