@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#hibaVege" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: white;" stylesheets="@../../css/FelugroAblakok.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.dogs.DogModositController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#hibaVege" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: white;" stylesheets="@../../css/FelugroAblak.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.dogs.DogModositController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -103,7 +103,7 @@
             </font>
         </Button>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #14856B;" GridPane.columnSpan="4" />
-      <ComboBox fx:id="orokbefogadasInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" stylesheets="@../../css/FelugroAblakok.css" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <ComboBox fx:id="orokbefogadasInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" stylesheets="@../../css/FelugroAblak.css" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin></ComboBox>

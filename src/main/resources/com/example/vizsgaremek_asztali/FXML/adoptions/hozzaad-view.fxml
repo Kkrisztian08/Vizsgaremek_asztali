@@ -58,14 +58,14 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #14856B;" stylesheets="@../../css/FelugroAblakok.css" GridPane.columnSpan="4" />
+        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #14856B;" stylesheets="@../../css/FelugroAblak.css" GridPane.columnSpan="4" />
       <ComboBox fx:id="adoptionTypeIdInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin></ComboBox>
     </children>
    <stylesheets>
-      <URL value="@../../css/FelugroAblakok.css" />
+      <URL value="@../../css/FelugroAblak.css" />
       <URL value="@../../css/FelugroAblakHiba.css" />
    </stylesheets>
 </GridPane>

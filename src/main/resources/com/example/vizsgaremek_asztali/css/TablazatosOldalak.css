@@ -10,6 +10,8 @@
 {
     -fx-background-color : #0dbd94 ;
 }
+
+
 .menu-button
 {
     -fx-background-color : #14856B;
@@ -22,6 +24,32 @@
 {
     -fx-background-color : #0dbd94 ;
 }
+.menu-item:focused{
+    -fx-border-radius: 10;
+    -fx-border-width: 1,1,1,1;
+    -fx-border-color: #12755e;
+    -fx-background-radius: 10;
+    -fx-background-color: transparent;
+}
+.menu-item:focused:pressed{
+    -fx-border-radius: 10;
+    -fx-border-width: 1,1,1,1;
+    -fx-border-color: #12755e;
+    -fx-background-radius: 10;
+    -fx-background-color: #12755e;
+}
+.menu-item:focused .label{
+    -fx-text-fill: black;
+}
+.menu-item:focused:pressed .label{
+    -fx-text-fill: white;
+}
+.context-menu {
+    -fx-background-color: white;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 10;
+}
+
 
 #rnd{
     -fx-background-color: null;
@@ -31,7 +59,6 @@
     -fx-border-color: green;
     -fx-font-size: 14;
 }
-
 #rnd:hover{
     -fx-text-fill: white;
     -fx-font-weight: bold;
@@ -41,30 +68,19 @@
     -fx-font-size: 14;
 
 }
-.menu-item:hover
-{
-    -fx-background-color : #139e7e ;
-}
-.menu-item:pressed
-{
-    -fx-background-color : #0dbd94;
-}
+
 
 .text-area {
     -fx-background-color: #0d9475;
     -fx-text-fill: white;
     -fx-opacity: 90%;
 }
-
 .text-area .scroll-pane {
     -fx-background-color: transparent;
 }
-
 .text-area .scroll-pane .viewport{
     -fx-background-color: transparent;
 }
-
-
 .text-area .scroll-pane .content{
     -fx-background-color: transparent;
 }

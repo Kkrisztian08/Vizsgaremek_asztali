@@ -52,7 +52,7 @@
          <font>
             <Font size="15.0" />
          </font></Label>
-        <TextField id="text" fx:id="nevInput" maxWidth="1.7976931348623157E308" onKeyTyped="#hibaVege" promptText="Rex" stylesheets="@../../css/FelugroAblakok.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <TextField id="text" fx:id="nevInput" maxWidth="1.7976931348623157E308" onKeyTyped="#hibaVege" promptText="Rex" stylesheets="@../../css/FelugroAblak.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
@@ -73,7 +73,7 @@
                 <Insets right="10.0" />
             </GridPane.margin>
         </DatePicker>
-        <TextField id="text" fx:id="fajInput" maxWidth="1.7976931348623157E308" onKeyTyped="#hibaVege" promptText="Bulldog" stylesheets="@../../css/FelugroAblakok.css" GridPane.columnIndex="3" GridPane.rowIndex="2">
+        <TextField id="text" fx:id="fajInput" maxWidth="1.7976931348623157E308" onKeyTyped="#hibaVege" promptText="Bulldog" stylesheets="@../../css/FelugroAblak.css" GridPane.columnIndex="3" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
@@ -104,10 +104,10 @@
                 <Font size="14.0" />
             </font>
         </Button>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #14856B;" stylesheets="@../../css/FelugroAblakok.css" GridPane.columnSpan="4" />
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #14856B;" stylesheets="@../../css/FelugroAblak.css" GridPane.columnSpan="4" />
     </children>
    <stylesheets>
-      <URL value="@../../css/FelugroAblakok.css" />
+      <URL value="@../../css/FelugroAblak.css" />
       <URL value="@../../css/FelugroAblakHiba.css" />
    </stylesheets>
 </GridPane>
