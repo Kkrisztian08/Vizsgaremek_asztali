@@ -60,7 +60,7 @@
          <children>
             <ImageView fitHeight="60.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icons/user2.png" />
+                  <Image url="@../icons/userbejelentkezes.png" />
                </image>
                <HBox.margin>
                   <Insets />
@@ -69,7 +69,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
-            <ImageView fitHeight="60.0" fitWidth="70.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/lock.png" />
                </image></ImageView>
