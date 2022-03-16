@@ -147,7 +147,7 @@
             <bottom>
                 <HBox alignment="CENTER_LEFT" minHeight="70.0" minWidth="200.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="73.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/TablazatosOldalak.css" text="Kilépés" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="73.0" minWidth="200.0" mnemonicParsing="false" onAction="#onExit" stylesheets="@../../css/TablazatosOldalak.css" text="Kilépés" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

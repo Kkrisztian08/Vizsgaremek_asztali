@@ -296,4 +296,20 @@ public class EventController extends Controller {
     @FXML
     public void onUsersClick(ActionEvent actionEvent) {
     }
+
+    @FXML
+    public void onExit(ActionEvent actionEvent) {
+
+        if (!confirm("Biztos szeretne kijelentkezni?")){
+            return;
+        }
+        try {
+            Controller oldalvaltas = ujAblak("FXML/login-view.fxml", "Bejelentkezés",
+                    400, 400);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
 }
