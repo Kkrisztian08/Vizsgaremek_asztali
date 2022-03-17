@@ -4,6 +4,7 @@ import com.example.vizsgaremek_asztali.api.Response;
 
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -69,5 +70,23 @@ public class RequestHandler {
         br.close();
         is.close();
         return new Response(responseCode, builder.toString());
+    }
+
+    public static Response tokenAuthorization(String url, String token) throws IOException {
+        HttpURLConnection conn = setConnection(url);
+
+        conn.setRequestProperty("Authorization", "Bearer " + token);
+
+        return getResponse(conn);
+    }
+
+    private static HttpURLConnection setConnection(String url) throws IOException {
+        URL urlObject = new URL(url);
+        HttpURLConnection conn = (HttpURLConnection) urlObject.openConnection();
+        conn.setRequestProperty("Accept", "application/json");
+        conn.setConnectTimeout(10000);
+        conn.setReadTimeout(10000);
+
+        return conn;
     }
 }

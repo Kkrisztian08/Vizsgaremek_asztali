@@ -1,6 +1,7 @@
 package com.example.vizsgaremek_asztali.dogs;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.adoption.Adoption;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -8,6 +9,8 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DogModositController extends Controller {
     @FXML
@@ -27,6 +30,26 @@ public class DogModositController extends Controller {
     @FXML
     private ComboBox<Integer> orokbefogadasInput;
     private Dog modositando;
+    private List<Adoption> adoptionList;
+    private Adoption adoption;
+
+    public void initialize(){
+        adoptionList = new ArrayList<>();
+        try {
+            adoption = new Adoption();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+        try {
+            //adoptionList =adoption.getId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (Adoption g : adoptionList){
+            orokbefogadasInput.getItems().add(g.getId());
+        }
+        orokbefogadasInput.getSelectionModel().selectFirst();
+    }
 
     @FXML
     public void onModositas(ActionEvent actionEvent) {

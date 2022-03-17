@@ -50,4 +50,17 @@ public class Api {
         }
         return json;
     }
+
+    public static String getLogin(String url, String token) throws IOException {
+        Response response = RequestHandler.tokenAuthorization(url, token);
+        String json = response.getContent();
+        Gson jsonConverter = new Gson();
+
+        if (response.getResponseCode() >= 400) {
+            String message = jsonConverter.fromJson(json, ApiError.class).getMessage();
+            throw new IOException(message);
+        }
+
+        return json;
+    }
 }

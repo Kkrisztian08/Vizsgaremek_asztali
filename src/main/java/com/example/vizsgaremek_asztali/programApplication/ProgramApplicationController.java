@@ -3,6 +3,7 @@ package com.example.vizsgaremek_asztali.programApplication;
 import com.example.vizsgaremek_asztali.Controller;
 import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDay;
 import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDayModositController;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -30,13 +31,13 @@ public class ProgramApplicationController extends Controller {
     @FXML
     private TextField keresesTextField;
     @FXML
-    private TableColumn<ProgramApplication,Integer> idCol;
+    private TableColumn<ProgramApplication, Integer> idCol;
     @FXML
-    private TableColumn<ProgramApplication,Integer> userIdCol;
+    private TableColumn<ProgramApplication, Integer> userIdCol;
     @FXML
-    private TableColumn<ProgramApplication,Integer> pHDIdCol;
+    private TableColumn<ProgramApplication, Integer> pHDIdCol;
     @FXML
-    private TableColumn<ProgramApplication,Integer> pTypeIdCol;
+    private TableColumn<ProgramApplication, Integer> pTypeIdCol;
     @FXML
     private TableView<ProgramApplication> pATable;
     @FXML
@@ -45,7 +46,7 @@ public class ProgramApplicationController extends Controller {
     private Button pAModosit;
     private ObservableList<ProgramApplication> pALista = FXCollections.observableArrayList();
 
-    public void initialize(){
+    public void initialize() {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         pHDIdCol.setCellValueFactory(new PropertyValueFactory<>("programHDid"));
         userIdCol.setCellValueFactory(new PropertyValueFactory<>("userid"));
@@ -54,18 +55,21 @@ public class ProgramApplicationController extends Controller {
         kereses();
     }
 
-    public  void pAListaFeltolt() {
+    public void pAListaFeltolt() {
         pATorol.setDisable(true);
         pAModosit.setDisable(true);
-        try {
-            pALista.clear();
-            pALista.addAll(ProgramApplicationApi.get());
-        } catch (IOException e) {
-            hibaKiir(e);
-        }
+        pALista.clear();
+        Platform.runLater(() -> {
+            try {
+                pALista.addAll(ProgramApplicationApi.get());
+            } catch (IOException e) {
+                hibaKiir(e);
+                e.printStackTrace();
+            }
+        });
     }
 
-    private void kereses(){
+    private void kereses() {
         FilteredList<ProgramApplication> filteredList = new FilteredList<>(pALista, b -> true);
         /*keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
             filteredList.setPredicate(events -> {
@@ -107,7 +111,7 @@ public class ProgramApplicationController extends Controller {
     @FXML
     public void onModositPA(ActionEvent actionEvent) {
         int selectedIndex = pATable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex == -1){
+        if (selectedIndex == -1) {
             alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
             return;
         }
@@ -126,17 +130,17 @@ public class ProgramApplicationController extends Controller {
     @FXML
     public void onPATorol(ActionEvent actionEvent) {
         int selectedIndex = pATable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex == -1){
+        if (selectedIndex == -1) {
             alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
             return;
         }
         ProgramApplication torlendoEvent = pATable.getSelectionModel().getSelectedItem();
-        if (!confirm("Valóban törölni szeretné a(z) "  +torlendoEvent.getId() + " ID-val rendelkező program jelentkezést?")){
+        if (!confirm("Valóban törölni szeretné a(z) " + torlendoEvent.getId() + " ID-val rendelkező program jelentkezést?")) {
             return;
         }
         try {
-            boolean sikeres= ProgramApplicationApi.delete(torlendoEvent.getId());
-            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            boolean sikeres = ProgramApplicationApi.delete(torlendoEvent.getId());
+            alert(sikeres ? "Sikertelen törlés" : "Sikeres törlés");
             pALista.clear();
             pAListaFeltolt();
         } catch (IOException e) {
@@ -150,7 +154,7 @@ public class ProgramApplicationController extends Controller {
         choose.setTitle("Exportálás");
         choose.getExtensionFilters().add(new FileChooser.ExtensionFilter("MS Excel", "*.xlsx"));
         File file = choose.showSaveDialog(stage);
-        if(!file.getName().endsWith(".xlsx")) {
+        if (!file.getName().endsWith(".xlsx")) {
             file = new File(file.getAbsolutePath() + ".xlsx");
         }
 
@@ -167,15 +171,14 @@ public class ProgramApplicationController extends Controller {
             for (int i = 0; i < pATable.getItems().size(); i++) {
                 row = spreadsheet.createRow(i + 1);
                 for (int j = 0; j < pATable.getColumns().size(); j++) {
-                    if(pATable.getColumns().get(j).getCellData(i) != null) {
+                    if (pATable.getColumns().get(j).getCellData(i) != null) {
                         row.createCell(j).setCellValue(pATable.getColumns().get(j).getCellData(i).toString());
-                    }
-                    else {
+                    } else {
                         row.createCell(j).setCellValue("");
                     }
                 }
             }
-            try (FileOutputStream fileOut = new FileOutputStream(file)){
+            try (FileOutputStream fileOut = new FileOutputStream(file)) {
                 workbook.write(fileOut);
                 alert("Sikeres exportálás");
             } catch (FileNotFoundException e) {
@@ -301,7 +304,7 @@ public class ProgramApplicationController extends Controller {
     @FXML
     public void onExit(ActionEvent actionEvent) {
 
-        if (!confirm("Biztos szeretne kijelentkezni?")){
+        if (!confirm("Biztos szeretne kijelentkezni?")) {
             return;
         }
         try {

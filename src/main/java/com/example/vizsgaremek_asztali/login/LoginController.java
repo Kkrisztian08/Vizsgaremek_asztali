@@ -1,5 +1,6 @@
-package com.example.vizsgaremek_asztali;
+package com.example.vizsgaremek_asztali.login;
 
+import com.example.vizsgaremek_asztali.Controller;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;

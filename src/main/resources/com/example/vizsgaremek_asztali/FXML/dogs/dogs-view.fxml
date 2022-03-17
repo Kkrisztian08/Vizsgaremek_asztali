@@ -165,7 +165,7 @@
                           </Button>
                   <HBox alignment="CENTER" minHeight="70.0" minWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                      <children>
-                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadKutya" stylesheets="@../../css/TablazatosOldalak.css" text="Hozzáadás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadKutya" stylesheets="@../../css/TablazatosOldalak.css" text="Hozzáadás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -173,7 +173,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="dogModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositKutya" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás">
+                                <Button id="rnd" fx:id="dogModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositKutya" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -181,7 +181,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="dogTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onKutyaTorol" stylesheets="@../../css/TablazatosOldalak.css" text="Törlés">
+                                <Button id="rnd" fx:id="dogTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="150.0" mnemonicParsing="false" onAction="#onKutyaTorol" stylesheets="@../../css/TablazatosOldalak.css" text="Törlés">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -189,7 +189,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onExportKutyakTabla" stylesheets="@../../css/TablazatosOldalak.css" text="Exportálás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="150.0" mnemonicParsing="false" onAction="#onExportKutyakTabla" stylesheets="@../../css/TablazatosOldalak.css" text="Exportálás">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>

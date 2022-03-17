@@ -6,7 +6,7 @@ public class ProgramApplication {
     private int id;
     @SerializedName("program_hour_and_day_id")
     private int programHDid;
-    @SerializedName("user_id ")
+    @SerializedName("user_id")
     private int userid;
     @SerializedName("program_type_id")
     private int programTypeid;
