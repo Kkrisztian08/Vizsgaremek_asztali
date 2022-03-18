@@ -97,7 +97,7 @@
     -fx-background-color: transparent;
 }
 .table-view .column-header-background{
-    -fx-background-color: linear-gradient(to bottom, white,#0d9475);
+    -fx-background-color: linear-gradient(to bottom, white, #0d9475);
     -fx-padding: 10 0 10 0;
 }
 .table-view .column-header .label {

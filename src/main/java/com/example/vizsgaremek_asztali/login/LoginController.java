@@ -1,12 +1,15 @@
 package com.example.vizsgaremek_asztali.login;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.user.User;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Control;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class LoginController extends Controller {
     @FXML
@@ -41,12 +44,33 @@ public class LoginController extends Controller {
             return;
         }
 
-        try {
+        /*try {
             Controller oldalvaltas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák Tábla",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
         } catch (Exception e) {
+            hibaKiir(e);
+        }*/
+
+        Login login = new Login(felhasznalo, jelszo);
+        try {
+            Token token = LoginApi.postLogin(login);
+            User felhAdatai = LoginApi.getLoginData(token.getToken());
+            if (felhAdatai.getAdmin() ==1) {
+                try {
+                    Controller oldalvaltas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák Tábla",
+                            1100, 600);
+                    oldalvaltas.getStage().show();
+                    this.stage.close();
+                } catch (Exception e) {
+                    hibaKiir(e);
+                }
+
+            } else {
+                alert("Nem rendelkezik admin jogosultsággal!");
+            }
+        } catch (IOException e) {
             hibaKiir(e);
         }
     }

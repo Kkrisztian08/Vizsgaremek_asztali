@@ -1,7 +1,6 @@
 package com.example.vizsgaremek_asztali.login;
 
-import com.example.vizsgaremek_asztali.Token;
-import com.example.vizsgaremek_asztali.User;
+import com.example.vizsgaremek_asztali.user.User;
 import com.example.vizsgaremek_asztali.api.Api;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -15,7 +14,7 @@ public class LoginApi {
 
     public static Token postLogin(Login login) throws IOException {
         String loginJson = jsonConverter.toJson(login);
-        String json = Api.post(API_URL + "/user/login", loginJson);
+        String json = Api.post(API_URL + "/login", loginJson);
         return jsonConverter.fromJson(json, Token.class);
     }
 

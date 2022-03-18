@@ -1,11 +1,11 @@
 package com.example.vizsgaremek_asztali.login;
 
 public class Login {
-    private String username;
+    private String name;
     private String password;
 
-    public Login(String username, String password) {
-        this.username = username;
+    public Login(String name, String password) {
+        this.name = name;
         this.password = password;
     }
 }

@@ -50,4 +50,21 @@ public class Adoption {
     public void setBegin(String begin) {
         this.begin = begin;
     }
+
+    public String getFormazottType() {
+        String tipus;
+        switch (adoptionTypeId) {
+            case 1:
+                tipus = "örökbefogadás";
+                break;
+            case 2:
+                tipus = "virtuális örökbefogadás";
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + adoptionTypeId);
+        }
+
+        return tipus;
+    }
 }

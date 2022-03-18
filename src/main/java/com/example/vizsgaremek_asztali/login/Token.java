@@ -1,4 +1,4 @@
-package com.example.vizsgaremek_asztali;
+package com.example.vizsgaremek_asztali.login;
 
 public class Token {
     private String token;

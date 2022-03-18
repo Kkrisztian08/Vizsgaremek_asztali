@@ -43,7 +43,7 @@ public class AdoptionController extends Controller {
 
     public void initialize(){
         adoptionIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        adoptionTypeIdCol.setCellValueFactory(new PropertyValueFactory<>("adoptionTypeId"));
+        adoptionTypeIdCol.setCellValueFactory(new PropertyValueFactory<>("tipus"));
         userIdCol.setCellValueFactory(new PropertyValueFactory<>("userId"));
         beginCol.setCellValueFactory(new PropertyValueFactory<>("begin"));
         adoptionsListaFeltolt();
@@ -73,7 +73,6 @@ public class AdoptionController extends Controller {
                 else {
                     return false;
                 }
-
             });
         });
         SortedList<Adoption> sortedList = new SortedList<>(filteredList);
