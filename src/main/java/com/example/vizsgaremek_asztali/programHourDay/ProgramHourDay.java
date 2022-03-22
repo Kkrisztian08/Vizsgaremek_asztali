@@ -34,4 +34,9 @@ public class ProgramHourDay {
     public void setIdo(String ido) {
         this.ido = ido;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s",this.getValasztottDatum(),this.getIdo());
+    }
 }

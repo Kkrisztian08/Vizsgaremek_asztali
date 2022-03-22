@@ -1,6 +1,7 @@
 package com.example.vizsgaremek_asztali.user;
 
 import com.example.vizsgaremek_asztali.api.Api;
+import com.example.vizsgaremek_asztali.dogs.Dog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -10,13 +11,28 @@ import java.util.List;
 
 public class UserApi {
     private static final String API_URL = "http://127.0.0.1:8000/api";
-    private static Gson jsonConverter = new Gson();
+    private static Gson jsonConverted = new Gson();
 
 
     public static List<User> get() throws IOException {
         String json = Api.get(API_URL + "/users");
         Type type = new TypeToken<List<User>>() {
         }.getType();
-        return jsonConverter.fromJson(json, type);
+        return jsonConverted.fromJson(json, type);
+    }
+    public static User post(User uj) throws IOException {
+        String ujJson = jsonConverted.toJson(uj);
+        String json = Api.post(API_URL, ujJson);
+        return jsonConverted.fromJson(json, User.class);
+    }
+
+    public static boolean delete(int id) throws IOException {
+        return Api.delete(API_URL, id).getResponseCode() == 240;
+    }
+
+    public static User put(User modosit) throws IOException {
+        String modositandoJson = jsonConverted.toJson(modosit);
+        String json = Api.put(API_URL,modosit.getId(), modositandoJson);
+        return jsonConverted.fromJson(json, User.class);
     }
 }

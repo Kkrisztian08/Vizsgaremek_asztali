@@ -44,29 +44,16 @@ public class LoginController extends Controller {
             return;
         }
 
-        /*try {
-            Controller oldalvaltas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák Tábla",
-                    1100, 600);
-            oldalvaltas.getStage().show();
-            this.stage.close();
-        } catch (Exception e) {
-            hibaKiir(e);
-        }*/
 
         Login login = new Login(felhasznalo, jelszo);
         try {
             Token token = LoginApi.postLogin(login);
             User felhAdatai = LoginApi.getLoginData(token.getToken());
-            if (felhAdatai.getAdmin() ==1) {
-                try {
-                    Controller oldalvaltas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák Tábla",
-                            1100, 600);
-                    oldalvaltas.getStage().show();
-                    this.stage.close();
-                } catch (Exception e) {
-                    hibaKiir(e);
-                }
-
+            if (felhAdatai.getAdmin()>=1) {
+                Controller oldalvaltas = ujAblak("FXML/users/users-view.fxml", "Élethang alapitvány",
+                        1100, 600);
+                oldalvaltas.getStage().show();
+                this.stage.close();
             } else {
                 alert("Nem rendelkezik admin jogosultsággal!");
             }

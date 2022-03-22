@@ -91,7 +91,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <TextArea fx:id="leirasKulTulTextArea" editable="false" stylesheets="@../../css/TablazatosOldalak.css" wrapText="true" VBox.vgrow="ALWAYS">
+                        <TextArea fx:id="leirasTextArea" editable="false" stylesheets="@../../css/TablazatosOldalak.css" wrapText="true" VBox.vgrow="ALWAYS">
                             <font>
                                 <Font size="15.0" />
                             </font></TextArea>
@@ -126,11 +126,12 @@
                         </GridPane>
                     </top>
                     <center>
-                        <TableView fx:id="kutyakTable" onMouseClicked="#onSelectUser" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/TablazatosOldalak.css" BorderPane.alignment="CENTER">
+                        <TableView fx:id="userTable" onMouseClicked="#onSelectUser" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/TablazatosOldalak.css" BorderPane.alignment="CENTER">
                             <columns>
                                 <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
                                 <TableColumn fx:id="adminCol" prefWidth="75.0" text="Admin" />
                                 <TableColumn fx:id="nevCol" prefWidth="75.0" text="Név" />
+                        <TableColumn fx:id="falhasznalonevCol" prefWidth="75.0" text="Felhasználónév" />
                                 <TableColumn fx:id="szulIdoCol" prefWidth="75.0" text="Születési idő" />
                                 <TableColumn fx:id="cimCol" prefWidth="75.0" text="Cím" />
                                 <TableColumn fx:id="telefonCol" prefWidth="75.0" text="Telefonszám" />

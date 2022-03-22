@@ -26,18 +26,18 @@
         <RowConstraints maxHeight="79.60001220703123" minHeight="10.0" prefHeight="79.60001220703123" valignment="CENTER" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label text="Program Nap és Óra ID:" GridPane.rowIndex="1">
+        <Label text="Program Nap és Óra:" GridPane.rowIndex="1">
             <font>
                 <Font size="15.0" />
             </font>
             <GridPane.margin>
                 <Insets left="10.0" />
             </GridPane.margin></Label>
-        <Label text="Felhasználó ID:" GridPane.rowIndex="2">
+        <Label text="Felhasználó:" GridPane.rowIndex="2">
             <font>
                 <Font size="15.0" />
             </font></Label>
-        <Label text="Program Nap és Óra ID:" GridPane.rowIndex="3">
+        <Label text="Program tipus:" GridPane.rowIndex="3">
             <font>
                 <Font size="15.0" />
             </font></Label>

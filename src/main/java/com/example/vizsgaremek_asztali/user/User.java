@@ -4,16 +4,18 @@ public class User {
     private int id;
     private int admin;
     private String name;
+    private String username;
     private String birthday;
     private String address;
     private String phone_number;
     private String email;
     private String password;
 
-    public User(int id, int admin, String name, String birthday, String address, String phone_number, String email, String password) {
+    public User(int id, int admin, String name, String username, String birthday, String address, String phone_number, String email, String password) {
         this.id = id;
         this.admin = admin;
         this.name = name;
+        this.username = username;
         this.birthday = birthday;
         this.address = address;
         this.phone_number = phone_number;
@@ -39,6 +41,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getBirthday() {
@@ -83,11 +93,21 @@ public class User {
 
     public String getFormazottAdmin() {
         String jog;
-        if (admin == 1) {
-            jog = "admin";
-        } else {
-            jog = "felhasználó";
+        switch (admin) {
+            case 1:
+                jog = "admin";
+                break;
+            case 2:
+                jog = "super admin";
+                break;
+            default:
+                jog = "felhasználó";
         }
         return jog;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s",this.getName());
     }
 }

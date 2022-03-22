@@ -53,18 +53,11 @@ public class Adoption {
 
     public String getFormazottType() {
         String tipus;
-        switch (adoptionTypeId) {
-            case 1:
-                tipus = "örökbefogadás";
-                break;
-            case 2:
-                tipus = "virtuális örökbefogadás";
-                break;
-
-            default:
-                throw new IllegalStateException("Unexpected value: " + adoptionTypeId);
+        if (adoptionTypeId == 1) {
+            tipus = "ált. örökbefogadás";
+        } else {
+            tipus = "virtuális örökbefogadás";
         }
-
         return tipus;
     }
 }

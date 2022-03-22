@@ -23,4 +23,9 @@ public class ProgramType {
     public void setMegnevezes(String megnevezes) {
         this.megnevezes = megnevezes;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s",this.getMegnevezes());
+    }
 }

@@ -71,4 +71,5 @@ public class ProgramHourDayHozzaadController extends Controller {
         Control control = (Control) event.getSource();
         control.getStyleClass().remove("error");
     }
+
 }

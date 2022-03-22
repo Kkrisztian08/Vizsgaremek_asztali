@@ -279,6 +279,14 @@ public class ProgramTypeController extends Controller {
 
     @FXML
     public void onUsersClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/users/users-view.fxml", "Felhasználók Tábla",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
