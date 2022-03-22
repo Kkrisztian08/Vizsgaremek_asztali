@@ -336,4 +336,16 @@ public class DogController extends Controller {
             hibaKiir(e);
         }
     }
+
+    @FXML
+    public void onUserDataClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/userdata-view.fxml", "Élethang alapitvány",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
 }
