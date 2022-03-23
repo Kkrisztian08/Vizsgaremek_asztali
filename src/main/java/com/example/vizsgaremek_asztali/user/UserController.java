@@ -34,8 +34,6 @@ public class UserController extends Controller {
     @FXML
     private TableColumn<User,Integer> adminCol;
     @FXML
-    private Button userModosit;
-    @FXML
     private TableColumn<User,String> cimCol;
     @FXML
     private TableColumn<User,Integer> idCol;
@@ -70,7 +68,6 @@ public class UserController extends Controller {
     }
 
     public void userListaFeltolt() {
-        userModosit.setDisable(true);
         userTorol.setDisable(true);
         try {
             userLista.clear();
@@ -113,11 +110,16 @@ public class UserController extends Controller {
 
     @FXML
     public void onHozzaadUser(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("FXML/users/hozzaad-view.fxml", "Admin hozzáadása",
+                    700, 400);
+            hozzadas.getStage().setOnCloseRequest(event -> userListaFeltolt());
+            hozzadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
-    @FXML
-    public void onModositUser(ActionEvent actionEvent) {
-    }
 
     @FXML
     public void onUserTorol(ActionEvent actionEvent) {
@@ -193,7 +195,6 @@ public class UserController extends Controller {
         int selectedIndex = userTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
             userTorol.setDisable(false);
-            userModosit.setDisable(false);
         }
         User leiraskiir= (User) userTable.getSelectionModel().getSelectedItem();
         leirasTextArea.setText("Cím:\n"+leiraskiir.getAddress()+"\n\nEmail cím:\n"+leiraskiir.getEmail()+"\n\nTitikositott jelszó:\n"+leiraskiir.getPassword());
@@ -328,7 +329,7 @@ public class UserController extends Controller {
     @FXML
     public void onUserDataClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/userdata-view.fxml", "Élethang alapitvány",
+            Controller oldalvaltas = ujAblak("FXML/userdata/userdata-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();

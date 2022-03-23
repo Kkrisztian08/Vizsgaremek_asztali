@@ -7,6 +7,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -53,7 +54,7 @@ public class ProgramHourDayModositController extends Controller {
         modositando.setValasztottDatum(formazottSzuldatum);
 
         try {
-           ProgramHourDay modositott = ProgramHourDayApi.put(modositando);
+            ProgramHourDay modositott = ProgramHourDayApi.put(modositando);
             if (modositott != null) {
                 alertWait("Sikeres módosítás");
                 this.stage.close();
@@ -91,6 +92,4 @@ public class ProgramHourDayModositController extends Controller {
         datumInput.setValue(datum);
 
     }
-
-
 }

@@ -16,6 +16,8 @@
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints />
+      <ColumnConstraints />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="31.0000244140625" minHeight="1.0" prefHeight="22.200006103515626" vgrow="SOMETIMES" />
@@ -25,18 +27,18 @@
         <RowConstraints maxHeight="79.60001220703123" minHeight="10.0" prefHeight="79.60001220703123" valignment="CENTER" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label text="Örökbefogadás tipus ID:" GridPane.rowIndex="1">
+        <Label text="Örökbefogadás tipus:" GridPane.rowIndex="1">
             <font>
                 <Font size="15.0" />
             </font>
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin></Label>
-        <Label text="Felhasználó ID:" GridPane.rowIndex="2">
+        <Label text="Felhasználó:" GridPane.rowIndex="2">
             <font>
                 <Font size="15.0" />
             </font></Label>
-        <Label text="Születési dátum (kb):" GridPane.rowIndex="3">
+        <Label text="Örökbefogadás kezdete:" GridPane.rowIndex="3">
             <font>
                 <Font size="15.0" />
             </font></Label>

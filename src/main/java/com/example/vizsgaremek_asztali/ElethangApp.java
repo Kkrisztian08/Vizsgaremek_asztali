@@ -1,5 +1,6 @@
 package com.example.vizsgaremek_asztali;
 
+import com.example.vizsgaremek_asztali.user.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ElethangApp extends Application {
+    public static User BEJELENTKEZETT = null;
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ElethangApp.class.getResource("FXML/login-view.fxml"));

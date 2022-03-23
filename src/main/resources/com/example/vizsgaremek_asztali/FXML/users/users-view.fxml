@@ -165,15 +165,7 @@
                         </Button>
                         <HBox alignment="CENTER" minHeight="70.0" minWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                             <children>
-                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadUser" stylesheets="@../../css/TablazatosOldalak.css" text="Hozzáadás">
-                                    <HBox.margin>
-                                        <Insets right="40.0" />
-                                    </HBox.margin>
-                                    <cursor>
-                                        <Cursor fx:constant="HAND" />
-                                    </cursor>
-                                </Button>
-                                <Button id="rnd" fx:id="userModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositUser" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadUser" stylesheets="@../../css/TablazatosOldalak.css" text="Admin Hozzáadása">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>

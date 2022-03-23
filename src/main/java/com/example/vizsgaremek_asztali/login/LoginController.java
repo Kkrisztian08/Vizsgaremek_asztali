@@ -1,6 +1,7 @@
 package com.example.vizsgaremek_asztali.login;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.ElethangApp;
 import com.example.vizsgaremek_asztali.user.User;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -49,6 +50,8 @@ public class LoginController extends Controller {
         try {
             Token token = LoginApi.postLogin(login);
             User felhAdatai = LoginApi.getLoginData(token.getToken());
+            ElethangApp.BEJELENTKEZETT = felhAdatai;
+
             if (felhAdatai.getAdmin()>=1) {
                 Controller oldalvaltas = ujAblak("FXML/users/users-view.fxml", "Élethang alapitvány",
                         1100, 600);

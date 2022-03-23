@@ -2,6 +2,11 @@ package com.example.vizsgaremek_asztali.dogs;
 
 import com.example.vizsgaremek_asztali.Controller;
 import com.example.vizsgaremek_asztali.adoption.Adoption;
+import com.example.vizsgaremek_asztali.adoption.AdoptionApi;
+import com.example.vizsgaremek_asztali.adoptionType.AdoptionType;
+import com.example.vizsgaremek_asztali.adoptionType.AdoptionTypeApi;
+import com.example.vizsgaremek_asztali.user.User;
+import com.example.vizsgaremek_asztali.user.UserApi;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -28,27 +33,22 @@ public class DogModositController extends Controller {
     @FXML
     private ComboBox<String> nemInput;
     @FXML
-    private ComboBox<Integer> orokbefogadasInput;
+    private ComboBox<Adoption> orokbefogadasInput;
     private Dog modositando;
     private List<Adoption> adoptionList;
-    private Adoption adoption;
+
 
     public void initialize(){
         adoptionList = new ArrayList<>();
         try {
-            adoption = new Adoption();
-        } catch (Exception e) {
-            hibaKiir(e);
-        }
-        try {
-            //adoptionList =adoption.getId();
-        } catch (Exception e) {
+            adoptionList= AdoptionApi.get();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        for (Adoption g : adoptionList){
-            orokbefogadasInput.getItems().add(g.getId());
+        for (Adoption adoption : adoptionList){
+            orokbefogadasInput.getItems().add(adoption);
         }
-        orokbefogadasInput.getSelectionModel().selectFirst();
+        orokbefogadasInput.getSelectionModel();
     }
 
     @FXML
@@ -61,7 +61,8 @@ public class DogModositController extends Controller {
         String leiras=leirasInput.getText().trim();
         int erdeklodes=0;
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
-        Integer orobefogadasIndex=orokbefogadasInput.getSelectionModel().getSelectedIndex(); // ez majd akkor kell ha már megvan adoption osztáyl
+        Integer orobefogadasIndex=orokbefogadasInput.getSelectionModel().getSelectedItem().getId();
+        Integer orobefogadasid=null;
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -89,8 +90,6 @@ public class DogModositController extends Controller {
             alertBuilder.append("A dátum megadása kötelező").append(System.lineSeparator());
             hiba=true;
         }
-
-
 
         if (faj.isEmpty()){
             //alert("A faj megadása kötelező");
@@ -137,11 +136,12 @@ public class DogModositController extends Controller {
             hiba=true;
         }
 
+
+
         if (hiba) {
             alert(alertBuilder.toString());
             return;
         }
-        Integer orokbefogadasId = orokbefogadasInput.getValue();
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         modositando.setName(nev);
@@ -151,7 +151,11 @@ public class DogModositController extends Controller {
         modositando.setExternal_property(kultul);
         modositando.setDescription(leiras);
         modositando.setInterest(erdeklodes);
-        modositando.setAdoption_id(orokbefogadasId);
+        if (orobefogadasIndex == -1){
+            modositando.setAdoption_id(orobefogadasid);
+        }else {
+            modositando.setAdoption_id(orobefogadasIndex);
+        }
 
         try {
             Dog modositott=DogApi.put(modositando);
@@ -196,7 +200,6 @@ public class DogModositController extends Controller {
         leirasInput.setText(modositando.getDescription());
         kedvelesInput.getValueFactory().setValue(modositando.getInterest());
         nemInput.setValue(modositando.getGender());
-        orokbefogadasInput.setValue(modositando.getAdoption_id());
         LocalDate datum=LocalDate.parse(modositando.getLikely_bday());
         szulidoInput.setValue(datum);
     }

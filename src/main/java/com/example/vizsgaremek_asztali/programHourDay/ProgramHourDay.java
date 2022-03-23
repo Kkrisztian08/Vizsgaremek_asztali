@@ -37,6 +37,6 @@ public class ProgramHourDay {
 
     @Override
     public String toString() {
-        return String.format("%s %s",this.getValasztottDatum(),this.getIdo());
+        return String.format("%s, %s",this.getValasztottDatum(),this.getIdo());
     }
 }

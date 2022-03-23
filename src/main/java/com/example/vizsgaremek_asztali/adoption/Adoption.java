@@ -1,7 +1,7 @@
 package com.example.vizsgaremek_asztali.adoption;
 
-
 import com.google.gson.annotations.SerializedName;
+
 
 public class Adoption {
     private int id;
@@ -59,5 +59,12 @@ public class Adoption {
             tipus = "virtuális örökbefogadás";
         }
         return tipus;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return String.format("%s, %s",this.getUserId(),this.getBegin());
     }
 }

@@ -3,6 +3,8 @@ package com.example.vizsgaremek_asztali.adoption;
 import com.example.vizsgaremek_asztali.Controller;
 import com.example.vizsgaremek_asztali.adoptionType.AdoptionType;
 import com.example.vizsgaremek_asztali.adoptionType.AdoptionTypeApi;
+import com.example.vizsgaremek_asztali.dogs.Dog;
+import com.example.vizsgaremek_asztali.dogs.DogApi;
 import com.example.vizsgaremek_asztali.user.User;
 import com.example.vizsgaremek_asztali.user.UserApi;
 import javafx.event.ActionEvent;
@@ -24,7 +26,6 @@ public class AdoptionHozzaadController extends Controller {
     private ComboBox<AdoptionType> adoptionTypeIdInput;
     @FXML
     private ComboBox<User> userIdInput;
-
     private List<User> userList;
     private List<AdoptionType> typeList;
 
@@ -69,13 +70,6 @@ public class AdoptionHozzaadController extends Controller {
             alertBuilder.append("A dátum megadása kötelező").append(System.lineSeparator());
             hiba=true;
         }
-
-        /*if (adoptionTypeIndex == -1){
-            //alert("A nem kiválasztása köztelező");
-            adoptionTypeIdInput.getStyleClass().add("error");
-            alertBuilder.append("A tipus kiválasztása köztelező").append(System.lineSeparator());
-            hiba=true;
-        }*/
 
         if (hiba) {
             alert(alertBuilder.toString());

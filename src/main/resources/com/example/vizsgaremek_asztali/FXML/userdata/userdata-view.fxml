@@ -19,18 +19,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.UserDataController">
+<AnchorPane maxHeight="1.7976931348623157E308" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.userdata.UserDataController">
     <children>
         <BorderPane maxHeight="1.7976931348623157E308" minHeight="530.0" minWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <VBox maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0d9475;" BorderPane.alignment="CENTER">
                     <children>
-                        <Label alignment="CENTER" prefHeight="55.0" prefWidth="202.0" style="-fx-background-color: #0d9475;" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="55.0" prefWidth="202.0" style="-fx-background-color: #0d9475;" text="Felhasználó adatai" textFill="WHITE">
                             <font>
                                 <Font name="Arial Narrow Italic" size="20.0" />
                             </font>
                         </Label>
-                        <MenuButton alignment="CENTER" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" popupSide="RIGHT" stylesheets="@../css/TablazatosOldalak.css" text="Adattáblák" textFill="WHITE">
+                        <MenuButton alignment="CENTER" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" popupSide="RIGHT" stylesheets="@../../css/TablazatosOldalak.css" text="Adattáblák" textFill="WHITE">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#onUsersClick" text="Felhasználók Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onKutyakClick" text="Kutyák Tábla" />
@@ -45,7 +45,7 @@
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/home.png" />
+                                        <Image url="@../../icons/home.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -59,11 +59,11 @@
                                 <Insets />
                             </VBox.margin>
                         </MenuButton>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../css/TablazatosOldalak.css" text="Felhasználói adatok" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/TablazatosOldalak.css" text="Felhasználói adatok" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/user.png" />
+                                        <Image url="@../../icons/user.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -74,11 +74,11 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../css/TablazatosOldalak.css" text="Statisztikák" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/TablazatosOldalak.css" text="Statisztikák" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/statistics.png" />
+                                        <Image url="@../../icons/statistics.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -89,7 +89,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <TextArea fx:id="leirasTextArea" editable="false" stylesheets="@../css/TablazatosOldalak.css" wrapText="true" VBox.vgrow="ALWAYS">
+                        <TextArea fx:id="leirasTextArea" editable="false" stylesheets="@../../css/TablazatosOldalak.css" wrapText="true" VBox.vgrow="ALWAYS">
                             <font>
                                 <Font size="15.0" />
                             </font></TextArea>
@@ -108,7 +108,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
                             </rowConstraints>
                             <children>
-                                <TextField id="keres" fx:id="keresesTextField" disable="true" prefHeight="26.0" prefWidth="318.0" promptText="Search..." stylesheets="@../css/TablazatosOldalak.css" GridPane.columnIndex="1">
+                                <TextField id="keres" fx:id="keresesTextField" disable="true" prefHeight="26.0" prefWidth="318.0" promptText="Search..." stylesheets="@../../css/TablazatosOldalak.css" GridPane.columnIndex="1">
                                     <GridPane.margin>
                                         <Insets right="7.0" />
                                     </GridPane.margin></TextField>
@@ -129,6 +129,7 @@
                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="243.60003662109375" minWidth="10.0" prefWidth="243.60003662109375" />
                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="262.2000732421875" minWidth="10.0" prefWidth="159.2000244140625" />
                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="458.0" minWidth="10.0" prefWidth="399.1999755859376" />
+                        <ColumnConstraints />
                             </columnConstraints>
                             <rowConstraints>
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -140,80 +141,116 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <ImageView fitHeight="181.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowSpan="2">
+                                <ImageView fitHeight="135.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowSpan="2">
                                     <image>
-                                        <Image url="@../icons/userbejelentkezes.png" />
+                                        <Image url="@../../icons/userbejelentkezes.png" />
                                     </image>
                                 </ImageView>
                                 <Label text="Felhasználó név:" GridPane.columnIndex="1">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="System Italic" size="22.0" />
                                     </font>
                                 </Label>
-                                <Label text="Név:" GridPane.rowIndex="2">
+                                <Label text="Név:" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="System Italic" size="22.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                                 </Label>
-                                <Label fx:id="usernameLabel" text="Label" GridPane.columnIndex="2">
+                                <Label fx:id="usernameLabel" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="30.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                                 </Label>
-                                <Label fx:id="nameLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                <Label fx:id="nameLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="25.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets left="160.0" />
+                           </GridPane.margin>
                                 </Label>
-                                <Label text="Születési idő:" GridPane.rowIndex="3">
+                                <Label text="Születési idő:" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="System Italic" size="22.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                                 </Label>
-                                <Label fx:id="birthdayLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                                <Label fx:id="birthdayLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="25.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets left="160.0" />
+                           </GridPane.margin>
                                 </Label>
-                                <Label text="Lakcím:" GridPane.rowIndex="4">
+                                <Label text="Lakcím:" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="System Italic" size="22.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                                 </Label>
-                                <Label fx:id="addressLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                <Label fx:id="addressLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="25.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets left="160.0" />
+                           </GridPane.margin>
                                 </Label>
-                                <Label text="Telefonszám:" GridPane.rowIndex="5">
+                                <Label text="Telefonszám:" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="System Italic" size="22.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                                 </Label>
-                                <Label fx:id="phoneNumberLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                                <Label fx:id="phoneNumberLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="25.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets left="160.0" />
+                           </GridPane.margin>
                                 </Label>
-                                <Label text="Email cím:" GridPane.rowIndex="6">
+                                <Label text="Email cím:" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="System Italic" size="22.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                                 </Label>
-                                <Label fx:id="emailLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                                <Label fx:id="emailLabel" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="6">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="25.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets left="160.0" />
+                           </GridPane.margin>
                                 </Label>
                                 <Label text="Jogosultság:" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                     <font>
-                                        <Font size="18.0" />
+                                        <Font name="System Italic" size="22.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="adminLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                <Label fx:id="adminLabel" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                     <font>
-                                        <Font size="20.0" />
+                                        <Font size="30.0" />
                                     </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                                 </Label>
                             </children>
                         </GridPane>
@@ -223,11 +260,11 @@
             <bottom>
                 <HBox alignment="CENTER_LEFT" minHeight="70.0" minWidth="200.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="73.0" minWidth="200.0" mnemonicParsing="false" onAction="#onExit" stylesheets="@../css/TablazatosOldalak.css" text="Kilépés" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="73.0" minWidth="200.0" mnemonicParsing="false" onAction="#onExit" stylesheets="@../../css/TablazatosOldalak.css" text="Kilépés" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/exit-sign.png" />
+                                        <Image url="@../../icons/exit-sign.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -240,7 +277,7 @@
                         </Button>
                         <HBox alignment="CENTER" minHeight="70.0" minWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                             <children>
-                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="300.0" mnemonicParsing="false" onAction="#onModosit" stylesheets="@../css/TablazatosOldalak.css" text="Modositás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="300.0" mnemonicParsing="false" onAction="#onModosit" stylesheets="@../../css/TablazatosOldalak.css" text="Modositás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>

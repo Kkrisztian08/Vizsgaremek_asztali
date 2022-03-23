@@ -1,10 +1,13 @@
-package com.example.vizsgaremek_asztali;
+package com.example.vizsgaremek_asztali.userdata;
 
+import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.ElethangApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class UserDataController extends Controller {
     @FXML
@@ -26,9 +29,20 @@ public class UserDataController extends Controller {
     @FXML
     private Label nameLabel;
 
+    public void initialize(){
+        nameLabel.setText(ElethangApp.BEJELENTKEZETT.getName());
+        emailLabel.setText(ElethangApp.BEJELENTKEZETT.getEmail());
+        birthdayLabel.setText(ElethangApp.BEJELENTKEZETT.getBirthday());
+        phoneNumberLabel.setText(ElethangApp.BEJELENTKEZETT.getPhone_number());
+        addressLabel.setText(ElethangApp.BEJELENTKEZETT.getAddress());
+        usernameLabel.setText(ElethangApp.BEJELENTKEZETT.getUsername());
+        adminLabel.setText(ElethangApp.BEJELENTKEZETT.getFormazottAdmin());
+    }
+
 
     @FXML
     public void onModosit(ActionEvent actionEvent) {
+
     }
 
     @FXML

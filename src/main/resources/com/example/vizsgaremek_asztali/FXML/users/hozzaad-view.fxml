@@ -1,102 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import javafx.collections.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<GridPane minHeight="400.0" minWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.user.UserHozzaadController">
+<GridPane minHeight="400.0" minWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.user.UserHozzaadController">
     <columnConstraints>
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="122.79998779296875" minWidth="10.0" prefWidth="122.79998779296875" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="240.4000244140625" minWidth="10.0" prefWidth="226.00001220703126" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="170.20001220703125" minWidth="10.0" prefWidth="122.800048828125" />
+        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="213.59995117187503" minWidth="10.0" prefWidth="213.59995117187503" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="31.0000244140625" minHeight="1.0" prefHeight="22.200006103515626" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="79.79999389648438" minHeight="10.0" prefHeight="79.79999389648438" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="115.19998779296876" minHeight="10.0" prefHeight="115.19998779296876" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="57.5999816894531" minHeight="10.0" prefHeight="49.60001220703123" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="96.79998779296875" minHeight="10.0" prefHeight="84.79999999999998" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="95.99999389648437" minHeight="10.0" prefHeight="85.60000610351562" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="115.19998779296876" minHeight="10.0" prefHeight="79.19999389648439" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="115.19998779296876" minHeight="10.0" prefHeight="73.00000305175786" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="56.39999999999998" minHeight="10.0" prefHeight="56.39999999999998" valignment="CENTER" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <Label text="Név:" GridPane.rowIndex="1">
             <font>
                 <Font size="15.0" />
             </font></Label>
-        <Label text="Nem:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+        <Label text="Felhasználónév:" GridPane.columnIndex="2" GridPane.rowIndex="1">
             <font>
                 <Font size="15.0" />
             </font></Label>
-        <Label text="Születési dátum (kb):" GridPane.rowIndex="2">
+        <Label text="Születési dátum:" GridPane.rowIndex="2">
             <font>
                 <Font size="15.0" />
             </font></Label>
-        <Label text="Faj:" GridPane.columnIndex="2" GridPane.rowIndex="2">
+        <Label text="Lakcím:" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <font>
                 <Font size="15.0" />
             </font></Label>
-        <Label text="Külső jelemők:" GridPane.rowIndex="3">
+        <Label text="Telefonszám:" GridPane.rowIndex="3">
             <font>
                 <Font size="15.0" />
             </font></Label>
-        <Label text="Állat jellemzése:" GridPane.columnIndex="2" GridPane.rowIndex="3">
+        <Label text="Email:" GridPane.columnIndex="2" GridPane.rowIndex="3">
             <font>
                 <Font size="15.0" />
             </font></Label>
-        <Label text="Érdeklődés mértéke:" GridPane.columnIndex="1" GridPane.rowIndex="4">
-            <font>
-                <Font size="15.0" />
-            </font></Label>
-        <TextField id="text" fx:id="nevInput" maxWidth="1.7976931348623157E308" onKeyTyped="#hibaVege" promptText="Rex" stylesheets="@../../css/FelugroAblak.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <TextField id="text" fx:id="nameInput" maxWidth="1.7976931348623157E308" onKeyTyped="#hibaVege" stylesheets="@../../css/FelugroAblak.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
         </TextField>
-        <ComboBox fx:id="nemInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" GridPane.columnIndex="3" GridPane.rowIndex="1">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Hím" />
-                    <String fx:value="Nőstény" />
-                </FXCollections>
-            </items>
-            <GridPane.margin>
-                <Insets right="10.0" />
-            </GridPane.margin>
-        </ComboBox>
-        <DatePicker fx:id="szulidoInput" editable="false" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" prefHeight="26.0" prefWidth="66.0" promptText="2022.02.22" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <DatePicker fx:id="szulidoInput" editable="false" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" prefHeight="26.0" prefWidth="66.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
         </DatePicker>
-        <TextField id="text" fx:id="fajInput" maxWidth="1.7976931348623157E308" onKeyTyped="#hibaVege" promptText="Bulldog" stylesheets="@../../css/FelugroAblak.css" GridPane.columnIndex="3" GridPane.rowIndex="2">
+        <TextField id="text" fx:id="addressInput" maxWidth="1.7976931348623157E308" onKeyTyped="#hibaVege" stylesheets="@../../css/FelugroAblak.css" GridPane.columnIndex="3" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
         </TextField>
-        <TextArea fx:id="kultulInput" onKeyTyped="#hibaVege" prefHeight="200.0" prefWidth="200.0" promptText="pl: hosszú szőrű" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-            <GridPane.margin>
-                <Insets bottom="2.5" right="10.0" top="2.5" />
-            </GridPane.margin>
-        </TextArea>
-        <TextArea fx:id="leirasInput" onKeyTyped="#hibaVege" prefHeight="200.0" prefWidth="200.0" promptText="pl: baraátságos" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
-            <GridPane.margin>
-                <Insets bottom="2.5" right="10.0" top="2.5" />
-            </GridPane.margin>
-        </TextArea>
-        <Spinner fx:id="kedvelesInput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="4">
-            <valueFactory>
-                <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="1" max="10" min="1" />
-            </valueFactory>
-            <GridPane.margin>
-                <Insets right="10.0" />
-            </GridPane.margin>
-        </Spinner>
-        <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#onHozzaadas" stylesheets="@../../css/TablazatosOldalak.css" text="Hozzáadás" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+        <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#onHozzad" stylesheets="@../../css/TablazatosOldalak.css" text="Hozzáadás" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="5">
             <GridPane.margin>
                 <Insets left="50.0" right="50.0" />
             </GridPane.margin>
@@ -105,6 +76,31 @@
             </font>
         </Button>
         <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #14856B;" stylesheets="@../../css/FelugroAblak.css" GridPane.columnSpan="4" />
+        <TextField fx:id="phoneInput" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets right="10.0" />
+            </GridPane.margin>
+        </TextField>
+        <TextField fx:id="usernameInput" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets right="10.0" />
+            </GridPane.margin>
+        </TextField>
+        <TextField fx:id="emailInput" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets right="10.0" />
+            </GridPane.margin>
+        </TextField>
+        <Label text="Jelszó:" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="passwordInput" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
+            <GridPane.margin>
+                <Insets right="100.0" />
+            </GridPane.margin>
+        </TextField>
     </children>
     <stylesheets>
         <URL value="@../../css/FelugroAblak.css" />
