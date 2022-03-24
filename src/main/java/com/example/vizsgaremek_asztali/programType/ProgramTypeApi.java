@@ -24,7 +24,7 @@ public class ProgramTypeApi {
     }
 
     public static boolean delete(int id) throws IOException {
-        return Api.delete(API_URL, id).getResponseCode() == 240;
+        return Api.delete(API_URL, id).getResponseCode() == 204;
     }
 
     public static ProgramType put(ProgramType modosit) throws IOException {

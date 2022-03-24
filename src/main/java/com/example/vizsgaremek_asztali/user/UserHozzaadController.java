@@ -7,9 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserHozzaadController extends Controller {
     @FXML
@@ -75,6 +76,7 @@ public class UserHozzaadController extends Controller {
             hiba=true;
         }
 
+
         if (lakcim.isEmpty()){
             //alert("A külső tulajdonság megadása kötelező");
             addressInput.getStyleClass().add("error");
@@ -83,17 +85,29 @@ public class UserHozzaadController extends Controller {
         }
 
 
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
         if (email.isEmpty()){
             //alert("A leírás megadása kötelező");
             emailInput.getStyleClass().add("error");
             alertBuilder.append("A leírás megadása kötelező").append(System.lineSeparator());
             hiba=true;
+        }else if(!(matcher.matches())){
+            emailInput.getStyleClass().add("error");
+            alertBuilder.append("Helytelen email formátum").append(System.lineSeparator());
+            hiba=true;
         }
+
 
         if (jelszo.isEmpty()){
             //alert("A leírás megadása kötelező");
             passwordInput.getStyleClass().add("error");
             alertBuilder.append("A leírás megadása kötelező").append(System.lineSeparator());
+            hiba=true;
+        }else if(jelszo.length()<8){
+            passwordInput.getStyleClass().add("error");
+            alertBuilder.append("A jelszónak minimum 8 karakternek kell lennie").append(System.lineSeparator());
             hiba=true;
         }
 
@@ -103,7 +117,7 @@ public class UserHozzaadController extends Controller {
         }
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         try {
-            User ujUser = new User(0,admin,nev,felhasznalonev,formazottSzuldatum,telefonszam,lakcim,email,jelszo);
+            User ujUser = new User(0,admin,nev,felhasznalonev,formazottSzuldatum,lakcim,telefonszam,email,jelszo);
             User letrehozott = UserApi.post(ujUser);
             if (letrehozott != null){
                 alert("Sikeres hozzáadás");

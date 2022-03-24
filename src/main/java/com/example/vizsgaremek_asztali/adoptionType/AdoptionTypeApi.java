@@ -24,7 +24,7 @@ public class AdoptionTypeApi {
     }
 
     public static boolean delete(int id) throws IOException {
-        return Api.delete(API_URL, id).getResponseCode() == 240;
+        return Api.delete(API_URL, id).getResponseCode() == 204;
     }
 
     public static AdoptionType put(AdoptionType modosit) throws IOException {
