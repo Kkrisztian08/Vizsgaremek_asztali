@@ -52,7 +52,9 @@ public class StatisticController extends Controller {
                 new PieChart.Data("Macska",macska)
         );
         kordiagram.setData(kordiagramData);
+        kordiagram.setLegendVisible(false);
         kordiagram.setStartAngle(90);
+
 
         XYChart.Series<String,Number> series=new XYChart.Series<>();
         series.setName("Adminok");

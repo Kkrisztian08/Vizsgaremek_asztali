@@ -1,10 +1,6 @@
-.default-color0.chart-bar{
-    fx-bar-fill:green;
-}
+.default-color0.chart-pie { -fx-pie-color: #469b4c; }
+.default-color1.chart-pie { -fx-pie-color: #3c6e57; }
 
-.default-color0.chart-pie{
-    fx-pie-color: #28a228;
-}
-.default-color1.chart-pie{
-    fx-pie-color: #046004;
-}
+.default-color0.chart-bar { -fx-bar-fill: #469b4c }
+.default-color1.chart-bar { -fx-bar-fill: #bbe06c }
+.default-color2.chart-bar { -fx-bar-fill: #7cb855 }
