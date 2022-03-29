@@ -37,4 +37,14 @@ public class CatApi {
         String countString = Api.get(BASE_URL + "/api/cat_count");
         return Integer.parseInt(countString);
     }
+
+    public static int getAdoptedCatCount() throws IOException {
+        String countString = Api.get(BASE_URL + "/api/adopted_cat_count");
+        return Integer.parseInt(countString);
+    }
+
+    public static int getNotAdoptedCatCount() throws IOException {
+        String countString = Api.get(BASE_URL + "/api/not_adopted_cat_count");
+        return Integer.parseInt(countString);
+    }
 }

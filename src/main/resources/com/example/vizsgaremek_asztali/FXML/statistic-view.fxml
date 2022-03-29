@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.BarChart?>
@@ -23,7 +24,7 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.StatisticController">
     <children>
-        <BorderPane maxHeight="1.7976931348623157E308" minHeight="530.0" minWidth="950.0" stylesheets="@../css/TablazatosOldalak.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane maxHeight="1.7976931348623157E308" minHeight="530.0" minWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <VBox maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0d9475;" BorderPane.alignment="CENTER">
                     <children>
@@ -32,7 +33,7 @@
                                 <Font name="Arial Narrow Italic" size="25.0" />
                             </font>
                         </Label>
-                        <MenuButton alignment="CENTER" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" popupSide="RIGHT" stylesheets="@../../css/TablazatosOldalak.css" text="Adattáblák" textFill="WHITE">
+                        <MenuButton alignment="CENTER" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" popupSide="RIGHT" text="Adattáblák" textFill="WHITE">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#onUsersClick" text="Felhasználók Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onKutyakClick" text="Kutyák Tábla" />
@@ -61,7 +62,7 @@
                                 <Insets />
                             </VBox.margin>
                         </MenuButton>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" onAction="#onUserDataClick" stylesheets="@../../css/TablazatosOldalak.css" text="Felhasználói adatok" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" onAction="#onUserDataClick" text="Felhasználói adatok" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -76,7 +77,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/TablazatosOldalak.css" text="Statisztikák" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" onAction="#onStatisticClick" text="Statisztikák" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -91,11 +92,11 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <TextArea fx:id="leirasKulTulTextArea" disable="true" editable="false" stylesheets="@../../css/TablazatosOldalak.css" wrapText="true" VBox.vgrow="ALWAYS">
+                        <TextArea fx:id="leirasKulTulTextArea" disable="true" editable="false" wrapText="true" VBox.vgrow="ALWAYS">
                             <font>
                                 <Font size="15.0" />
                             </font></TextArea>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="73.0" minWidth="200.0" mnemonicParsing="false" onAction="#onExit" stylesheets="@../../css/TablazatosOldalak.css" text="Kilépés" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="73.0" minWidth="200.0" mnemonicParsing="false" onAction="#onExit" text="Kilépés" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -132,8 +133,8 @@
                <center>
                   <GridPane BorderPane.alignment="CENTER">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.60003662109375" minWidth="10.0" prefWidth="406.800048828125" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.0" minWidth="10.0" prefWidth="393.199951171875" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -141,7 +142,7 @@
                     </rowConstraints>
                      <children>
                         <PieChart fx:id="kordiagram" title="Kutyák és Macskák aránya " />
-                        <BarChart fx:id="felhasznalokChart" stylesheets="@../css/Statisztika.css" title="Felhasználók" GridPane.columnIndex="1">
+                        <BarChart fx:id="felhasznalokChart" title="Jogosultsági eloszlás" GridPane.columnIndex="1">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -149,11 +150,26 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                         </BarChart>
+                        <BarChart fx:id="orokbefogadBarChart" title="Örökbefogadási eloszlás" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                           <GridPane.margin>
+                              <Insets left="180.0" right="180.0" />
+                           </GridPane.margin>
+                        </BarChart>
                      </children>
                   </GridPane>
                </center>
                 </BorderPane>
             </center>
+         <stylesheets>
+            <URL value="@../css/TablazatosOldalak.css" />
+            <URL value="@../css/Statisztika.css" />
+         </stylesheets>
         </BorderPane>
     </children>
 </AnchorPane>

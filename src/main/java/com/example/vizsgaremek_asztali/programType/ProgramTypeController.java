@@ -183,7 +183,7 @@ public class ProgramTypeController extends Controller {
     @FXML
     public void onMacskakClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/cats/cats-view.fxml", "Macskák Tábla",
+            Controller oldalvaltas = ujAblak("FXML/cats/cats-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
@@ -195,7 +195,7 @@ public class ProgramTypeController extends Controller {
     @FXML
     public void onKutyakClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/dogs/dogs-view.fxml", "Kutyák Tábla",
+            Controller oldalvaltas = ujAblak("FXML/dogs/dogs-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
@@ -208,7 +208,7 @@ public class ProgramTypeController extends Controller {
     @FXML
     public void onProgramApplicationClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/programApplications/programApplications-view.fxml", "Progma Jelentkezés Tábla",
+            Controller oldalvaltas = ujAblak("FXML/programApplications/programApplications-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
@@ -220,7 +220,7 @@ public class ProgramTypeController extends Controller {
     @FXML
     public void onEventClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/events/events-view.fxml", "Események Tábla",
+            Controller oldalvaltas = ujAblak("FXML/events/events-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
@@ -232,7 +232,7 @@ public class ProgramTypeController extends Controller {
     @FXML
     public void onProgramtypeClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/programTypes/programTypes-view.fxml", "Program Típus Tábla",
+            Controller oldalvaltas = ujAblak("FXML/programTypes/programTypes-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
@@ -244,7 +244,7 @@ public class ProgramTypeController extends Controller {
     @FXML
     public void onAdoptionTypeClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/adoptionTypes/adoptionTypes-view.fxml", "Örökbefogadási Típus Tábla",
+            Controller oldalvaltas = ujAblak("FXML/adoptionTypes/adoptionTypes-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
@@ -256,7 +256,7 @@ public class ProgramTypeController extends Controller {
     @FXML
     public void onProgramHourAndDayClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/programHourDays/programHourDays-view.fxml", "Program Óra és Idő Tábla",
+            Controller oldalvaltas = ujAblak("FXML/programHourDays/programHourDays-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
@@ -268,7 +268,7 @@ public class ProgramTypeController extends Controller {
     @FXML
     public void onAdoptionClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/adoptions/adoptions-view.fxml", "Örökbefogadás Tábla",
+            Controller oldalvaltas = ujAblak("FXML/adoptions/adoptions-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
@@ -280,7 +280,7 @@ public class ProgramTypeController extends Controller {
     @FXML
     public void onUsersClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/users/users-view.fxml", "Felhasználók Tábla",
+            Controller oldalvaltas = ujAblak("FXML/users/users-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
@@ -296,8 +296,31 @@ public class ProgramTypeController extends Controller {
             return;
         }
         try {
-            Controller oldalvaltas = ujAblak("FXML/login-view.fxml", "Bejelentkezés",
+            Controller oldalvaltas = ujAblak("FXML/login-view.fxml", "Élethang alapitvány",
                     400, 400);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+
+    @FXML
+    public void onUserDataClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/userdata/userdata-view.fxml", "Élethang alapitvány",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+    @FXML
+    public void onStatisticClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/statistic-view.fxml", "Élethang alapitvány",
+                    1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
         } catch (Exception e) {

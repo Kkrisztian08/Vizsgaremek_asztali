@@ -180,5 +180,28 @@ public class UserDataController extends Controller {
         }
     }
 
+    @FXML
+    public void onUserDataClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/userdata/userdata-view.fxml", "Élethang alapitvány",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+    @FXML
+    public void onStatisticClick(ActionEvent actionEvent) {
+        try {
+            Controller oldalvaltas = ujAblak("FXML/statistic-view.fxml", "Élethang alapitvány",
+                    1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+
 
 }

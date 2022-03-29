@@ -38,4 +38,14 @@ public class DogApi {
         return Integer.parseInt(countString);
     }
 
+    public static int getAdoptedDogCount() throws IOException {
+        String countString = Api.get(BASE_URL + "/api/adopted_dog_count");
+        return Integer.parseInt(countString);
+    }
+
+    public static int getNotAdoptedDogCount() throws IOException {
+        String countString = Api.get(BASE_URL + "/api/not_adopted_dog_count");
+        return Integer.parseInt(countString);
+    }
+
 }

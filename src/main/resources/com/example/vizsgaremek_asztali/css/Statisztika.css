@@ -1,2 +1,10 @@
-.deafult-color0-chart-bar{
+.default-color0.chart-bar{
+    fx-bar-fill:green;
+}
+
+.default-color0.chart-pie{
+    fx-pie-color: #28a228;
+}
+.default-color1.chart-pie{
+    fx-pie-color: #046004;
 }

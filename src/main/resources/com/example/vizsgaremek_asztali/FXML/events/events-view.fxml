@@ -61,7 +61,7 @@
                                 <Insets />
                             </VBox.margin>
                         </MenuButton>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/TablazatosOldalak.css" text="Felhasználói adatok" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" onAction="#onUserDataClick" stylesheets="@../../css/TablazatosOldalak.css" text="Felhasználói adatok" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -76,7 +76,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/TablazatosOldalak.css" text="Statisztikák" textFill="WHITE">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" onAction="#onStatisticClick" stylesheets="@../../css/TablazatosOldalak.css" text="Statisztikák" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
