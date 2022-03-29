@@ -33,4 +33,9 @@ public class DogApi {
         return jsonConverted.fromJson(json, Dog.class);
     }
 
+    public static int getDogCount() throws IOException {
+        String countString = Api.get(BASE_URL + "/api/dog_count");
+        return Integer.parseInt(countString);
+    }
+
 }

@@ -26,6 +26,24 @@ public abstract class Controller {
     protected void alert(String uzenet) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         setAlertIcon(alert);
+        alert.setTitle("Információ");
+        alert.setContentText(uzenet);
+        alert.getButtonTypes().add(ButtonType.OK);
+        alert.show();
+    }
+
+    protected void alertBejelentkezés(String uzenet) {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        setAlertIcon(alert);
+        alert.setTitle("Bejelentkezés hiba");
+        alert.setContentText(uzenet);
+        alert.getButtonTypes().add(ButtonType.OK);
+        alert.show();
+    }
+    protected void alertinput(String uzenet) {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        setAlertIcon(alert);
+        alert.setTitle("Hiba!");
         alert.setContentText(uzenet);
         alert.getButtonTypes().add(ButtonType.OK);
         alert.show();
@@ -34,9 +52,11 @@ public abstract class Controller {
     protected void alerthiba(String uzenet) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         setAlertIcon(alert);
+        alert.setTitle("Hiba!");
         alert.setContentText(uzenet);
         alert.show();
     }
+
 
     protected void alertWait(String uzenet) {
         Alert alert = new Alert(Alert.AlertType.NONE);
@@ -48,7 +68,7 @@ public abstract class Controller {
 
     protected boolean confirm(String uzenet){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Törlés megerősitése!");
+        alert.setTitle("Megerősités!");
         alert.setHeaderText(uzenet);
         setAlertIcon(alert);
         Optional<ButtonType> result = alert.showAndWait();

@@ -2,6 +2,8 @@ package com.example.vizsgaremek_asztali.userdata;
 
 import com.example.vizsgaremek_asztali.Controller;
 import com.example.vizsgaremek_asztali.ElethangApp;
+import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDay;
+import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDayModositController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,8 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class UserDataController extends Controller {
     @FXML
     private TextField keresesTextField;
-    @FXML
-    private TextArea leirasTextArea;
     @FXML
     private Label adminLabel;
     @FXML
@@ -42,6 +42,16 @@ public class UserDataController extends Controller {
 
     @FXML
     public void onModosit(ActionEvent actionEvent) {
+        /*ElethangApp.BEJELENTKEZETT modositando = pHDTable.getSelectionModel().getSelectedItem();
+        try {
+            UserDataModositController modositas = (UserDataModositController) ujAblak("FXML/userdata/modosit-view.fxml", "Adatok Módosítása",
+                    500, 350);
+            modositas.setModositando(modositando);
+            modositas.getStage().setOnHiding(event -> pHDTable.refresh());
+            modositas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }*/
 
     }
 

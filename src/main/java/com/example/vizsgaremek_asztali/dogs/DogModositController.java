@@ -61,8 +61,6 @@ public class DogModositController extends Controller {
         String leiras=leirasInput.getText().trim();
         int erdeklodes=0;
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
-        Integer orobefogadasIndex=orokbefogadasInput.getSelectionModel().getSelectedItem().getId();
-        Integer orobefogadasid=null;
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -126,17 +124,19 @@ public class DogModositController extends Controller {
             System.out.println(ex);
             //alert("Az kedvelés mértéke csak 1 és 10 közötti szám lehet");
             kedvelesInput.getStyleClass().add("error");
-            alertBuilder.append("Az kedvelés mértéke csak 1 és 10 közötti szám lehet").append(System.lineSeparator());
+            alertBuilder.append("Az érdeklődés mértéke csak 1 és 10 közötti szám lehet").append(System.lineSeparator());
             hiba=true;
         }
         if (erdeklodes < 1 || erdeklodes > 10) {
             //alert("Az kedvelés mértéke csak 1 és 10 közötti szám lehet");
             kedvelesInput.getStyleClass().add("error");
-            alertBuilder.append("Az kedvelés mértéke csak 1 és 10 közötti szám lehet").append(System.lineSeparator());
+            alertBuilder.append("Az érdeklődés mértéke csak 1 és 10 közötti szám lehet").append(System.lineSeparator());
             hiba=true;
         }
 
 
+        Integer orobefogadasIndex=orokbefogadasInput.getSelectionModel().getSelectedItem().getId();
+        Integer orobefogadasid=null;
 
         if (hiba) {
             alert(alertBuilder.toString());

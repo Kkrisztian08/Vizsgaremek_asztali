@@ -91,13 +91,13 @@ public class CatModositController extends Controller {
             System.out.println(ex);
             //alert("Az kedvelés mértéke csak 1 és 10 közötti szám lehet");
             kedvelesInput.getStyleClass().add("error");
-            alertBuilder.append("Az kedvelés mértéke csak 1 és 10 közötti szám lehet").append(System.lineSeparator());
+            alertBuilder.append("Az érdeklődés mértéke csak 1 és 10 közötti szám lehet").append(System.lineSeparator());
             hiba=true;
         }
         if (erdeklodes < 1 || erdeklodes > 10) {
             //alert("Az kedvelés mértéke csak 1 és 10 közötti szám lehet");
             kedvelesInput.getStyleClass().add("error");
-            alertBuilder.append("Az kedvelés mértéke csak 1 és 10 közötti szám lehet").append(System.lineSeparator());
+            alertBuilder.append("Az érdeklődés mértéke csak 1 és 10 közötti szám lehet").append(System.lineSeparator());
             hiba=true;
         }
 

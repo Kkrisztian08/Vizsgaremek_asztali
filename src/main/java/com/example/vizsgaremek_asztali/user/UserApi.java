@@ -35,4 +35,20 @@ public class UserApi {
         String json = Api.put(API_URL,modosit.getId(), modositandoJson);
         return jsonConverted.fromJson(json, User.class);
     }
+
+
+    public static int getUsersCount() throws IOException {
+        String countString = Api.get(BASE_URL + "/api/user_count");
+        return Integer.parseInt(countString);
+    }
+
+    public static int getAdminCount() throws IOException {
+        String countString = Api.get(BASE_URL + "/api/admin_count");
+        return Integer.parseInt(countString);
+    }
+
+    public static int getSuperAdminCount() throws IOException {
+        String countString = Api.get(BASE_URL + "/api/super_admin_count");
+        return Integer.parseInt(countString);
+    }
 }

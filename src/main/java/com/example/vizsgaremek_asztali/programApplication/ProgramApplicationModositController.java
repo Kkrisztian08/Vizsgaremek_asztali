@@ -28,10 +28,6 @@ public class ProgramApplicationModositController extends Controller {
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
 
-
-
-
-
         if (hiba) {
             alert(alertBuilder.toString());
             return;

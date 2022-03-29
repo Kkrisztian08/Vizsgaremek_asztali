@@ -32,4 +32,9 @@ public class CatApi {
         String json = Api.put(API_URL,modosit.getId(), modositandoJson);
         return jsonConverted.fromJson(json, Cat.class);
     }
+
+    public static int getCatCount() throws IOException {
+        String countString = Api.get(BASE_URL + "/api/cat_count");
+        return Integer.parseInt(countString);
+    }
 }

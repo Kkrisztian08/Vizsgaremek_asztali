@@ -95,11 +95,11 @@ public class DogHozzaadController extends Controller {
             erdeklodes =  kedvelesInput.getValue();
         } catch (Exception ex){
             System.out.println(ex);
-            alert("Az kedmelés mértéke csak 1 és 10 közötti szám lehet");
+            alert("Az érdeklődés mértéke csak 1 és 10 közötti szám lehet");
             return;
         }
         if (erdeklodes < 1 || erdeklodes > 10) {
-            alert("Az kedmelés mértéke csak 1 és 10 közötti szám lehet");
+            alert("Az érdeklődés mértéke csak 1 és 10 közötti szám lehet");
             return;
         }
 

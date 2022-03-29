@@ -1,18 +1,23 @@
-package com.example.vizsgaremek_asztali.user;
+package com.example.vizsgaremek_asztali.userdata;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.ElethangApp;
+import com.example.vizsgaremek_asztali.user.User;
+import com.example.vizsgaremek_asztali.user.UserApi;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserHozzaadController extends Controller {
+public class UserDataModositController extends Controller {
     @FXML
     private DatePicker szulidoInput;
     @FXML
@@ -22,14 +27,13 @@ public class UserHozzaadController extends Controller {
     @FXML
     private TextField nameInput;
     @FXML
-    private TextField passwordInput;
-    @FXML
     private TextField addressInput;
     @FXML
     private TextField emailInput;
+    private User modositando;
 
     @FXML
-    public void onHozzad(ActionEvent actionEvent) {
+    public void onModosit(ActionEvent actionEvent) {
         String nev=nameInput.getText().trim();
         String felhasznalonev=usernameInput.getText().trim();
         LocalDate szuldatum=szulidoInput.getValue();
@@ -37,8 +41,6 @@ public class UserHozzaadController extends Controller {
         String telefonszam=phoneInput.getText().trim();
         String lakcim=addressInput.getText().trim();
         String email=emailInput.getText().trim();
-        String jelszo=passwordInput.getText().trim();
-        Integer admin= 1;
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -66,8 +68,6 @@ public class UserHozzaadController extends Controller {
             alertBuilder.append("A dátum megadása kötelező").append(System.lineSeparator());
             hiba=true;
         }
-
-
 
         if (telefonszam.isEmpty()){
             //alert("A faj megadása kötelező");
@@ -103,33 +103,29 @@ public class UserHozzaadController extends Controller {
             hiba=true;
         }
 
-
-        if (jelszo.isEmpty()){
-            //alert("A leírás megadása kötelező");
-            passwordInput.getStyleClass().add("error");
-            alertBuilder.append("A jelszó megadása kötelező").append(System.lineSeparator());
-            hiba=true;
-        }else if(jelszo.length()<8){
-            passwordInput.getStyleClass().add("error");
-            alertBuilder.append("A jelszónak minimum 8 karakternek kell lennie").append(System.lineSeparator());
-            hiba=true;
-        }
-
         if (hiba) {
             alertinput(alertBuilder.toString());
             return;
         }
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        modositando.setName(nev);
+        modositando.setUsername(felhasznalonev);
+        modositando.setBirthday(formazottSzuldatum);
+        modositando.setPhone_number(formazottSzuldatum);
+        modositando.setAddress(lakcim);
+        modositando.setEmail(email);
+
         try {
-            User ujUser = new User(0,admin,nev,felhasznalonev,formazottSzuldatum,lakcim,telefonszam,email,jelszo);
-            User letrehozott = UserApi.post(ujUser);
-            if (letrehozott != null){
-                alert("Sikeres hozzáadás");
+            User modositott = UserApi.put(modositando);
+            if (modositott != null) {
+                alertWait("Sikeres módosítás");
+                this.stage.close();
             } else {
-                alert("Sikeretelen hozzáadás");
+                alert("Sikertelen módosítás");
             }
-        } catch (Exception e) {
-            hibaKiir(e);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -139,10 +135,28 @@ public class UserHozzaadController extends Controller {
         control.getStyleClass().remove("error");
     }
 
-
     @FXML
     public void hibakMegszuntet(ActionEvent actionEvent) {
         Control control = (Control) actionEvent.getSource();
         control.getStyleClass().remove("error");
+    }
+
+    public User getModositando() {
+        return modositando;
+    }
+
+    public void setModositando(User modositando) {
+        this.modositando = modositando;
+        ertekekBeallitasa();
+    }
+
+    private void ertekekBeallitasa() {
+        nameInput.setText(ElethangApp.BEJELENTKEZETT.getName());
+        usernameInput.setText(ElethangApp.BEJELENTKEZETT.getUsername());
+        emailInput.setText(ElethangApp.BEJELENTKEZETT.getEmail());
+        phoneInput.setText(ElethangApp.BEJELENTKEZETT.getPhone_number());
+        addressInput.setText(ElethangApp.BEJELENTKEZETT.getAddress());
+        LocalDate datum=LocalDate.parse(ElethangApp.BEJELENTKEZETT.getBirthday());
+        szulidoInput.setValue(datum);
     }
 }

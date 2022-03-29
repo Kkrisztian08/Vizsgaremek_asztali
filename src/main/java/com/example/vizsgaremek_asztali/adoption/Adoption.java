@@ -61,8 +61,6 @@ public class Adoption {
         return tipus;
     }
 
-
-
     @Override
     public String toString() {
         return String.format("%s, %s",this.getUserId(),this.getBegin());
