@@ -26,7 +26,7 @@ public abstract class Controller {
     protected void alert(String uzenet) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         setAlertIcon(alert);
-        alert.setTitle("Információ");
+        alert.setTitle("Figyelem!");
         alert.setContentText(uzenet);
         alert.getButtonTypes().add(ButtonType.OK);
         alert.show();

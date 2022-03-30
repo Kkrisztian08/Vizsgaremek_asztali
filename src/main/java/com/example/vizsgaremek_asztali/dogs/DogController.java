@@ -149,7 +149,7 @@ public class DogController extends Controller {
         }
         try {
             boolean sikeres= DogApi.delete(torlendoKutya.getId());
-            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
             kutyakLista.clear();
             kutyakListaFeltolt();
         } catch (IOException e) {

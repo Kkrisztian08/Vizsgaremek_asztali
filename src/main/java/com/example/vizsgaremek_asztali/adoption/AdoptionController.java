@@ -126,7 +126,7 @@ public class AdoptionController extends Controller {
         }
         try {
             boolean sikeres= AdoptionApi.delete(torlendoAdoption.getId());
-            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
             adoptionsLista.clear();
             adoptionsListaFeltolt();
         } catch (IOException e) {

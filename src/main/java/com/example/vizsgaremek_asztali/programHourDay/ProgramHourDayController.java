@@ -128,7 +128,7 @@ public class ProgramHourDayController extends Controller {
         }
         try {
             boolean sikeres= ProgramHourDayApi.delete(torlendoEvent.getId());
-            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
             pHDLista.clear();
             pHDListaFeltolt();
         } catch (IOException e) {

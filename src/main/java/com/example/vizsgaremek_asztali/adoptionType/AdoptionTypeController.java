@@ -119,7 +119,7 @@ public class AdoptionTypeController extends Controller {
         }
         try {
             boolean sikeres= AdoptionTypeApi.delete(torlendoAdoptionType.getId());
-            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
             typeLista.clear();
             typeListaFeltolt();
         } catch (IOException e) {

@@ -137,7 +137,7 @@ public class UserController extends Controller {
         }else {
             try {
                 boolean sikeres= UserApi.delete(torlendoUser.getId());
-                alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+                alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
                 userLista.clear();
                 userListaFeltolt();
             } catch (IOException e) {

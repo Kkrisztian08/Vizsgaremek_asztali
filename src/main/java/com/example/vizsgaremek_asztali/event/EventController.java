@@ -131,7 +131,7 @@ public class EventController extends Controller {
         }
         try {
             boolean sikeres= EventApi.delete(torlendoEvent.getId());
-            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
             eventsLista.clear();
             eventsListaFeltolt();
         } catch (IOException e) {

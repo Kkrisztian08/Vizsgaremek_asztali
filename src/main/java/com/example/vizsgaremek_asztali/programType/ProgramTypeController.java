@@ -119,7 +119,7 @@ public class ProgramTypeController extends Controller {
         }
         try {
             boolean sikeres= ProgramTypeApi.delete(torlendoEvent.getId());
-            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
             pTypeLista.clear();
             pTypeListaFeltolt();
         } catch (IOException e) {

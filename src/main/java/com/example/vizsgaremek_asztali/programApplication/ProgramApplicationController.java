@@ -140,7 +140,7 @@ public class ProgramApplicationController extends Controller {
         }
         try {
             boolean sikeres = ProgramApplicationApi.delete(torlendoEvent.getId());
-            alert(sikeres ? "Sikertelen törlés" : "Sikeres törlés");
+            alert(sikeres ? "Sikeres törlés": "Sikertelen törlés");
             pALista.clear();
             pAListaFeltolt();
         } catch (IOException e) {

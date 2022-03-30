@@ -148,7 +148,7 @@ public class CatController extends Controller {
         }
         try {
             boolean sikeres= CatApi.delete(torlendoMacska.getId());
-            alert(sikeres? "Sikertelen törlés": "Sikeres törlés");
+            alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
             macskakLista.clear();
             macskakListaFeltolt();
         } catch (IOException e) {
