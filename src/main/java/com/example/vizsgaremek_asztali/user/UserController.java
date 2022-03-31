@@ -85,17 +85,22 @@ public class UserController extends Controller {
                     return true;
                 }
                 String kereses = newValue.toLowerCase();
-                if (users.getName().toLowerCase().indexOf(kereses) > -1) {
+                if (users.getName().toLowerCase().contains(kereses)) {
                     return true;
-                }else if (users.getAddress().toLowerCase().indexOf(kereses) > -1) {
+                }
+                else if (users.getAddress().toLowerCase().contains(kereses)) {
                     return true;
-                }else if (users.getPhone_number().toLowerCase().indexOf(kereses) > -1) {
+                }
+                else if (users.getPhone_number().toLowerCase().contains(kereses)) {
                     return true;
-                }else if (users.getBirthday().toLowerCase().indexOf(kereses) > -1) {
+                }
+                else if (users.getBirthday().toLowerCase().contains(kereses)) {
                     return true;
-                }else if (users.getEmail().toLowerCase().indexOf(kereses) > -1) {
+                }
+                else if (users.getEmail().toLowerCase().contains(kereses)) {
                     return true;
-                }else if (users.getFormazottAdmin().toLowerCase().indexOf(kereses) > -1) {
+                }
+                else if (users.getFormazottAdmin().toLowerCase().contains(kereses)) {
                     return true;
                 }
                 else {

@@ -67,9 +67,9 @@ public class AdoptionController extends Controller {
                     return true;
                 }
                 String kereses = newValue.toLowerCase();
-                if (adoptions.getBegin().toLowerCase().indexOf(kereses) > -1) {
+                if (adoptions.getBegin().toLowerCase().contains(kereses)) {
                     return true;
-                }else if (adoptions.getFormazottType().toLowerCase().indexOf(kereses) > -1) {
+                }else if (adoptions.getFormazottType().toLowerCase().contains(kereses)) {
                     return true;
                 }
                 else {

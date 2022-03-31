@@ -81,16 +81,16 @@ public class CatController extends Controller {
                     return true;
                 }
                 String kereses = newValue.toLowerCase();
-                if (cat.getName().toLowerCase().indexOf(kereses) > -1) {
+                if (cat.getName().toLowerCase().contains(kereses)) {
                     return true;
                 }
-                else if(cat.getGender().toLowerCase().indexOf(kereses) > -1){
+                else if(cat.getGender().toLowerCase().contains(kereses)){
                     return true;
                 }
-                else if(cat.getLikely_bday().toLowerCase().indexOf(kereses) > -1){
+                else if(cat.getLikely_bday().toLowerCase().contains(kereses)){
                     return true;
                 }
-                else if(cat.getExternal_property().toLowerCase().indexOf(kereses) > -1){
+                else if(cat.getExternal_property().toLowerCase().contains(kereses)){
                     return true;
                 }
                 else {

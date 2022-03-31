@@ -82,19 +82,19 @@ public class DogController extends Controller {
                     return true;
                 }
                 String kereses = newValue.toLowerCase();
-                if (dog.getName().toLowerCase().indexOf(kereses) > -1) {
+                if (dog.getName().toLowerCase().contains(kereses)) {
                     return true;
                 }
-                else if(dog.getGender().toLowerCase().indexOf(kereses) > -1){
+                else if(dog.getGender().toLowerCase().contains(kereses)){
                     return true;
                 }
-                else if(dog.getSpecies().toLowerCase().indexOf(kereses) > -1){
+                else if(dog.getSpecies().toLowerCase().contains(kereses)){
                     return true;
                 }
-                else if(dog.getLikely_bday().toLowerCase().indexOf(kereses) > -1){
+                else if(dog.getLikely_bday().toLowerCase().contains(kereses)){
                     return true;
                 }
-                else if(dog.getExternal_property().toLowerCase().indexOf(kereses) > -1){
+                else if(dog.getExternal_property().toLowerCase().contains(kereses)){
                     return true;
                 }
                 else {

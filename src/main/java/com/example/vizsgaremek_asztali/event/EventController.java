@@ -68,13 +68,13 @@ public class EventController extends Controller {
                     return true;
                 }
                 String kereses = newValue.toLowerCase();
-                if (events.getElnevezes().toLowerCase().indexOf(kereses) > -1) {
+                if (events.getElnevezes().toLowerCase().contains(kereses)) {
                     return true;
                 }
-                else if(events.getLeiras().toLowerCase().indexOf(kereses) > -1){
+                else if(events.getLeiras().toLowerCase().contains(kereses)){
                     return true;
                 }
-                else if(events.getDatum().toLowerCase().indexOf(kereses) > -1){
+                else if(events.getDatum().toLowerCase().contains(kereses)){
                     return true;
                 }
                 else {

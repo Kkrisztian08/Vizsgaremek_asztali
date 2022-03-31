@@ -72,12 +72,13 @@ public class ProgramInfoController extends Controller {
                     return true;
                 }
                 String kereses = newValue.toLowerCase();
-                if (programInfo.getIdo().toLowerCase().indexOf(kereses) > -1) {
+                if (programInfo.getIdo().toLowerCase().contains(kereses)) {
                     return true;
                 }
-                else if (programInfo.getValasztottDatum().toLowerCase().indexOf(kereses) > -1) {
+                else if (programInfo.getValasztottDatum().toLowerCase().contains(kereses)) {
                     return true;
-                }else if (programInfo.getType().toLowerCase().indexOf(kereses) > -1) {
+                }
+                else if (programInfo.getType().toLowerCase().contains(kereses)) {
                     return true;
                 }
                 else {
