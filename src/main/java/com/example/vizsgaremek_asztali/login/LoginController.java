@@ -22,24 +22,24 @@ public class LoginController extends Controller {
 
     @FXML
     public void onBejelentkezes(ActionEvent actionEvent) {
-        String felhasznalo=felhasznaloInput.getText().trim();
-        String jelszo=jelszoInput.getText().trim();
+        String felhasznalo = felhasznaloInput.getText().trim();
+        String jelszo = jelszoInput.getText().trim();
 
-        boolean hiba =false;
-        StringBuilder alertBuilder=new StringBuilder();
+        boolean hiba = false;
+        StringBuilder alertBuilder = new StringBuilder();
 
 
-        if (felhasznalo.isEmpty()){
+        if (felhasznalo.isEmpty()) {
             //alert("A név megadása kötelező");
             felhasznaloInput.getStyleClass().add("error");
             alertBuilder.append("A felhasználonév megadása kötelező").append(System.lineSeparator());
-            hiba=true;
+            hiba = true;
         }
-        if (jelszo.isEmpty()){
+        if (jelszo.isEmpty()) {
             //alert("A név megadása kötelező");
             jelszoInput.getStyleClass().add("error");
             alertBuilder.append("A jelszó megadása kötelező").append(System.lineSeparator());
-            hiba=true;
+            hiba = true;
         }
 
         if (hiba) {
@@ -47,14 +47,12 @@ public class LoginController extends Controller {
             return;
         }
 
-
         Login login = new Login(felhasznalo, jelszo);
-        Platform.runLater(()->{
             try {
                 Token token = LoginApi.postLogin(login);
                 User felhAdatai = LoginApi.getLoginData(token.getToken());
                 ElethangApp.BEJELENTKEZETT = felhAdatai;
-                if (felhAdatai.getAdmin()>=1) {
+                if (felhAdatai.getAdmin() >= 1) {
                     Controller oldalvaltas = ujAblak("FXML/users/users-view.fxml", "Élethang alapitvány",
                             1100, 600);
                     oldalvaltas.getStage().show();
@@ -66,7 +64,6 @@ public class LoginController extends Controller {
                 //hibaKiir(e);
                 alertBejelentkezés("Nem megfelelő felhasználónév vagy jelszó!");
             }
-        });
     }
 
     @FXML

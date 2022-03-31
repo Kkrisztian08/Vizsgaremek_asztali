@@ -21,6 +21,7 @@ public class ProgramInfoHozzaadController extends Controller {
     private Spinner<Integer> oraInput;
     @FXML
     private TextField tipusInput;
+    private Runnable runnableAfterHozzaadas;
 
 
     @FXML
@@ -30,7 +31,8 @@ public class ProgramInfoHozzaadController extends Controller {
         String formazottdatum;
         int ora=0;
         int perc=0;
-        String idopont="";
+
+
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -69,25 +71,15 @@ public class ProgramInfoHozzaadController extends Controller {
         }
 
         formazottdatum=datum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-        if (ora<10 && perc == 0) {
-            String formazottora="0"+Integer.toString(ora);
-            String formazottperc=Integer.toString(perc)+"0";
-            idopont = formazottora + ":" +formazottperc;
-        } else if (perc == 0) {
-            String formazottperc=Integer.toString(perc)+"0";
-            idopont = Integer.toString(ora) + ":" + formazottperc;
-        } else if (ora<10) {
-            String formazottora="0"+Integer.toString(ora);
-            idopont = formazottora + ":" +Integer.toString(perc);
-        } else {
-            idopont = Integer.toString(ora) + ":" + Integer.toString(perc);
-        }
+        String idopont=String.format("%02d:%02d",ora,perc);
 
         try {
             ProgramInfo ujPInfo = new ProgramInfo(0,tipus,formazottdatum,idopont);
             ProgramInfo letrehozott = ProgramInfoApi.post(ujPInfo);
             if (letrehozott != null){
+                if (runnableAfterHozzaadas!=null){
+                    runnableAfterHozzaadas.run();
+                }
                 alert("Sikeres hozzáadás");
             } else {
                 alert("Sikeretelen hozzáadás");
@@ -95,6 +87,10 @@ public class ProgramInfoHozzaadController extends Controller {
         } catch (Exception e) {
             hibaKiir(e);
         }
+    }
+
+    public void setRunnableAfterHozzaadas(Runnable runnableAfterHozzaadas) {
+        this.runnableAfterHozzaadas = runnableAfterHozzaadas;
     }
 
     @FXML

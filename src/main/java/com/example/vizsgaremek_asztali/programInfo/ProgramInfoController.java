@@ -28,15 +28,15 @@ public class ProgramInfoController extends Controller {
     @FXML
     private TextField keresesTextField;
     @FXML
-    private TableColumn<ProgramInfo,Integer> idCol;
+    private TableColumn<ProgramInfo, Integer> idCol;
     @FXML
     private TableView<ProgramInfo> pHDTable;
     @FXML
-    private TableColumn<ProgramInfo,String> vDatumCol;
+    private TableColumn<ProgramInfo, String> vDatumCol;
     @FXML
-    private TableColumn<ProgramInfo,String> idoCol;
+    private TableColumn<ProgramInfo, String> idoCol;
     @FXML
-    private TableColumn<ProgramInfo,String> typeCol;
+    private TableColumn<ProgramInfo, String> typeCol;
     @FXML
     private Button pHDTorol;
     @FXML
@@ -44,7 +44,7 @@ public class ProgramInfoController extends Controller {
     private ObservableList<ProgramInfo> pHDLista = FXCollections.observableArrayList();
 
 
-    public void initialize(){
+    public void initialize() {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         vDatumCol.setCellValueFactory(new PropertyValueFactory<>("valasztottDatum"));
@@ -53,7 +53,7 @@ public class ProgramInfoController extends Controller {
         kereses();
     }
 
-    public  void pHDListaFeltolt() {
+    public void pHDListaFeltolt() {
         pHDTorol.setDisable(true);
         pHDModosit.setDisable(true);
         try {
@@ -64,9 +64,9 @@ public class ProgramInfoController extends Controller {
         }
     }
 
-    private void kereses(){
+    private void kereses() {
         FilteredList<ProgramInfo> filteredList = new FilteredList<>(pHDLista, b -> true);
-        keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
+        keresesTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredList.setPredicate(programInfo -> {
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
                     return true;
@@ -74,14 +74,11 @@ public class ProgramInfoController extends Controller {
                 String kereses = newValue.toLowerCase();
                 if (programInfo.getIdo().toLowerCase().contains(kereses)) {
                     return true;
-                }
-                else if (programInfo.getValasztottDatum().toLowerCase().contains(kereses)) {
+                } else if (programInfo.getValasztottDatum().toLowerCase().contains(kereses)) {
                     return true;
-                }
-                else if (programInfo.getType().toLowerCase().contains(kereses)) {
+                } else if (programInfo.getType().toLowerCase().contains(kereses)) {
                     return true;
-                }
-                else {
+                } else {
                     return false;
                 }
             });
@@ -94,9 +91,9 @@ public class ProgramInfoController extends Controller {
     @FXML
     public void onHozzaadPHD(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/programInfo/hozzaad-view.fxml", "Program Infó hozzáadása",
+            ProgramInfoHozzaadController hozzadas = (ProgramInfoHozzaadController) ujAblak("FXML/programInfo/hozzaad-view.fxml", "Program Infó hozzáadása",
                     500, 350);
-            hozzadas.getStage().setOnCloseRequest(event -> pHDListaFeltolt());
+            hozzadas.setRunnableAfterHozzaadas(this::pHDListaFeltolt);
             hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);
@@ -106,7 +103,7 @@ public class ProgramInfoController extends Controller {
     @FXML
     public void onModositPHD(ActionEvent actionEvent) {
         int selectedIndex = pHDTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex == -1){
+        if (selectedIndex == -1) {
             alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
             return;
         }
@@ -125,17 +122,17 @@ public class ProgramInfoController extends Controller {
     @FXML
     public void onPHDTorol(ActionEvent actionEvent) {
         int selectedIndex = pHDTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex == -1){
+        if (selectedIndex == -1) {
             alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
             return;
         }
         ProgramInfo torlendoInfo = pHDTable.getSelectionModel().getSelectedItem();
-        if (!confirm("Valóban törölni szeretné a következő programot: "+torlendoInfo.getType()+", "+torlendoInfo.getValasztottDatum()+", "+torlendoInfo.getIdo() + " ?")){
+        if (!confirm("Valóban törölni szeretné a következő programot: " + torlendoInfo.getType() + ", " + torlendoInfo.getValasztottDatum() + ", " + torlendoInfo.getIdo() + " ?")) {
             return;
         }
         try {
-            boolean sikeres= ProgramInfoApi.delete(torlendoInfo.getId());
-            alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
+            boolean sikeres = ProgramInfoApi.delete(torlendoInfo.getId());
+            alert(sikeres ? "Sikeres törlés" : "Sikertelen törlés");
             pHDLista.clear();
             pHDListaFeltolt();
         } catch (IOException e) {
@@ -149,7 +146,7 @@ public class ProgramInfoController extends Controller {
         choose.setTitle("Exportálás");
         choose.getExtensionFilters().add(new FileChooser.ExtensionFilter("MS Excel", "*.xlsx"));
         File file = choose.showSaveDialog(stage);
-        if(!file.getName().endsWith(".xlsx")) {
+        if (!file.getName().endsWith(".xlsx")) {
             file = new File(file.getAbsolutePath() + ".xlsx");
         }
 
@@ -166,15 +163,14 @@ public class ProgramInfoController extends Controller {
             for (int i = 0; i < pHDTable.getItems().size(); i++) {
                 row = spreadsheet.createRow(i + 1);
                 for (int j = 0; j < pHDTable.getColumns().size(); j++) {
-                    if(pHDTable.getColumns().get(j).getCellData(i) != null) {
+                    if (pHDTable.getColumns().get(j).getCellData(i) != null) {
                         row.createCell(j).setCellValue(pHDTable.getColumns().get(j).getCellData(i).toString());
-                    }
-                    else {
+                    } else {
                         row.createCell(j).setCellValue("");
                     }
                 }
             }
-            try (FileOutputStream fileOut = new FileOutputStream(file)){
+            try (FileOutputStream fileOut = new FileOutputStream(file)) {
                 workbook.write(fileOut);
                 alert("Sikeres exportálás");
             } catch (FileNotFoundException e) {
@@ -284,7 +280,7 @@ public class ProgramInfoController extends Controller {
     @FXML
     public void onExit(ActionEvent actionEvent) {
 
-        if (!confirm("Biztos szeretne kijelentkezni?")){
+        if (!confirm("Biztos szeretne kijelentkezni?")) {
             return;
         }
         try {
@@ -308,6 +304,7 @@ public class ProgramInfoController extends Controller {
             hibaKiir(e);
         }
     }
+
     @FXML
     public void onStatisticClick(ActionEvent actionEvent) {
         try {

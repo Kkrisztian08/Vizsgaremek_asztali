@@ -3,6 +3,7 @@ package com.example.vizsgaremek_asztali;
 import com.example.vizsgaremek_asztali.cats.CatApi;
 import com.example.vizsgaremek_asztali.dogs.DogApi;
 import com.example.vizsgaremek_asztali.user.UserApi;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,54 +35,58 @@ public class StatisticController extends Controller {
     private int notAdoptedCat;
 
     public void initialize() {
+        statisztikaMegjelenit();
+    }
+
+    private void statisztikaMegjelenit() {
         try {
-            kutya= DogApi.getDogCount();
-            macska= CatApi.getCatCount();
-            user= UserApi.getUsersCount();
-            admin= UserApi.getAdminCount();
-            superAdmin= UserApi.getSuperAdminCount();
-            adoptedDog=DogApi.getAdoptedDogCount();
-            notAdoptedDog=DogApi.getNotAdoptedDogCount();
-            adoptedCat=CatApi.getAdoptedCatCount();
-            notAdoptedCat=CatApi.getNotAdoptedCatCount();
+            kutya = DogApi.getDogCount();
+            macska = CatApi.getCatCount();
+            user = UserApi.getUsersCount();
+            admin = UserApi.getAdminCount();
+            superAdmin = UserApi.getSuperAdminCount();
+            adoptedDog = DogApi.getAdoptedDogCount();
+            notAdoptedDog = DogApi.getNotAdoptedDogCount();
+            adoptedCat = CatApi.getAdoptedCatCount();
+            notAdoptedCat = CatApi.getNotAdoptedCatCount();
         } catch (IOException e) {
-           hibaKiir(e);
+            hibaKiir(e);
         }
-        ObservableList<PieChart.Data> kordiagramData= FXCollections.observableArrayList(
-                new PieChart.Data("Kutya",kutya),
-                new PieChart.Data("Macska",macska)
+        ObservableList<PieChart.Data> kordiagramData = FXCollections.observableArrayList(
+                new PieChart.Data("Kutya", kutya),
+                new PieChart.Data("Macska", macska)
         );
         kordiagram.setData(kordiagramData);
         kordiagram.setLegendVisible(false);
         kordiagram.setStartAngle(90);
 
 
-        XYChart.Series<String,Number> series=new XYChart.Series<>();
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Adminok");
         series.getData().add(new XYChart.Data<>("", admin));
         felhasznalokChart.getData().add(series);
 
 
-        XYChart.Series<String,Number> series2=new XYChart.Series<>();
+        XYChart.Series<String, Number> series2 = new XYChart.Series<>();
         series2.setName("Felhasználók");
         series2.getData().add(new XYChart.Data<>("", user));
         felhasznalokChart.getData().add(series2);
 
 
-        XYChart.Series<String,Number> series3=new XYChart.Series<>();
+        XYChart.Series<String, Number> series3 = new XYChart.Series<>();
         series3.setName("Super Adminok");
         series3.getData().add(new XYChart.Data<>("", superAdmin));
         felhasznalokChart.getData().add(series3);
 
 
-        XYChart.Series<String,Number> series4=new XYChart.Series<>();
+        XYChart.Series<String, Number> series4 = new XYChart.Series<>();
         series4.setName("Örökbefogadottak");
         series4.getData().add(new XYChart.Data<>("Kutya", adoptedDog));
         series4.getData().add(new XYChart.Data<>("Macska", adoptedCat));
         orokbefogadBarChart.getData().add(series4);
 
 
-        XYChart.Series<String,Number> series5=new XYChart.Series<>();
+        XYChart.Series<String, Number> series5 = new XYChart.Series<>();
         series5.setName("Menhelyi gondozás alattiak");
         series5.getData().add(new XYChart.Data<>("Kutya", notAdoptedDog));
         series5.getData().add(new XYChart.Data<>("Macska", notAdoptedCat));
@@ -188,7 +193,7 @@ public class StatisticController extends Controller {
     @FXML
     public void onExit(ActionEvent actionEvent) {
 
-        if (!confirm("Biztos szeretne kijelentkezni?")){
+        if (!confirm("Biztos szeretne kijelentkezni?")) {
             return;
         }
         try {
@@ -212,6 +217,7 @@ public class StatisticController extends Controller {
             hibaKiir(e);
         }
     }
+
     @FXML
     public void onStatisticClick(ActionEvent actionEvent) {
         try {

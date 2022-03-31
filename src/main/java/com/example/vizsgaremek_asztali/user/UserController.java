@@ -2,6 +2,7 @@ package com.example.vizsgaremek_asztali.user;
 
 import com.example.vizsgaremek_asztali.Controller;
 import com.example.vizsgaremek_asztali.dogs.DogApi;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -63,8 +64,11 @@ public class UserController extends Controller {
         telefonCol.setCellValueFactory(new PropertyValueFactory<>("phone_number"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         jelszoCol.setCellValueFactory(new PropertyValueFactory<>("password"));
-        userListaFeltolt();
-        kereses();
+        Platform.runLater(()->{
+            userListaFeltolt();
+            kereses();
+        });
+
     }
 
     public void userListaFeltolt() {

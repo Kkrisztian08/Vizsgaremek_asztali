@@ -52,6 +52,9 @@
             </font>
         </Label>
       <Spinner fx:id="orainput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3">
+          <valueFactory>
+              <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="12" max="17" min="5" />
+          </valueFactory>
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin>
@@ -62,6 +65,9 @@
          </font>
       </Label>
       <Spinner fx:id="percinput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="4">
+          <valueFactory>
+              <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="5" initialValue="0" max="55" min="0" />
+          </valueFactory>
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin>

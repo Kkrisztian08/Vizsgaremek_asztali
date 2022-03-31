@@ -30,7 +30,10 @@ public class UserDataModositController extends Controller {
     private TextField addressInput;
     @FXML
     private TextField emailInput;
-    private User modositando;
+
+    public void initialize() {
+        ertekekBeallitasa();
+    }
 
     @FXML
     public void onModosit(ActionEvent actionEvent) {
@@ -59,8 +62,6 @@ public class UserDataModositController extends Controller {
             alertBuilder.append("A felhasználónév megadása kötelező").append(System.lineSeparator());
             hiba=true;
         }
-
-
 
         if (szuldatum==null){
             //alert("A dátum megadása kötelező");
@@ -109,16 +110,33 @@ public class UserDataModositController extends Controller {
         }
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
+        User modositando=new User(ElethangApp.BEJELENTKEZETT.getId(),ElethangApp.BEJELENTKEZETT.getAdmin(),
+                ElethangApp.BEJELENTKEZETT.getName(),ElethangApp.BEJELENTKEZETT.getUsername(),
+                ElethangApp.BEJELENTKEZETT.getBirthday(), ElethangApp.BEJELENTKEZETT.getAddress(),
+                ElethangApp.BEJELENTKEZETT.getPhone_number(),ElethangApp.BEJELENTKEZETT.getEmail(),
+                ElethangApp.BEJELENTKEZETT.getPassword());
+        modositando.getId();
         modositando.setName(nev);
         modositando.setUsername(felhasznalonev);
         modositando.setBirthday(formazottSzuldatum);
-        modositando.setPhone_number(formazottSzuldatum);
+        modositando.setPhone_number(telefonszam);
         modositando.setAddress(lakcim);
         modositando.setEmail(email);
+        modositando.getPassword();
 
         try {
             User modositott = UserApi.put(modositando);
             if (modositott != null) {
+                ElethangApp.BEJELENTKEZETT.getId();
+                ElethangApp.BEJELENTKEZETT.setAdmin(modositott.getAdmin());
+                ElethangApp.BEJELENTKEZETT.setPassword(modositott.getPassword());
+                ElethangApp.BEJELENTKEZETT.setName(modositott.getName());
+                ElethangApp.BEJELENTKEZETT.setUsername(modositott.getUsername());
+                ElethangApp.BEJELENTKEZETT.setBirthday(modositott.getBirthday());
+                ElethangApp.BEJELENTKEZETT.setPhone_number(modositott.getPhone_number());
+                ElethangApp.BEJELENTKEZETT.setAddress(modositott.getAddress());
+                ElethangApp.BEJELENTKEZETT.setEmail(modositott.getEmail());
+                //TODO: az apinál elakad, javitani kell!
                 alertWait("Sikeres módosítás");
                 this.stage.close();
             } else {
@@ -139,15 +157,6 @@ public class UserDataModositController extends Controller {
     public void hibakMegszuntet(ActionEvent actionEvent) {
         Control control = (Control) actionEvent.getSource();
         control.getStyleClass().remove("error");
-    }
-
-    public User getModositando() {
-        return modositando;
-    }
-
-    public void setModositando(User modositando) {
-        this.modositando = modositando;
-        ertekekBeallitasa();
     }
 
     private void ertekekBeallitasa() {

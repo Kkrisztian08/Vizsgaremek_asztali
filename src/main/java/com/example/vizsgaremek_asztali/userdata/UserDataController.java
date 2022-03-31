@@ -38,16 +38,14 @@ public class UserDataController extends Controller {
 
     @FXML
     public void onModosit(ActionEvent actionEvent) {
-        /*ElethangApp.BEJELENTKEZETT modositando = pHDTable.getSelectionModel().getSelectedItem();
         try {
             UserDataModositController modositas = (UserDataModositController) ujAblak("FXML/userdata/modosit-view.fxml", "Adatok Módosítása",
-                    500, 350);
-            modositas.setModositando(modositando);
-            modositas.getStage().setOnHiding(event -> pHDTable.refresh());
+                    600, 350);
+            modositas.getStage().setOnHiding(event -> this.initialize());
             modositas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);
-        }*/
+        }
 
     }
 
