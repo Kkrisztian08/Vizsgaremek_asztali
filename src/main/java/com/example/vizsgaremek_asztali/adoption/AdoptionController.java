@@ -147,7 +147,7 @@ public class AdoptionController extends Controller {
 
         if (file.exists() == false) {
             Workbook workbook = new XSSFWorkbook();
-            Sheet spreadsheet = workbook.createSheet("kutyák tábla");
+            Sheet spreadsheet = workbook.createSheet("örökbefogadás tábla");
 
             Row row = spreadsheet.createRow(0);
 
