@@ -263,9 +263,9 @@ public class CatController extends Controller {
     }
 
     @FXML
-    public void onProgramtypeClick(ActionEvent actionEvent) {
+    public void onAdoptionTypeClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/programTypes/programTypes-view.fxml", "Élethang alapitvány",
+            Controller oldalvaltas = ujAblak("FXML/adoptionTypes/adoptionTypes-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();

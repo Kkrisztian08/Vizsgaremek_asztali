@@ -31,9 +31,9 @@
                                 <MenuItem mnemonicParsing="false" onAction="#onKutyakClick" text="Kutyák Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onMacskakClick" text="Macskák Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onAdoptionClick" text="Öröbefogadás Tábla" />
+                                <MenuItem mnemonicParsing="false" onAction="#onAdoptionTypeClick" text="Öröbefogadási Típus Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onEventClick" text="Rendezvény Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onProgramApplicationClick" text="Programjelentkezés Tábla" />
-                                <MenuItem mnemonicParsing="false" onAction="#onProgramtypeClick" text="Program Típus Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onProgramInfoClick" text="Program Infó Tábla" />
                             </items>
                             <graphic>
