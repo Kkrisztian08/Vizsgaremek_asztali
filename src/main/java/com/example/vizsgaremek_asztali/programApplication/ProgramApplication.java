@@ -4,30 +4,27 @@ import com.google.gson.annotations.SerializedName;
 
 public class ProgramApplication {
     private int id;
-    @SerializedName("program_hour_and_day_id")
-    private int programHDid;
+    @SerializedName("program_info_id")
+    private int programInfo;
     @SerializedName("user_id")
     private int userid;
-    @SerializedName("program_type_id")
-    private int programTypeid;
 
-    public ProgramApplication(int id, int programHDid, int userid, int programTypeid) {
+    public ProgramApplication(int id, int programInfo, int userid) {
         this.id = id;
-        this.programHDid = programHDid;
+        this.programInfo = programInfo;
         this.userid = userid;
-        this.programTypeid = programTypeid;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getProgramHDid() {
-        return programHDid;
+    public int getProgramInfo() {
+        return programInfo;
     }
 
-    public void setProgramHDid(int programHDid) {
-        this.programHDid = programHDid;
+    public void setProgramInfo(int programInfo) {
+        this.programInfo = programInfo;
     }
 
     public int getUserid() {
@@ -36,13 +33,5 @@ public class ProgramApplication {
 
     public void setUserid(int userid) {
         this.userid = userid;
-    }
-
-    public int getProgramTypeid() {
-        return programTypeid;
-    }
-
-    public void setProgramTypeid(int programTypeid) {
-        this.programTypeid = programTypeid;
     }
 }

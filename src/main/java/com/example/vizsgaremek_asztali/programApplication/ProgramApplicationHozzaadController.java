@@ -1,10 +1,8 @@
 package com.example.vizsgaremek_asztali.programApplication;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDay;
-import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDayApi;
-import com.example.vizsgaremek_asztali.programType.ProgramType;
-import com.example.vizsgaremek_asztali.programType.ProgramTypeApi;
+import com.example.vizsgaremek_asztali.programInfo.ProgramInfo;
+import com.example.vizsgaremek_asztali.programInfo.ProgramInfoApi;
 import com.example.vizsgaremek_asztali.user.User;
 import com.example.vizsgaremek_asztali.user.UserApi;
 import javafx.event.ActionEvent;
@@ -18,15 +16,11 @@ import java.util.List;
 
 public class ProgramApplicationHozzaadController extends Controller {
     @FXML
-    private ComboBox<ProgramType> pTypeIdInput;
-    @FXML
-    private ComboBox<ProgramHourDay> pHDIdInput;
-    @FXML
     private ComboBox<User> userIdInput;
-
+    @FXML
+    private ComboBox<ProgramInfo> pInfoIdInput;
     private List<User> userList;
-    private List<ProgramType> typeList;
-    private List<ProgramHourDay> phdList;
+    private List<ProgramInfo> programInfoList;
 
 
     public void initialize(){
@@ -41,34 +35,22 @@ public class ProgramApplicationHozzaadController extends Controller {
         }
         userIdInput.getSelectionModel().selectFirst();
 
-        typeList = new ArrayList<>();
+        programInfoList = new ArrayList<>();
         try {
-            typeList= ProgramTypeApi.get();
+            programInfoList = ProgramInfoApi.get();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (ProgramType type : typeList){
-            pTypeIdInput.getItems().add(type);
+        for (ProgramInfo pinfo : programInfoList){
+            pInfoIdInput.getItems().add(pinfo);
         }
-        pTypeIdInput.getSelectionModel().selectFirst();
-
-        phdList = new ArrayList<>();
-        try {
-            phdList= ProgramHourDayApi.get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        for (ProgramHourDay phd : phdList){
-            pHDIdInput.getItems().add(phd);
-        }
-        pHDIdInput.getSelectionModel().selectFirst();
+        pInfoIdInput.getSelectionModel().selectFirst();
     }
 
     @FXML
     public void onHozzaadas(ActionEvent actionEvent) {
-        int programTypeIndex = pTypeIdInput.getSelectionModel().getSelectedItem().getId();
         int userIndex = userIdInput.getSelectionModel().getSelectedItem().getId();
-        int programHDIndex = pHDIdInput.getSelectionModel().getSelectedItem().getId();
+        int programInfoIndex = pInfoIdInput.getSelectionModel().getSelectedItem().getId();
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -78,8 +60,8 @@ public class ProgramApplicationHozzaadController extends Controller {
             return;
         }
         try {
-            ProgramApplication ujAdoption = new ProgramApplication(0,programTypeIndex, userIndex ,programHDIndex);
-            ProgramApplication letrehozott = ProgramApplicationApi.post(ujAdoption);
+            ProgramApplication ujApplication = new ProgramApplication(0 ,programInfoIndex, userIndex);
+            ProgramApplication letrehozott = ProgramApplicationApi.post(ujApplication);
             if (letrehozott != null){
                 alert("Sikeres hozzáadás");
             } else {

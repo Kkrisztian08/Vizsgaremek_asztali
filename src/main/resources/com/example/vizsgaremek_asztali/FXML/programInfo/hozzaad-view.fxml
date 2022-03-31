@@ -2,17 +2,14 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="350.0" minWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.programHourDay.ProgramHourDayModositController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="350.0" minWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.programInfo.ProgramInfoHozzaadController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -21,20 +18,21 @@
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="31.0000244140625" minHeight="1.0" prefHeight="22.200006103515626" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="120.79998779296874" minHeight="10.0" prefHeight="92.79999999999998" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="120.79998779296874" minHeight="10.0" prefHeight="92.79999999999998" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="120.79998779296874" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="120.79998779296874" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="79.60001220703123" minHeight="10.0" prefHeight="79.60001220703123" valignment="CENTER" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label text="Program időpontja (óra):" GridPane.rowIndex="2">
+        <Label text="Program időpontja (óra):" GridPane.rowIndex="3">
             <font>
                 <Font size="15.0" />
             </font>
             <GridPane.margin>
                 <Insets left="10.0" />
             </GridPane.margin></Label>
-        <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#onModositas" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+        <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" onAction="#onHozzaadas" stylesheets="@../../css/TablazatosOldalak.css" text="Hozzáadás" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="5">
             <GridPane.margin>
                 <Insets left="50.0" right="50.0" />
             </GridPane.margin>
@@ -43,31 +41,47 @@
             </font>
         </Button>
         <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #14856B;" stylesheets="@../../css/FelugroAblak.css" GridPane.columnSpan="4" />
-        <DatePicker fx:id="datumInput" editable="false" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <DatePicker fx:id="datumInput" editable="false" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
         </DatePicker>
-        <Label text="Program dátuma:" GridPane.rowIndex="1">
+        <Label text="Program dátuma:" GridPane.rowIndex="2">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-      <Spinner fx:id="orainput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets right="10.0" />
-         </GridPane.margin>
-      </Spinner>
-      <Label text="Program időpontja (perc):" GridPane.rowIndex="3">
+      <Label text="Program időpontja (perc):" GridPane.rowIndex="4">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Spinner fx:id="percinput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Spinner fx:id="oraInput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3">
+          <valueFactory>
+              <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="12" max="17" min="5" />
+          </valueFactory>
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin>
       </Spinner>
+      <Spinner fx:id="percInput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="4">
+          <valueFactory>
+              <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="5" initialValue="0" max="55" min="0" />
+          </valueFactory>
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </Spinner>
+      <TextField fx:id="tipusInput" onKeyTyped="#hibaVege" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <Label text="Program Típus:" GridPane.rowIndex="1">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
     </children>
     <stylesheets>
         <URL value="@../../css/FelugroAblak.css" />

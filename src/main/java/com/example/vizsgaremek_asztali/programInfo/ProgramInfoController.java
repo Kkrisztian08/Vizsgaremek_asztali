@@ -1,4 +1,4 @@
-package com.example.vizsgaremek_asztali.programHourDay;
+package com.example.vizsgaremek_asztali.programInfo;
 
 import com.example.vizsgaremek_asztali.Controller;
 import javafx.collections.FXCollections;
@@ -24,25 +24,29 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class ProgramHourDayController extends Controller {
+public class ProgramInfoController extends Controller {
     @FXML
     private TextField keresesTextField;
     @FXML
-    private TableColumn<ProgramHourDay,Integer> idCol;
+    private TableColumn<ProgramInfo,Integer> idCol;
     @FXML
-    private TableView<ProgramHourDay> pHDTable;
+    private TableView<ProgramInfo> pHDTable;
     @FXML
-    private TableColumn<ProgramHourDay,String> vDatumCol;
+    private TableColumn<ProgramInfo,String> vDatumCol;
     @FXML
-    private TableColumn<ProgramHourDay,String> idoCol;
+    private TableColumn<ProgramInfo,String> idoCol;
+    @FXML
+    private TableColumn<ProgramInfo,String> typeCol;
     @FXML
     private Button pHDTorol;
     @FXML
     private Button pHDModosit;
-    private ObservableList<ProgramHourDay> pHDLista = FXCollections.observableArrayList();
+    private ObservableList<ProgramInfo> pHDLista = FXCollections.observableArrayList();
+
 
     public void initialize(){
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         vDatumCol.setCellValueFactory(new PropertyValueFactory<>("valasztottDatum"));
         idoCol.setCellValueFactory(new PropertyValueFactory<>("ido"));
         pHDListaFeltolt();
@@ -54,24 +58,26 @@ public class ProgramHourDayController extends Controller {
         pHDModosit.setDisable(true);
         try {
             pHDLista.clear();
-            pHDLista.addAll(ProgramHourDayApi.get());
+            pHDLista.addAll(ProgramInfoApi.get());
         } catch (IOException e) {
             hibaKiir(e);
         }
     }
 
     private void kereses(){
-        FilteredList<ProgramHourDay> filteredList = new FilteredList<>(pHDLista, b -> true);
+        FilteredList<ProgramInfo> filteredList = new FilteredList<>(pHDLista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue ) -> {
-            filteredList.setPredicate(hourDay -> {
+            filteredList.setPredicate(programInfo -> {
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
                     return true;
                 }
                 String kereses = newValue.toLowerCase();
-                if (hourDay.getIdo().toLowerCase().indexOf(kereses) > -1) {
+                if (programInfo.getIdo().toLowerCase().indexOf(kereses) > -1) {
                     return true;
                 }
-                else if (hourDay.getValasztottDatum().toLowerCase().indexOf(kereses) > -1) {
+                else if (programInfo.getValasztottDatum().toLowerCase().indexOf(kereses) > -1) {
+                    return true;
+                }else if (programInfo.getType().toLowerCase().indexOf(kereses) > -1) {
                     return true;
                 }
                 else {
@@ -79,7 +85,7 @@ public class ProgramHourDayController extends Controller {
                 }
             });
         });
-        SortedList<ProgramHourDay> sortedList = new SortedList<>(filteredList);
+        SortedList<ProgramInfo> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(pHDTable.comparatorProperty());
         pHDTable.setItems(sortedList);
     }
@@ -87,7 +93,7 @@ public class ProgramHourDayController extends Controller {
     @FXML
     public void onHozzaadPHD(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/programHourDays/hozzaad-view.fxml", "Program Óra és Nap hozzáadása",
+            Controller hozzadas = ujAblak("FXML/programInfo/hozzaad-view.fxml", "Program Infó hozzáadása",
                     500, 350);
             hozzadas.getStage().setOnCloseRequest(event -> pHDListaFeltolt());
             hozzadas.getStage().show();
@@ -103,9 +109,9 @@ public class ProgramHourDayController extends Controller {
             alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        ProgramHourDay modositando = pHDTable.getSelectionModel().getSelectedItem();
+        ProgramInfo modositando = pHDTable.getSelectionModel().getSelectedItem();
         try {
-            ProgramHourDayModositController modositas = (ProgramHourDayModositController) ujAblak("FXML/programHourDays/modosit-view.fxml", "Adatok Módosítása",
+            ProgramInfoModositController modositas = (ProgramInfoModositController) ujAblak("FXML/programInfo/modosit-view.fxml", "Adatok Módosítása",
                     500, 350);
             modositas.setModositando(modositando);
             modositas.getStage().setOnHiding(event -> pHDTable.refresh());
@@ -122,12 +128,12 @@ public class ProgramHourDayController extends Controller {
             alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        ProgramHourDay torlendoEvent = pHDTable.getSelectionModel().getSelectedItem();
-        if (!confirm("Valóban törölni szeretné a(z) "  +torlendoEvent.getValasztottDatum() + "-i programot?")){
+        ProgramInfo torlendoInfo = pHDTable.getSelectionModel().getSelectedItem();
+        if (!confirm("Valóban törölni szeretné a következő programot: "+torlendoInfo.getType()+", "+torlendoInfo.getValasztottDatum()+", "+torlendoInfo.getIdo() + " ?")){
             return;
         }
         try {
-            boolean sikeres= ProgramHourDayApi.delete(torlendoEvent.getId());
+            boolean sikeres= ProgramInfoApi.delete(torlendoInfo.getId());
             alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
             pHDLista.clear();
             pHDListaFeltolt();
@@ -239,33 +245,9 @@ public class ProgramHourDayController extends Controller {
     }
 
     @FXML
-    public void onProgramtypeClick(ActionEvent actionEvent) {
+    public void onProgramInfoClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/programTypes/programTypes-view.fxml", "Élethang alapitvány",
-                    1100, 600);
-            oldalvaltas.getStage().show();
-            this.stage.close();
-        } catch (Exception e) {
-            hibaKiir(e);
-        }
-    }
-
-    @FXML
-    public void onAdoptionTypeClick(ActionEvent actionEvent) {
-        try {
-            Controller oldalvaltas = ujAblak("FXML/adoptionTypes/adoptionTypes-view.fxml", "Élethang alapitvány",
-                    1100, 600);
-            oldalvaltas.getStage().show();
-            this.stage.close();
-        } catch (Exception e) {
-            hibaKiir(e);
-        }
-    }
-
-    @FXML
-    public void onProgramHourAndDayClick(ActionEvent actionEvent) {
-        try {
-            Controller oldalvaltas = ujAblak("FXML/programHourDays/programHourDays-view.fxml", "Élethang alapitvány",
+            Controller oldalvaltas = ujAblak("FXML/programInfo/programInfo-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();
@@ -335,5 +317,9 @@ public class ProgramHourDayController extends Controller {
         } catch (Exception e) {
             hibaKiir(e);
         }
+    }
+
+    @FXML
+    public void onAdoptionTypeClick(ActionEvent actionEvent) {
     }
 }

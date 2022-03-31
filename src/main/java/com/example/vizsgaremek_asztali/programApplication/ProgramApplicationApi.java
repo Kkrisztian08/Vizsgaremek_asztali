@@ -1,7 +1,6 @@
 package com.example.vizsgaremek_asztali.programApplication;
 
 import com.example.vizsgaremek_asztali.api.Api;
-import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDay;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Control;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -53,10 +54,7 @@ public class LoginController extends Controller {
                 Token token = LoginApi.postLogin(login);
                 User felhAdatai = LoginApi.getLoginData(token.getToken());
                 ElethangApp.BEJELENTKEZETT = felhAdatai;
-                felhasznaloInput.getStyleClass().add("success");
-                jelszoInput.getStyleClass().add("success");
                 if (felhAdatai.getAdmin()>=1) {
-
                     Controller oldalvaltas = ujAblak("FXML/users/users-view.fxml", "Élethang alapitvány",
                             1100, 600);
                     oldalvaltas.getStage().show();

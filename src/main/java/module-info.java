@@ -22,10 +22,8 @@ module com.example.vizsgaremek_asztali {
     opens com.example.vizsgaremek_asztali.adoptionType to com.google.gson, javafx.fxml;
     exports com.example.vizsgaremek_asztali.event;
     opens com.example.vizsgaremek_asztali.event to com.google.gson, javafx.fxml;
-    exports com.example.vizsgaremek_asztali.programType;
-    opens com.example.vizsgaremek_asztali.programType to com.google.gson, javafx.fxml;
-    exports com.example.vizsgaremek_asztali.programHourDay;
-    opens com.example.vizsgaremek_asztali.programHourDay to com.google.gson, javafx.fxml;
+    exports com.example.vizsgaremek_asztali.programInfo;
+    opens com.example.vizsgaremek_asztali.programInfo to com.google.gson, javafx.fxml;
     exports com.example.vizsgaremek_asztali.programApplication;
     opens com.example.vizsgaremek_asztali.programApplication to com.google.gson, javafx.fxml;
     exports com.example.vizsgaremek_asztali.login;

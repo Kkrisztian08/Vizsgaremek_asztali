@@ -1,8 +1,6 @@
 package com.example.vizsgaremek_asztali.programApplication;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDay;
-import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDayModositController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,9 +33,7 @@ public class ProgramApplicationController extends Controller {
     @FXML
     private TableColumn<ProgramApplication, Integer> userIdCol;
     @FXML
-    private TableColumn<ProgramApplication, Integer> pHDIdCol;
-    @FXML
-    private TableColumn<ProgramApplication, Integer> pTypeIdCol;
+    private TableColumn<ProgramApplication, Integer> pInfoIdCol;
     @FXML
     private TableView<ProgramApplication> pATable;
     @FXML
@@ -46,11 +42,11 @@ public class ProgramApplicationController extends Controller {
     private Button pAModosit;
     private ObservableList<ProgramApplication> pALista = FXCollections.observableArrayList();
 
+
     public void initialize() {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        pHDIdCol.setCellValueFactory(new PropertyValueFactory<>("programHDid"));
+        pInfoIdCol.setCellValueFactory(new PropertyValueFactory<>("programInfo"));
         userIdCol.setCellValueFactory(new PropertyValueFactory<>("userid"));
-        pTypeIdCol.setCellValueFactory(new PropertyValueFactory<>("programTypeid"));
         pAListaFeltolt();
         kereses();
     }
@@ -99,7 +95,7 @@ public class ProgramApplicationController extends Controller {
     @FXML
     public void onHozzaadPA(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/programApplications/hozzaad-view.fxml", "Program Óra és Nap hozzáadása",
+            Controller hozzadas = ujAblak("FXML/programApplications/hozzaad-view.fxml", "Program Jelentkezés hozzáadása",
                     500, 350);
             hozzadas.getStage().setOnCloseRequest(event -> pAListaFeltolt());
             hozzadas.getStage().show();
@@ -250,18 +246,6 @@ public class ProgramApplicationController extends Controller {
     }
 
     @FXML
-    public void onProgramtypeClick(ActionEvent actionEvent) {
-        try {
-            Controller oldalvaltas = ujAblak("FXML/programTypes/programTypes-view.fxml", "Élethang alapitvány",
-                    1100, 600);
-            oldalvaltas.getStage().show();
-            this.stage.close();
-        } catch (Exception e) {
-            hibaKiir(e);
-        }
-    }
-
-    @FXML
     public void onAdoptionTypeClick(ActionEvent actionEvent) {
         try {
             Controller oldalvaltas = ujAblak("FXML/adoptionTypes/adoptionTypes-view.fxml", "Élethang alapitvány",
@@ -274,9 +258,9 @@ public class ProgramApplicationController extends Controller {
     }
 
     @FXML
-    public void onProgramHourAndDayClick(ActionEvent actionEvent) {
+    public void onProgramInfoClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/programHourDays/programHourDays-view.fxml", "Élethang alapitvány",
+            Controller oldalvaltas = ujAblak("FXML/programInfo/programInfo-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();

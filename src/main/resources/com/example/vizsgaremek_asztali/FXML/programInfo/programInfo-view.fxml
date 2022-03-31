@@ -2,13 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,14 +12,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.programHourDay.ProgramHourDayController">
+<AnchorPane maxHeight="1.7976931348623157E308" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.programInfo.ProgramInfoController">
     <children>
         <BorderPane maxHeight="1.7976931348623157E308" minHeight="530.0" minWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <VBox maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0d9475;" BorderPane.alignment="CENTER">
                     <children>
-                        <Label alignment="CENTER" prefHeight="55.0" prefWidth="202.0" style="-fx-background-color: #0d9475;" text="Program Óra és Nap Tábla" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="55.0" prefWidth="202.0" style="-fx-background-color: #0d9475;" text="Program Infó Tábla" textFill="WHITE">
                             <font>
                                 <Font name="Arial Narrow Italic" size="20.0" />
                             </font>
@@ -38,10 +32,9 @@
                                 <MenuItem mnemonicParsing="false" onAction="#onMacskakClick" text="Macskák Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onAdoptionClick" text="Öröbefogadás Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onAdoptionTypeClick" text="Öröbefogadási Típus Tábla" />
-                                <MenuItem mnemonicParsing="false" onAction="#onEventClick" text="Események Tábla" />
+                                <MenuItem mnemonicParsing="false" onAction="#onEventClick" text="Rendezvény Tábla" />
                                 <MenuItem mnemonicParsing="false" onAction="#onProgramApplicationClick" text="Programjelentkezés Tábla" />
-                                <MenuItem mnemonicParsing="false" onAction="#onProgramHourAndDayClick" text="Program Óra és Nap Tábla" />
-                                <MenuItem mnemonicParsing="false" onAction="#onProgramtypeClick" text="Program Típus Tábla" />
+                                <MenuItem mnemonicParsing="false" onAction="#onProgramInfoClick" text="Program Infó Tábla" />
                             </items>
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
@@ -124,6 +117,7 @@
                         <TableView fx:id="pHDTable" onMouseClicked="#onSelectPHD" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/TablazatosOldalak.css" BorderPane.alignment="CENTER">
                             <columns>
                                 <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
+                        <TableColumn fx:id="typeCol" prefWidth="75.0" text="Tipus" />
                                 <TableColumn fx:id="vDatumCol" prefWidth="75.0" text="Dátum" />
                         <TableColumn fx:id="idoCol" prefWidth="75.0" text="Idő" />
                             </columns>

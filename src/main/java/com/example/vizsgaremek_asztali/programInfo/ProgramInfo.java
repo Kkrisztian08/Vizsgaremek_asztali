@@ -1,22 +1,32 @@
-package com.example.vizsgaremek_asztali.programHourDay;
+package com.example.vizsgaremek_asztali.programInfo;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProgramHourDay {
+public class ProgramInfo {
     private int id;
-    @SerializedName("selected_date")
+    private String type;
+    @SerializedName("date")
     private String valasztottDatum;
     @SerializedName("time")
     private String ido;
 
-    public ProgramHourDay(int id, String valasztottdatum, String ido) {
+    public ProgramInfo(int id, String type, String valasztottDatum, String ido) {
         this.id = id;
-        this.valasztottDatum = valasztottdatum;
+        this.type = type;
+        this.valasztottDatum = valasztottDatum;
         this.ido = ido;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getValasztottDatum() {
@@ -39,4 +49,6 @@ public class ProgramHourDay {
     public String toString() {
         return String.format("%s, %s",this.getValasztottDatum(),this.getIdo());
     }
+
+
 }

@@ -14,16 +14,16 @@ public class ProgramApplicationModositController extends Controller {
     @FXML
     private ComboBox<Integer> pTypeIdInput;
     @FXML
-    private ComboBox<Integer> pHDIdInput;
-    @FXML
     private ComboBox<Integer> userIdInput;
     private ProgramApplication modositando;
+    @FXML
+    private ComboBox pInfoIdInput;
 
     @FXML
     public void onModositas(ActionEvent actionEvent) {
         int programTypeIndex = pTypeIdInput.getSelectionModel().getSelectedIndex();
         int userIndex = userIdInput.getSelectionModel().getSelectedIndex();
-        int programHDIndex = pHDIdInput.getSelectionModel().getSelectedIndex();
+        int programHDIndex = pInfoIdInput.getSelectionModel().getSelectedIndex();
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -33,9 +33,7 @@ public class ProgramApplicationModositController extends Controller {
             return;
         }
 
-        modositando.setProgramTypeid(programTypeIndex);
         modositando.setUserid(userIndex);
-        modositando.setProgramHDid(programHDIndex);
 
         try {
             ProgramApplication modositott= ProgramApplicationApi.put(modositando);
@@ -65,9 +63,7 @@ public class ProgramApplicationModositController extends Controller {
         ertekekBeallitasa();
     }
     private void ertekekBeallitasa() {
-        pHDIdInput.setValue(modositando.getProgramHDid());
         userIdInput.setValue(modositando.getUserid());
-        pTypeIdInput.setValue(modositando.getProgramTypeid());
 
     }
 }

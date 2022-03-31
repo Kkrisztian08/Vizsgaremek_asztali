@@ -2,14 +2,10 @@ package com.example.vizsgaremek_asztali.userdata;
 
 import com.example.vizsgaremek_asztali.Controller;
 import com.example.vizsgaremek_asztali.ElethangApp;
-import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDay;
-import com.example.vizsgaremek_asztali.programHourDay.ProgramHourDayModositController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 public class UserDataController extends Controller {
     @FXML
@@ -105,18 +101,6 @@ public class UserDataController extends Controller {
     }
 
     @FXML
-    public void onProgramtypeClick(ActionEvent actionEvent) {
-        try {
-            Controller oldalvaltas = ujAblak("FXML/programTypes/programTypes-view.fxml", "Élethang alapitvány",
-                    1100, 600);
-            oldalvaltas.getStage().show();
-            this.stage.close();
-        } catch (Exception e) {
-            hibaKiir(e);
-        }
-    }
-
-    @FXML
     public void onAdoptionTypeClick(ActionEvent actionEvent) {
         try {
             Controller oldalvaltas = ujAblak("FXML/adoptionTypes/adoptionTypes-view.fxml", "Élethang alapitvány",
@@ -129,9 +113,9 @@ public class UserDataController extends Controller {
     }
 
     @FXML
-    public void onProgramHourAndDayClick(ActionEvent actionEvent) {
+    public void onProgramInfoClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/programHourDays/programHourDays-view.fxml", "Élethang alapitvány",
+            Controller oldalvaltas = ujAblak("FXML/programInfo/programInfo-view.fxml", "Élethang alapitvány",
                     1100, 600);
             oldalvaltas.getStage().show();
             this.stage.close();

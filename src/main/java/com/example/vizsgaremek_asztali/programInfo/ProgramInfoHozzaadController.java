@@ -1,4 +1,4 @@
-package com.example.vizsgaremek_asztali.programHourDay;
+package com.example.vizsgaremek_asztali.programInfo;
 
 import com.example.vizsgaremek_asztali.Controller;
 import javafx.event.ActionEvent;
@@ -9,29 +9,38 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class ProgramHourDayModositController extends Controller {
+public class ProgramInfoHozzaadController extends Controller {
     @FXML
     private DatePicker datumInput;
-    private ProgramHourDay modositando;
     @FXML
-    private Spinner<Integer> orainput;
+    private Spinner<Integer> percInput;
     @FXML
-    private Spinner<Integer> percinput;
+    private Spinner<Integer> oraInput;
+    @FXML
+    private TextField tipusInput;
+
 
     @FXML
-    public void onModositas(ActionEvent actionEvent) {
-        String idopont="";
-        int  ora=0;
-        int  perc=0;
+    public void onHozzaadas(ActionEvent actionEvent) {
+        String tipus=tipusInput.getText().trim();
         LocalDate datum=datumInput.getValue();
-        String formazottSzuldatum;
+        String formazottdatum;
+        int ora=0;
+        int perc=0;
+        String idopont="";
 
-        boolean hiba = false;
-        StringBuilder alertBuilder = new StringBuilder();
+        boolean hiba =false;
+        StringBuilder alertBuilder=new StringBuilder();
+
+        if (tipus.isEmpty()){
+            //alert("A név megadása kötelező");
+            tipusInput.getStyleClass().add("error");
+            alertBuilder.append("A típus megadása kötelező").append(System.lineSeparator());
+            hiba=true;
+        }
 
         if (datum==null){
             //alert("A dátum megadása kötelező");
@@ -40,11 +49,27 @@ public class ProgramHourDayModositController extends Controller {
             hiba=true;
         }
 
+        try {
+            ora =  oraInput.getValue();
+        } catch (NullPointerException ex){
+            alert("Az óra megadása kötelező");
+            return;
+        }
+
+        try {
+            perc =  percInput.getValue();
+        } catch (NullPointerException ex){
+            alert("A perc megadása kötelező");
+            return;
+        }
+
         if (hiba) {
             alert(alertBuilder.toString());
             return;
         }
-        formazottSzuldatum=datum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        formazottdatum=datum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
         if (ora<10 && perc == 0) {
             String formazottora="0"+Integer.toString(ora);
             String formazottperc=Integer.toString(perc)+"0";
@@ -59,19 +84,16 @@ public class ProgramHourDayModositController extends Controller {
             idopont = Integer.toString(ora) + ":" + Integer.toString(perc);
         }
 
-        modositando.setIdo(idopont);
-        modositando.setValasztottDatum(formazottSzuldatum);
-
         try {
-            ProgramHourDay modositott = ProgramHourDayApi.put(modositando);
-            if (modositott != null) {
-                alertWait("Sikeres módosítás");
-                this.stage.close();
+            ProgramInfo ujPInfo = new ProgramInfo(0,tipus,formazottdatum,idopont);
+            ProgramInfo letrehozott = ProgramInfoApi.post(ujPInfo);
+            if (letrehozott != null){
+                alert("Sikeres hozzáadás");
             } else {
-                alert("Sikertelen módosítás");
+                alert("Sikeretelen hozzáadás");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            hibaKiir(e);
         }
     }
 
@@ -81,28 +103,9 @@ public class ProgramHourDayModositController extends Controller {
         control.getStyleClass().remove("error");
     }
 
-    @Deprecated
+    @FXML
     public void hibaVege(Event event) {
         Control control = (Control) event.getSource();
         control.getStyleClass().remove("error");
-    }
-
-    public ProgramHourDay getModositando() {
-        return modositando;
-    }
-
-    public void setModositando(ProgramHourDay modositando) {
-        this.modositando = modositando;
-        ertekekBeallitasa();
-    }
-    private void ertekekBeallitasa() {
-        String[] ido=modositando.getIdo().split(":");
-        String ora=ido[0];
-        String perc=ido[1];
-        orainput.getValueFactory().setValue(Integer.parseInt(ora));
-        percinput.getValueFactory().setValue(Integer.parseInt(perc));
-        LocalDate datum=LocalDate.parse(modositando.getValasztottDatum());
-        datumInput.setValue(datum);
-
     }
 }
