@@ -63,7 +63,7 @@ public class DogController extends Controller {
         kereses();
     }
 
-    public  void kutyakListaFeltolt() {
+    public void kutyakListaFeltolt() {
         dogTorol.setDisable(true);
         dogModosit.setDisable(true);
         try {
@@ -308,23 +308,6 @@ public class DogController extends Controller {
             hibaKiir(e);
         }
     }
-
-    @FXML
-    public void onExit(ActionEvent actionEvent) {
-
-        if (!confirm("Biztos szeretne kijelentkezni?")){
-            return;
-        }
-        try {
-            Controller oldalvaltas = ujAblak("FXML/login-view.fxml", "Élethang alapitvány",
-                    400, 400);
-            oldalvaltas.getStage().show();
-            this.stage.close();
-        } catch (Exception e) {
-            hibaKiir(e);
-        }
-    }
-
     @FXML
     public void onUserDataClick(ActionEvent actionEvent) {
         try {
@@ -336,11 +319,28 @@ public class DogController extends Controller {
             hibaKiir(e);
         }
     }
+
     @FXML
     public void onStatisticClick(ActionEvent actionEvent) {
         try {
             Controller oldalvaltas = ujAblak("FXML/statistic-view.fxml", "Élethang alapitvány",
                     1100, 600);
+            oldalvaltas.getStage().show();
+            this.stage.close();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+
+    @FXML
+    public void onExit(ActionEvent actionEvent) {
+
+        if (!confirm("Biztos szeretne kijelentkezni?")){
+            return;
+        }
+        try {
+            Controller oldalvaltas = ujAblak("FXML/login-view.fxml", "Élethang alapitvány",
+                    400, 400);
             oldalvaltas.getStage().show();
             this.stage.close();
         } catch (Exception e) {

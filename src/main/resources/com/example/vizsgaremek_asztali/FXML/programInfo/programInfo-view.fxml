@@ -114,7 +114,7 @@
                         </GridPane>
                     </top>
                     <center>
-                        <TableView fx:id="pHDTable" onMouseClicked="#onSelectPHD" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/TablazatosOldalak.css" BorderPane.alignment="CENTER">
+                        <TableView fx:id="pITable" onMouseClicked="#onSelectPHD" prefHeight="200.0" prefWidth="800.0" stylesheets="@../../css/TablazatosOldalak.css" BorderPane.alignment="CENTER">
                             <columns>
                                 <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
                         <TableColumn fx:id="typeCol" prefWidth="75.0" text="Tipus" />
@@ -148,7 +148,7 @@
                         </Button>
                         <HBox alignment="CENTER" minHeight="70.0" minWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                             <children>
-                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadPHD" stylesheets="@../../css/TablazatosOldalak.css" text="Hozzáadás">
+                                <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadPI" stylesheets="@../../css/TablazatosOldalak.css" text="Hozzáadás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -156,7 +156,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="pHDModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositPHD" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás">
+                                <Button id="rnd" fx:id="pIModosit" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onModositPI" stylesheets="@../../css/TablazatosOldalak.css" text="Módosítás">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>
@@ -164,7 +164,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button id="rnd" fx:id="pHDTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPHDTorol" stylesheets="@../../css/TablazatosOldalak.css" text="Törlés">
+                                <Button id="rnd" fx:id="pITorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onPHDTorol" stylesheets="@../../css/TablazatosOldalak.css" text="Törlés">
                                     <HBox.margin>
                                         <Insets right="40.0" />
                                     </HBox.margin>

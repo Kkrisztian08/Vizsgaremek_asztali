@@ -115,21 +115,17 @@ public class UserDataModositController extends Controller {
                 ElethangApp.BEJELENTKEZETT.getBirthday(), ElethangApp.BEJELENTKEZETT.getAddress(),
                 ElethangApp.BEJELENTKEZETT.getPhone_number(),ElethangApp.BEJELENTKEZETT.getEmail(),
                 ElethangApp.BEJELENTKEZETT.getPassword());
-        modositando.getId();
+
         modositando.setName(nev);
         modositando.setUsername(felhasznalonev);
         modositando.setBirthday(formazottSzuldatum);
         modositando.setPhone_number(telefonszam);
         modositando.setAddress(lakcim);
         modositando.setEmail(email);
-        modositando.getPassword();
 
         try {
             User modositott = UserApi.put(modositando);
             if (modositott != null) {
-                ElethangApp.BEJELENTKEZETT.getId();
-                ElethangApp.BEJELENTKEZETT.setAdmin(modositott.getAdmin());
-                ElethangApp.BEJELENTKEZETT.setPassword(modositott.getPassword());
                 ElethangApp.BEJELENTKEZETT.setName(modositott.getName());
                 ElethangApp.BEJELENTKEZETT.setUsername(modositott.getUsername());
                 ElethangApp.BEJELENTKEZETT.setBirthday(modositott.getBirthday());

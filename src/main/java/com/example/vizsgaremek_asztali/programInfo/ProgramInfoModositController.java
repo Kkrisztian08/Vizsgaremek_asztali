@@ -28,8 +28,8 @@ public class ProgramInfoModositController extends Controller {
     public void onModositas(ActionEvent actionEvent) {
         String tipus=tipusInput.getText().trim();
         String idopont="";
-        int  ora=0;
-        int  perc=0;
+        int ora=0;
+        int perc=0;
         LocalDate datum=datumInput.getValue();
         String formazottSzuldatum;
 
@@ -50,24 +50,28 @@ public class ProgramInfoModositController extends Controller {
             hiba=true;
         }
 
+        try {
+            ora =  orainput.getValue();
+        } catch (NullPointerException ex){
+            alert("Az óra megadása kötelező");
+            return;
+        }
+
+        try {
+            perc =  percinput.getValue();
+        } catch (NullPointerException ex){
+            alert("A perc megadása kötelező");
+            return;
+        }
+
+
         if (hiba) {
             alert(alertBuilder.toString());
             return;
         }
         formazottSzuldatum=datum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        if (ora<10 && perc == 0) {
-            String formazottora="0"+Integer.toString(ora);
-            String formazottperc=Integer.toString(perc)+"0";
-            idopont = formazottora + ":" +formazottperc;
-        } else if (perc == 0) {
-            String formazottperc=Integer.toString(perc)+"0";
-            idopont = Integer.toString(ora) + ":" + formazottperc;
-        } else if (ora<10) {
-            String formazottora="0"+Integer.toString(ora);
-            idopont = formazottora + ":" +Integer.toString(perc);
-        } else {
-            idopont = Integer.toString(ora) + ":" + Integer.toString(perc);
-        }
+
+        idopont=String.format("%02d:%02d",ora,perc);
 
         modositando.setType(tipus);
         modositando.setIdo(idopont);

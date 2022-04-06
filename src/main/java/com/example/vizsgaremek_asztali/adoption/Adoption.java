@@ -19,10 +19,6 @@ public class Adoption {
         this.begin = begin;
     }
 
-    public Adoption() {
-        this.id = id;
-    }
-
     public int getId() {
         return id;
     }

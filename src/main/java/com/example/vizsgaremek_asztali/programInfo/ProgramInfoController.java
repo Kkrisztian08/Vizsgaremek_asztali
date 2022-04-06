@@ -30,7 +30,7 @@ public class ProgramInfoController extends Controller {
     @FXML
     private TableColumn<ProgramInfo, Integer> idCol;
     @FXML
-    private TableView<ProgramInfo> pHDTable;
+    private TableView<ProgramInfo> pITable;
     @FXML
     private TableColumn<ProgramInfo, String> vDatumCol;
     @FXML
@@ -38,10 +38,10 @@ public class ProgramInfoController extends Controller {
     @FXML
     private TableColumn<ProgramInfo, String> typeCol;
     @FXML
-    private Button pHDTorol;
+    private Button pITorol;
     @FXML
-    private Button pHDModosit;
-    private ObservableList<ProgramInfo> pHDLista = FXCollections.observableArrayList();
+    private Button pIModosit;
+    private ObservableList<ProgramInfo> pILista = FXCollections.observableArrayList();
 
 
     public void initialize() {
@@ -49,23 +49,23 @@ public class ProgramInfoController extends Controller {
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         vDatumCol.setCellValueFactory(new PropertyValueFactory<>("valasztottDatum"));
         idoCol.setCellValueFactory(new PropertyValueFactory<>("ido"));
-        pHDListaFeltolt();
+        pIListaFeltolt();
         kereses();
     }
 
-    public void pHDListaFeltolt() {
-        pHDTorol.setDisable(true);
-        pHDModosit.setDisable(true);
+    public void pIListaFeltolt() {
+        pITorol.setDisable(true);
+        pIModosit.setDisable(true);
         try {
-            pHDLista.clear();
-            pHDLista.addAll(ProgramInfoApi.get());
+            pILista.clear();
+            pILista.addAll(ProgramInfoApi.get());
         } catch (IOException e) {
             hibaKiir(e);
         }
     }
 
     private void kereses() {
-        FilteredList<ProgramInfo> filteredList = new FilteredList<>(pHDLista, b -> true);
+        FilteredList<ProgramInfo> filteredList = new FilteredList<>(pILista, b -> true);
         keresesTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredList.setPredicate(programInfo -> {
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) {
@@ -84,16 +84,16 @@ public class ProgramInfoController extends Controller {
             });
         });
         SortedList<ProgramInfo> sortedList = new SortedList<>(filteredList);
-        sortedList.comparatorProperty().bind(pHDTable.comparatorProperty());
-        pHDTable.setItems(sortedList);
+        sortedList.comparatorProperty().bind(pITable.comparatorProperty());
+        pITable.setItems(sortedList);
     }
 
     @FXML
-    public void onHozzaadPHD(ActionEvent actionEvent) {
+    public void onHozzaadPI(ActionEvent actionEvent) {
         try {
             ProgramInfoHozzaadController hozzadas = (ProgramInfoHozzaadController) ujAblak("FXML/programInfo/hozzaad-view.fxml", "Program Infó hozzáadása",
-                    500, 350);
-            hozzadas.setRunnableAfterHozzaadas(this::pHDListaFeltolt);
+                    500, 450);
+            hozzadas.setRunnableAfterHozzaadas(this::pIListaFeltolt);
             hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);
@@ -101,18 +101,18 @@ public class ProgramInfoController extends Controller {
     }
 
     @FXML
-    public void onModositPHD(ActionEvent actionEvent) {
-        int selectedIndex = pHDTable.getSelectionModel().getSelectedIndex();
+    public void onModositPI(ActionEvent actionEvent) {
+        int selectedIndex = pITable.getSelectionModel().getSelectedIndex();
         if (selectedIndex == -1) {
             alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        ProgramInfo modositando = pHDTable.getSelectionModel().getSelectedItem();
+        ProgramInfo modositando = pITable.getSelectionModel().getSelectedItem();
         try {
             ProgramInfoModositController modositas = (ProgramInfoModositController) ujAblak("FXML/programInfo/modosit-view.fxml", "Adatok Módosítása",
-                    500, 350);
+                    500, 450);
             modositas.setModositando(modositando);
-            modositas.getStage().setOnHiding(event -> pHDTable.refresh());
+            modositas.getStage().setOnHiding(event -> pITable.refresh());
             modositas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);
@@ -121,20 +121,20 @@ public class ProgramInfoController extends Controller {
 
     @FXML
     public void onPHDTorol(ActionEvent actionEvent) {
-        int selectedIndex = pHDTable.getSelectionModel().getSelectedIndex();
+        int selectedIndex = pITable.getSelectionModel().getSelectedIndex();
         if (selectedIndex == -1) {
             alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
             return;
         }
-        ProgramInfo torlendoInfo = pHDTable.getSelectionModel().getSelectedItem();
+        ProgramInfo torlendoInfo = pITable.getSelectionModel().getSelectedItem();
         if (!confirm("Valóban törölni szeretné a következő programot: " + torlendoInfo.getType() + ", " + torlendoInfo.getValasztottDatum() + ", " + torlendoInfo.getIdo() + " ?")) {
             return;
         }
         try {
             boolean sikeres = ProgramInfoApi.delete(torlendoInfo.getId());
             alert(sikeres ? "Sikeres törlés" : "Sikertelen törlés");
-            pHDLista.clear();
-            pHDListaFeltolt();
+            pILista.clear();
+            pIListaFeltolt();
         } catch (IOException e) {
             hibaKiir(e);
         }
@@ -156,15 +156,15 @@ public class ProgramInfoController extends Controller {
 
             Row row = spreadsheet.createRow(0);
 
-            for (int j = 0; j < pHDTable.getColumns().size(); j++) {
-                row.createCell(j).setCellValue(pHDTable.getColumns().get(j).getText());
+            for (int j = 0; j < pITable.getColumns().size(); j++) {
+                row.createCell(j).setCellValue(pITable.getColumns().get(j).getText());
             }
 
-            for (int i = 0; i < pHDTable.getItems().size(); i++) {
+            for (int i = 0; i < pITable.getItems().size(); i++) {
                 row = spreadsheet.createRow(i + 1);
-                for (int j = 0; j < pHDTable.getColumns().size(); j++) {
-                    if (pHDTable.getColumns().get(j).getCellData(i) != null) {
-                        row.createCell(j).setCellValue(pHDTable.getColumns().get(j).getCellData(i).toString());
+                for (int j = 0; j < pITable.getColumns().size(); j++) {
+                    if (pITable.getColumns().get(j).getCellData(i) != null) {
+                        row.createCell(j).setCellValue(pITable.getColumns().get(j).getCellData(i).toString());
                     } else {
                         row.createCell(j).setCellValue("");
                     }
@@ -185,10 +185,10 @@ public class ProgramInfoController extends Controller {
 
     @FXML
     public void onSelectPHD(Event event) {
-        int selectedIndex = pHDTable.getSelectionModel().getSelectedIndex();
+        int selectedIndex = pITable.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
-            pHDModosit.setDisable(false);
-            pHDTorol.setDisable(false);
+            pIModosit.setDisable(false);
+            pITorol.setDisable(false);
         }
     }
 

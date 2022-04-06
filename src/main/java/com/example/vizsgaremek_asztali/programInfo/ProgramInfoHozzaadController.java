@@ -32,8 +32,6 @@ public class ProgramInfoHozzaadController extends Controller {
         int ora=0;
         int perc=0;
 
-
-
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
 

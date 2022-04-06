@@ -1,6 +1,7 @@
 package com.example.vizsgaremek_asztali.adoption;
 
 import com.example.vizsgaremek_asztali.api.Api;
+import com.example.vizsgaremek_asztali.dogs.Dog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
@@ -30,6 +31,11 @@ public class AdoptionApi {
     public static Adoption put(Adoption modosit) throws IOException {
         String modositandoJson = jsonConverted.toJson(modosit);
         String json = Api.put(API_URL,modosit.getId(), modositandoJson);
+        return jsonConverted.fromJson(json, Adoption.class);
+    }
+    public static Adoption storeDogAdoption(Adoption uj, int id) throws IOException {
+        String ujJson = jsonConverted.toJson(uj);
+        String json = Api.post(BASE_URL + "/api/dogAdoption", ujJson);
         return jsonConverted.fromJson(json, Adoption.class);
     }
 }

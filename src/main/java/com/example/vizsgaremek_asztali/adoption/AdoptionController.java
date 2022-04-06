@@ -83,15 +83,19 @@ public class AdoptionController extends Controller {
     }
 
     @FXML
-    public void onHozzaadAdoption(ActionEvent actionEvent) {
+    public void onHozzaadDogAdoption(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/adoptions/hozzaad-view.fxml", "Örökbefogadás hozzáadása",
+            Controller hozzadas = ujAblak("FXML/adoptions/hozzaadDog-view.fxml", "Örökbefogadás hozzáadása",
                     600, 400);
             hozzadas.getStage().setOnCloseRequest(event -> adoptionsListaFeltolt());
             hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);
         }
+    }
+
+    @FXML
+    public void onHozzaadCatAdoption(ActionEvent actionEvent) {
     }
 
     @FXML

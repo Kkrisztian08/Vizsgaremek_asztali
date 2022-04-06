@@ -1,10 +1,7 @@
 package com.example.vizsgaremek_asztali.api;
 
-import com.example.vizsgaremek_asztali.api.Response;
-
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
