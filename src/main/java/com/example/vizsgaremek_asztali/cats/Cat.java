@@ -80,4 +80,9 @@ public class Cat {
     public void setAdoption_id(Integer adoption_id) {
         this.adoption_id = adoption_id;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s",this.getName());
+    }
 }

@@ -85,9 +85,10 @@ public class AdoptionController extends Controller {
     @FXML
     public void onHozzaadDogAdoption(ActionEvent actionEvent) {
         try {
-            AdoptionHozzaadController hozzadas = (AdoptionHozzaadController) ujAblak("FXML/adoptions/hozzaadDog-view.fxml", "Örökbefogadás hozzáadása",
+            AdoptionDogHozzaadController hozzadas = (AdoptionDogHozzaadController) ujAblak("FXML/adoptions/hozzaadDog-view.fxml", "Örökbefogadás hozzáadása",
                     600, 400);
-            hozzadas.setRunnableAfterHozzaadas(this::adoptionsListaFeltolt);            hozzadas.getStage().show();
+            hozzadas.setRunnableAfterHozzaadas(this::adoptionsListaFeltolt);
+            hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);
         }
@@ -95,6 +96,14 @@ public class AdoptionController extends Controller {
 
     @FXML
     public void onHozzaadCatAdoption(ActionEvent actionEvent) {
+        try {
+            AdoptionCatHozzaadController hozzadas = (AdoptionCatHozzaadController) ujAblak("FXML/adoptions/hozzaadCat-view.fxml", "Örökbefogadás hozzáadása",
+                    600, 400);
+            hozzadas.setRunnableAfterHozzaadas(this::adoptionsListaFeltolt);
+            hozzadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML

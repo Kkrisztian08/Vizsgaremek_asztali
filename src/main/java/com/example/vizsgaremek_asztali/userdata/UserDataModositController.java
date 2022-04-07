@@ -134,7 +134,6 @@ public class UserDataModositController extends Controller {
                 ElethangApp.BEJELENTKEZETT.setPhone_number(modositott.getPhone_number());
                 ElethangApp.BEJELENTKEZETT.setAddress(modositott.getAddress());
                 ElethangApp.BEJELENTKEZETT.setEmail(modositott.getEmail());
-                //TODO: az apinál elakad, javitani kell!
                 alertWait("Sikeres módosítás");
                 this.stage.close();
             } else {

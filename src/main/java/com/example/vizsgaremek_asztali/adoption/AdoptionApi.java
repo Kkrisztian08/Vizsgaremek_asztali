@@ -33,9 +33,16 @@ public class AdoptionApi {
         String json = Api.put(API_URL,modosit.getId(), modositandoJson);
         return jsonConverted.fromJson(json, Adoption.class);
     }
+
     public static Adoption storeDogAdoption(Adoption uj, int id) throws IOException {
         String ujJson = jsonConverted.toJson(uj);
-        String json = Api.post(BASE_URL + "/api/dogAdoption", ujJson);
+        String json = Api.post(BASE_URL + "/api/dogAdoption/"+id, ujJson);
+        return jsonConverted.fromJson(json, Adoption.class);
+    }
+
+    public static Adoption storeCatAdoption(Adoption uj, int id) throws IOException {
+        String ujJson = jsonConverted.toJson(uj);
+        String json = Api.post(BASE_URL + "/api/catAdoption/"+id, ujJson);
         return jsonConverted.fromJson(json, Adoption.class);
     }
 }

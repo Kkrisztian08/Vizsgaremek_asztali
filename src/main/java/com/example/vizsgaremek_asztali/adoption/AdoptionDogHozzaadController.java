@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdoptionHozzaadController extends Controller {
+public class AdoptionDogHozzaadController extends Controller {
     @FXML
     private ComboBox<AdoptionType> adoptionTypeIdInput;
     @FXML
@@ -79,7 +79,6 @@ public class AdoptionHozzaadController extends Controller {
         try {
             Adoption ujAdoption = new Adoption(0,adoptionTypeIndex , userIndex , formazottdatum);
             Adoption letrehozott = AdoptionApi.storeDogAdoption(ujAdoption,dogIndex);
-            //TODO:post-ba kell egy paraméter id és ide irom be az elmentett változót
             if (letrehozott != null){
                 if (runnableAfterHozzaadas!=null){
                     runnableAfterHozzaadas.run();

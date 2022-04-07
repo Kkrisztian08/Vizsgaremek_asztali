@@ -11,18 +11,18 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane minHeight="400.0" minWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.adoption.AdoptionDogHozzaadController">
+<GridPane minHeight="400.0" minWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.adoption.AdoptionCatHozzaadController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints />
-      <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="31.0000244140625" minHeight="1.0" prefHeight="22.200006103515626" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="120.79998779296874" minHeight="10.0" prefHeight="92.79999999999998" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="138.7999938964844" minHeight="10.0" prefHeight="105.5999786376953" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="140.6000213623047" minHeight="10.0" prefHeight="93.59998779296879" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="140.6000213623047" minHeight="10.0" prefHeight="93.59998779296879" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="79.60001220703123" minHeight="10.0" prefHeight="79.60001220703123" valignment="CENTER" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
@@ -30,14 +30,14 @@
             <font>
                 <Font size="15.0" />
             </font>
-         <GridPane.margin>
-            <Insets left="10.0" />
-         </GridPane.margin></Label>
+            <GridPane.margin>
+                <Insets left="10.0" />
+            </GridPane.margin></Label>
         <Label text="Felhasználó:" GridPane.rowIndex="2">
             <font>
                 <Font size="15.0" />
             </font></Label>
-        <Label text="Kutya:" GridPane.rowIndex="3">
+        <Label text="Macska:" GridPane.rowIndex="3">
             <font>
                 <Font size="15.0" />
             </font></Label>
@@ -55,17 +55,17 @@
             </font>
         </Button>
         <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #14856B;" stylesheets="@../../css/FelugroAblak.css" GridPane.columnSpan="4" />
-      <ComboBox fx:id="adoptionTypeIdInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets right="10.0" />
-         </GridPane.margin></ComboBox>
-      <ComboBox fx:id="dogIdInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <GridPane.margin>
-            <Insets right="10.0" />
-         </GridPane.margin></ComboBox>
+        <ComboBox fx:id="adoptionTypeIdInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets right="10.0" />
+            </GridPane.margin></ComboBox>
+        <ComboBox fx:id="catIdInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets right="10.0" />
+            </GridPane.margin></ComboBox>
     </children>
-   <stylesheets>
-      <URL value="@../../css/FelugroAblak.css" />
-      <URL value="@../../css/FelugroAblakHiba.css" />
-   </stylesheets>
+    <stylesheets>
+        <URL value="@../../css/FelugroAblak.css" />
+        <URL value="@../../css/FelugroAblakHiba.css" />
+    </stylesheets>
 </GridPane>
