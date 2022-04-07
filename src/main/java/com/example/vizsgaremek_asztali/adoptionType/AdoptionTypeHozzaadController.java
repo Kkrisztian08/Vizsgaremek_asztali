@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 public class AdoptionTypeHozzaadController extends Controller {
     @FXML
     private TextField tipusInput;
+    private Runnable runnableAfterHozzaadas;
 
     @FXML
     public void onHozzaadas(ActionEvent actionEvent) {
@@ -35,6 +36,9 @@ public class AdoptionTypeHozzaadController extends Controller {
             AdoptionType ujTipus = new AdoptionType(0,tipus);
             AdoptionType letrehozott = AdoptionTypeApi.post(ujTipus);
             if (letrehozott != null){
+                if (runnableAfterHozzaadas!=null){
+                    runnableAfterHozzaadas.run();
+                }
                 alert("Sikeres hozzáadás");
             } else {
                 alert("Sikeretelen hozzáadás");
@@ -42,6 +46,10 @@ public class AdoptionTypeHozzaadController extends Controller {
         } catch (Exception e) {
             hibaKiir(e);
         }
+    }
+
+    public void setRunnableAfterHozzaadas(Runnable runnableAfterHozzaadas) {
+        this.runnableAfterHozzaadas = runnableAfterHozzaadas;
     }
 
     @FXML

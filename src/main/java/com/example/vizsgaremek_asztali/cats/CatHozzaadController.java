@@ -23,6 +23,8 @@ public class CatHozzaadController extends Controller {
     private Spinner<Integer> kedvelesInput;
     @FXML
     private ComboBox<String> nemInput;
+    private Runnable runnableAfterHozzaadas;
+
 
     @FXML
     public void onHozzaadas(ActionEvent actionEvent) {
@@ -102,6 +104,9 @@ public class CatHozzaadController extends Controller {
             Cat ujMacska = new Cat(0,nev,nem,formazottSzuldatum,kultul,leiras,erdeklodes,orokbefogadasid);
             Cat letrehozott = CatApi.post(ujMacska);
             if (letrehozott != null){
+                if (runnableAfterHozzaadas!=null){
+                    runnableAfterHozzaadas.run();
+                }
                 alert("Sikeres hozzáadás");
             } else {
                 alert("Sikeretelen hozzáadás");
@@ -109,6 +114,10 @@ public class CatHozzaadController extends Controller {
         } catch (Exception e) {
             hibaKiir(e);
         }
+    }
+
+    public void setRunnableAfterHozzaadas(Runnable runnableAfterHozzaadas) {
+        this.runnableAfterHozzaadas = runnableAfterHozzaadas;
     }
 
     @FXML

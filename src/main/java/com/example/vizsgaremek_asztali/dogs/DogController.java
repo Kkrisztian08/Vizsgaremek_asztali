@@ -110,9 +110,9 @@ public class DogController extends Controller {
     @FXML
     public void onHozzaadKutya(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/dogs/hozzaad-view.fxml", "Kutya hozzáadása",
+            DogHozzaadController hozzadas = (DogHozzaadController) ujAblak("FXML/dogs/hozzaad-view.fxml", "Kutya hozzáadása",
                     600, 400);
-            hozzadas.getStage().setOnCloseRequest(event -> kutyakListaFeltolt());
+            hozzadas.setRunnableAfterHozzaadas(this::kutyakListaFeltolt);
             hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);

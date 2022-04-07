@@ -17,6 +17,8 @@ public class EventHozzaadController extends Controller {
     private TextArea leirasInput;
     @FXML
     private DatePicker datumInput;
+    private Runnable runnableAfterHozzaadas;
+
 
     @FXML
     public void onHozzaadas(ActionEvent actionEvent) {
@@ -62,6 +64,9 @@ public class EventHozzaadController extends Controller {
             Event ujEvent = new Event(0,elnevezes,leiras,formazottSzuldatum);
             Event letrehozott = EventApi.post(ujEvent);
             if (letrehozott != null){
+                if (runnableAfterHozzaadas!=null){
+                    runnableAfterHozzaadas.run();
+                }
                 alert("Sikeres hozzáadás");
             } else {
                 alert("Sikeretelen hozzáadás");
@@ -69,6 +74,10 @@ public class EventHozzaadController extends Controller {
         } catch (Exception e) {
             hibaKiir(e);
         }
+    }
+
+    public void setRunnableAfterHozzaadas(Runnable runnableAfterHozzaadas) {
+        this.runnableAfterHozzaadas = runnableAfterHozzaadas;
     }
 
     @FXML

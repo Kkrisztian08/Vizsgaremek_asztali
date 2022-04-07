@@ -107,9 +107,9 @@ public class CatController extends Controller {
     @FXML
     public void onHozzaadMacska(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/cats/hozzaad-view.fxml", "Macska hozzáadása",
+            CatHozzaadController hozzadas = (CatHozzaadController) ujAblak("FXML/cats/hozzaad-view.fxml", "Macska hozzáadása",
                     600, 400);
-            hozzadas.getStage().setOnCloseRequest(event -> macskakListaFeltolt());
+            hozzadas.setRunnableAfterHozzaadas(this::macskakListaFeltolt);
             hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);

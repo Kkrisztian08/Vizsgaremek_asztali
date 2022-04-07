@@ -28,6 +28,7 @@ public class AdoptionHozzaadController extends Controller {
     private List<User> userList;
     private List<AdoptionType> typeList;
     private List<Dog> dogList;
+    private Runnable runnableAfterHozzaadas;
 
 
 
@@ -80,6 +81,9 @@ public class AdoptionHozzaadController extends Controller {
             Adoption letrehozott = AdoptionApi.storeDogAdoption(ujAdoption,dogIndex);
             //TODO:post-ba kell egy paraméter id és ide irom be az elmentett változót
             if (letrehozott != null){
+                if (runnableAfterHozzaadas!=null){
+                    runnableAfterHozzaadas.run();
+                }
                 alert("Sikeres hozzáadás");
             } else {
                 alert("Sikeretelen hozzáadás");
@@ -88,6 +92,10 @@ public class AdoptionHozzaadController extends Controller {
             hibaKiir(e);
         }
 
+    }
+
+    public void setRunnableAfterHozzaadas(Runnable runnableAfterHozzaadas) {
+        this.runnableAfterHozzaadas = runnableAfterHozzaadas;
     }
 
     @FXML

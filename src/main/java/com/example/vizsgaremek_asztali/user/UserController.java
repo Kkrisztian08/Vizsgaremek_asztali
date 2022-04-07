@@ -120,9 +120,9 @@ public class UserController extends Controller {
     @FXML
     public void onHozzaadUser(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/users/hozzaad-view.fxml", "Admin hozzáadása",
+            UserHozzaadController hozzadas = (UserHozzaadController) ujAblak("FXML/users/hozzaad-view.fxml", "Admin hozzáadása",
                     700, 400);
-            hozzadas.getStage().setOnCloseRequest(event -> userListaFeltolt());
+            hozzadas.setRunnableAfterHozzaadas(this::userListaFeltolt);
             hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);

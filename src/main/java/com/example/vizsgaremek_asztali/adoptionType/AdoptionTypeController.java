@@ -78,9 +78,9 @@ public class AdoptionTypeController extends Controller {
     @FXML
     public void onHozzaadType(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/adoptionTypes/hozzaad-view.fxml", "Típus hozzáadása",
+            AdoptionTypeHozzaadController hozzadas = (AdoptionTypeHozzaadController) ujAblak("FXML/adoptionTypes/hozzaad-view.fxml", "Típus hozzáadása",
                     500, 230);
-            hozzadas.getStage().setOnCloseRequest(event -> typeListaFeltolt());
+            hozzadas.setRunnableAfterHozzaadas(this::typeListaFeltolt);
             hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);

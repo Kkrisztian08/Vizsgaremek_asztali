@@ -85,10 +85,9 @@ public class AdoptionController extends Controller {
     @FXML
     public void onHozzaadDogAdoption(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/adoptions/hozzaadDog-view.fxml", "Örökbefogadás hozzáadása",
+            AdoptionHozzaadController hozzadas = (AdoptionHozzaadController) ujAblak("FXML/adoptions/hozzaadDog-view.fxml", "Örökbefogadás hozzáadása",
                     600, 400);
-            hozzadas.getStage().setOnCloseRequest(event -> adoptionsListaFeltolt());
-            hozzadas.getStage().show();
+            hozzadas.setRunnableAfterHozzaadas(this::adoptionsListaFeltolt);            hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);
         }

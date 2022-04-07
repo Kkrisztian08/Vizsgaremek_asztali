@@ -95,9 +95,9 @@ public class ProgramApplicationController extends Controller {
     @FXML
     public void onHozzaadPA(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/programApplications/hozzaad-view.fxml", "Program Jelentkezés hozzáadása",
+            ProgramApplicationHozzaadController hozzadas = (ProgramApplicationHozzaadController) ujAblak("FXML/programApplications/hozzaad-view.fxml", "Program Jelentkezés hozzáadása",
                     500, 350);
-            hozzadas.getStage().setOnCloseRequest(event -> pAListaFeltolt());
+            hozzadas.setRunnableAfterHozzaadas(this::pAListaFeltolt);
             hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);

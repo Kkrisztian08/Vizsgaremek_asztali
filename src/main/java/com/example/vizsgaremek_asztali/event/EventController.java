@@ -90,9 +90,9 @@ public class EventController extends Controller {
     @FXML
     public void onHozzaadEvent(ActionEvent actionEvent) {
         try {
-            Controller hozzadas = ujAblak("FXML/events/hozzaad-view.fxml", "Esemény hozzáadása",
+            EventHozzaadController hozzadas = (EventHozzaadController) ujAblak("FXML/events/hozzaad-view.fxml", "Esemény hozzáadása",
                     500, 474);
-            hozzadas.getStage().setOnCloseRequest(event -> eventsListaFeltolt());
+            hozzadas.setRunnableAfterHozzaadas(this::eventsListaFeltolt);
             hozzadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);

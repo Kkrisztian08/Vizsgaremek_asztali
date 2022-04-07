@@ -27,6 +27,8 @@ public class UserHozzaadController extends Controller {
     private TextField addressInput;
     @FXML
     private TextField emailInput;
+    private Runnable runnableAfterHozzaadas;
+
 
     @FXML
     public void onHozzad(ActionEvent actionEvent) {
@@ -124,6 +126,9 @@ public class UserHozzaadController extends Controller {
             User ujUser = new User(0,admin,nev,felhasznalonev,formazottSzuldatum,lakcim,telefonszam,email,jelszo);
             User letrehozott = UserApi.post(ujUser);
             if (letrehozott != null){
+                if (runnableAfterHozzaadas!=null){
+                    runnableAfterHozzaadas.run();
+                }
                 alert("Sikeres hozzáadás");
             } else {
                 alert("Sikeretelen hozzáadás");
@@ -131,6 +136,10 @@ public class UserHozzaadController extends Controller {
         } catch (Exception e) {
             hibaKiir(e);
         }
+    }
+
+    public void setRunnableAfterHozzaadas(Runnable runnableAfterHozzaadas) {
+        this.runnableAfterHozzaadas = runnableAfterHozzaadas;
     }
 
     @FXML

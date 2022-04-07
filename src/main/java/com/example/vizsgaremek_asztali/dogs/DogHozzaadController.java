@@ -26,6 +26,8 @@ public class DogHozzaadController extends Controller {
     private TextArea kultulInput;
     @FXML
     private ComboBox<String> nemInput;
+    private Runnable runnableAfterHozzaadas;
+
 
 
     @FXML
@@ -112,6 +114,9 @@ public class DogHozzaadController extends Controller {
             Dog ujKutya = new Dog(0,nev,nem,formazottSzuldatum,faj,kultul,leiras,erdeklodes,orokbefogadasid);
             Dog letrehozott = DogApi.post(ujKutya);
             if (letrehozott != null){
+                if (runnableAfterHozzaadas!=null){
+                    runnableAfterHozzaadas.run();
+                }
                 alert("Sikeres hozzáadás");
             } else {
                 alert("Sikeretelen hozzáadás");
@@ -121,7 +126,9 @@ public class DogHozzaadController extends Controller {
         }
     }
 
-
+    public void setRunnableAfterHozzaadas(Runnable runnableAfterHozzaadas) {
+        this.runnableAfterHozzaadas = runnableAfterHozzaadas;
+    }
 
     @FXML
     public void hibaVege(Event event) {

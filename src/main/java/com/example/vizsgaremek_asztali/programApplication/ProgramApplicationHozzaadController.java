@@ -21,6 +21,8 @@ public class ProgramApplicationHozzaadController extends Controller {
     private ComboBox<ProgramInfo> pInfoIdInput;
     private List<User> userList;
     private List<ProgramInfo> programInfoList;
+    private Runnable runnableAfterHozzaadas;
+
 
 
     public void initialize(){
@@ -63,6 +65,9 @@ public class ProgramApplicationHozzaadController extends Controller {
             ProgramApplication ujApplication = new ProgramApplication(0 ,programInfoIndex, userIndex);
             ProgramApplication letrehozott = ProgramApplicationApi.post(ujApplication);
             if (letrehozott != null){
+                if (runnableAfterHozzaadas!=null){
+                    runnableAfterHozzaadas.run();
+                }
                 alert("Sikeres hozzáadás");
             } else {
                 alert("Sikeretelen hozzáadás");
@@ -70,6 +75,10 @@ public class ProgramApplicationHozzaadController extends Controller {
         } catch (Exception e) {
             hibaKiir(e);
         }
+    }
+
+    public void setRunnableAfterHozzaadas(Runnable runnableAfterHozzaadas) {
+        this.runnableAfterHozzaadas = runnableAfterHozzaadas;
     }
 
     @FXML

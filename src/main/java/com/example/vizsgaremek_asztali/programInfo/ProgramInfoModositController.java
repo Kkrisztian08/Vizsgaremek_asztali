@@ -26,40 +26,39 @@ public class ProgramInfoModositController extends Controller {
 
     @FXML
     public void onModositas(ActionEvent actionEvent) {
-        String tipus=tipusInput.getText().trim();
-        String idopont="";
-        int ora=0;
-        int perc=0;
-        LocalDate datum=datumInput.getValue();
+        String tipus = tipusInput.getText().trim();
+        int ora = 0;
+        int perc = 0;
+        LocalDate datum = datumInput.getValue();
         String formazottSzuldatum;
 
         boolean hiba = false;
         StringBuilder alertBuilder = new StringBuilder();
 
-        if (tipus.isEmpty()){
+        if (tipus.isEmpty()) {
             //alert("A név megadása kötelező");
             tipusInput.getStyleClass().add("error");
             alertBuilder.append("A típus megadása kötelező").append(System.lineSeparator());
-            hiba=true;
+            hiba = true;
         }
 
-        if (datum==null){
+        if (datum == null) {
             //alert("A dátum megadása kötelező");
             datumInput.getStyleClass().add("error");
             alertBuilder.append("A dátum megadása kötelező").append(System.lineSeparator());
-            hiba=true;
+            hiba = true;
         }
 
         try {
-            ora =  orainput.getValue();
-        } catch (NullPointerException ex){
+            ora = orainput.getValue();
+        } catch (NullPointerException ex) {
             alert("Az óra megadása kötelező");
             return;
         }
 
         try {
-            perc =  percinput.getValue();
-        } catch (NullPointerException ex){
+            perc = percinput.getValue();
+        } catch (NullPointerException ex) {
             alert("A perc megadása kötelező");
             return;
         }
@@ -69,9 +68,9 @@ public class ProgramInfoModositController extends Controller {
             alert(alertBuilder.toString());
             return;
         }
-        formazottSzuldatum=datum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        formazottSzuldatum = datum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        idopont=String.format("%02d:%02d",ora,perc);
+        String idopont = String.format("%02d:%02d", ora, perc);
 
         modositando.setType(tipus);
         modositando.setIdo(idopont);
@@ -110,14 +109,15 @@ public class ProgramInfoModositController extends Controller {
         this.modositando = modositando;
         ertekekBeallitasa();
     }
+
     private void ertekekBeallitasa() {
         tipusInput.setText(modositando.getType());
-        String[] ido=modositando.getIdo().split(":");
-        String ora=ido[0];
-        String perc=ido[1];
+        String[] ido = modositando.getIdo().split(":");
+        String ora = ido[0];
+        String perc = ido[1];
         orainput.getValueFactory().setValue(Integer.parseInt(ora));
         percinput.getValueFactory().setValue(Integer.parseInt(perc));
-        LocalDate datum=LocalDate.parse(modositando.getValasztottDatum());
+        LocalDate datum = LocalDate.parse(modositando.getValasztottDatum());
         datumInput.setValue(datum);
 
     }

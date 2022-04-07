@@ -110,11 +110,13 @@ public class UserDataModositController extends Controller {
         }
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        User modositando=new User(ElethangApp.BEJELENTKEZETT.getId(),ElethangApp.BEJELENTKEZETT.getAdmin(),
+        User modositando=new User(
+                ElethangApp.BEJELENTKEZETT.getId(),ElethangApp.BEJELENTKEZETT.getAdmin(),
                 ElethangApp.BEJELENTKEZETT.getName(),ElethangApp.BEJELENTKEZETT.getUsername(),
                 ElethangApp.BEJELENTKEZETT.getBirthday(), ElethangApp.BEJELENTKEZETT.getAddress(),
                 ElethangApp.BEJELENTKEZETT.getPhone_number(),ElethangApp.BEJELENTKEZETT.getEmail(),
-                ElethangApp.BEJELENTKEZETT.getPassword());
+                ElethangApp.BEJELENTKEZETT.getPassword()
+        );
 
         modositando.setName(nev);
         modositando.setUsername(felhasznalonev);
