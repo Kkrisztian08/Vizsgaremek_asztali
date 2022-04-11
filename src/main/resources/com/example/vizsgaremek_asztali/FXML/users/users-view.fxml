@@ -184,7 +184,11 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
+                           <HBox.margin>
+                              <Insets right="40.0" />
+                           </HBox.margin>
                                 </Button>
+                        <Button id="rnd" fx:id="adminJog" mnemonicParsing="false" onAction="#onAdminJog" stylesheets="@../../css/TablazatosOldalak.css" text="Admin jog" />
                             </children>
                         </HBox>
                     </children>

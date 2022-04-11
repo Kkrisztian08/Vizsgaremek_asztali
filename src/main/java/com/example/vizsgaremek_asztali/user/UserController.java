@@ -1,7 +1,6 @@
 package com.example.vizsgaremek_asztali.user;
 
 import com.example.vizsgaremek_asztali.Controller;
-import com.example.vizsgaremek_asztali.dogs.DogApi;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,7 +50,8 @@ public class UserController extends Controller {
     @FXML
     private TableColumn<User,String> telefonCol;
     private ObservableList<User> userLista = FXCollections.observableArrayList();
-
+    @FXML
+    private Button adminJog;
 
 
     public void initialize(){
@@ -73,6 +73,7 @@ public class UserController extends Controller {
 
     public void userListaFeltolt() {
         userTorol.setDisable(true);
+        adminJog.setDisable(true);
         try {
             userLista.clear();
             userLista.addAll(UserApi.get());
@@ -129,7 +130,6 @@ public class UserController extends Controller {
         }
     }
 
-
     @FXML
     public void onUserTorol(ActionEvent actionEvent) {
         int selectedIndex = userTable.getSelectionModel().getSelectedIndex();
@@ -152,6 +152,22 @@ public class UserController extends Controller {
             } catch (IOException e) {
                 hibaKiir(e);
             }
+        }
+    }
+
+    @FXML
+    public void onAdminJog(ActionEvent actionEvent) {
+        User felhasznalo = userTable.getSelectionModel().getSelectedItem();
+        //int jogosultsag=felhasznalo.getAdmin();
+        if (felhasznalo.getAdmin() == 0) {
+            if (!confirm("Valóban törölni szeretné "  +felhasznalo.getName() + "-t admin jogosultsággal felruházni?")){
+                return;
+            }
+            felhasznalo.setAdmin(1);
+            userLista.clear();
+            userListaFeltolt();
+        }else{
+            alert("A kiválasztott felhasználó már rendelkezik Admin jogosultsággal!");
         }
     }
 
@@ -204,6 +220,7 @@ public class UserController extends Controller {
         int selectedIndex = userTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
             userTorol.setDisable(false);
+            adminJog.setDisable(false);
         }
         User leiraskiir= (User) userTable.getSelectionModel().getSelectedItem();
         leirasTextArea.setText("Cím:\n"+leiraskiir.getAddress()+"\n\nEmail cím:\n"+leiraskiir.getEmail()+"\n\nTitikositott jelszó:\n"+leiraskiir.getPassword());
@@ -346,4 +363,6 @@ public class UserController extends Controller {
             hibaKiir(e);
         }
     }
+
+
 }

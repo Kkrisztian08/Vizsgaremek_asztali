@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -81,7 +80,7 @@ public class AdoptionCatHozzaadController extends Controller {
                 }
                 alert("Sikeres hozzáadás");
             } else {
-                alert("Sikeretelen hozzáadás");
+                alert("Sikertelen hozzáadás");
             }
         } catch (Exception e) {
             hibaKiir(e);

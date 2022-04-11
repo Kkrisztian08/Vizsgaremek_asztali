@@ -11,7 +11,6 @@ import java.time.format.DateTimeFormatter;
 
 public class DogHozzaadController extends Controller {
 
-
     @FXML
     private TextField nevInput;
     @FXML

@@ -30,8 +30,6 @@ public class AdoptionDogHozzaadController extends Controller {
     private List<Dog> dogList;
     private Runnable runnableAfterHozzaadas;
 
-
-
     public void initialize(){
         userList = new ArrayList<>();
         try {

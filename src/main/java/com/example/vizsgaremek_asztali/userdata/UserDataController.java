@@ -40,7 +40,7 @@ public class UserDataController extends Controller {
     public void onModosit(ActionEvent actionEvent) {
         try {
             UserDataModositController modositas = (UserDataModositController) ujAblak("FXML/userdata/modosit-view.fxml", "Adatok Módosítása",
-                    600, 350);
+                    700, 350);
             modositas.getStage().setOnHiding(event -> this.initialize());
             modositas.getStage().show();
         } catch (Exception e) {

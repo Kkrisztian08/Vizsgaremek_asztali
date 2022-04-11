@@ -66,8 +66,8 @@
         <ComboBox fx:id="nemInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" GridPane.columnIndex="3" GridPane.rowIndex="1">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Hím" />
-                    <String fx:value="Nőstény" />
+                    <String fx:value="Kan" />
+                    <String fx:value="Szuka" />
                 </FXCollections>
             </items>
             <GridPane.margin>

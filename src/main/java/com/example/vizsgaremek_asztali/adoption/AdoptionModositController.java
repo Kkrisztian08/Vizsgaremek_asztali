@@ -1,6 +1,12 @@
 package com.example.vizsgaremek_asztali.adoption;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.adoptionType.AdoptionType;
+import com.example.vizsgaremek_asztali.adoptionType.AdoptionTypeApi;
+import com.example.vizsgaremek_asztali.dogs.Dog;
+import com.example.vizsgaremek_asztali.dogs.DogApi;
+import com.example.vizsgaremek_asztali.user.User;
+import com.example.vizsgaremek_asztali.user.UserApi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -10,22 +16,51 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdoptionModositController extends Controller {
     @FXML
     private DatePicker szulidoInput;
     @FXML
-    private ComboBox<Integer> adoptionTypeIdInput;
+    private ComboBox<AdoptionType> adoptionTypeIdInput;
     @FXML
-    private ComboBox<Integer> userIdInput;
+    private ComboBox<User> userIdInput;
+    private List<User> userList;
+    private List<AdoptionType> typeList;
     private Adoption modositando;
+
+    public void initialize(){
+        userList = new ArrayList<>();
+        try {
+            userList= UserApi.get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (User user : userList){
+            userIdInput.getItems().add(user);
+        }
+        userIdInput.getSelectionModel().selectFirst();
+
+        typeList = new ArrayList<>();
+        try {
+            typeList= AdoptionTypeApi.get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (AdoptionType type : typeList){
+            adoptionTypeIdInput.getItems().add(type);
+        }
+        adoptionTypeIdInput.getSelectionModel().selectFirst();
+
+    }
 
     @FXML
     public void onModositas(ActionEvent actionEvent) {
         LocalDate szuldatum=szulidoInput.getValue();
         String formazottSzuldatum;
-        int adoptionTypeIndex = adoptionTypeIdInput.getSelectionModel().getSelectedIndex();
-        int userIndex = userIdInput.getSelectionModel().getSelectedIndex();
+        int adoptionTypeIndex = adoptionTypeIdInput.getSelectionModel().getSelectedItem().getId();
+        int userIndex = userIdInput.getSelectionModel().getSelectedItem().getId();
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -79,9 +114,10 @@ public class AdoptionModositController extends Controller {
     }
 
     private void ertekekBeallitasa() {
-        adoptionTypeIdInput.setValue(modositando.getAdoptionTypeId());
-        userIdInput.setValue(modositando.getUserId());
+        User user=userList.stream().filter(user1 -> user1.getId()==modositando.getUserId()).findFirst().get();
+        userIdInput.setValue(user);
         LocalDate datum=LocalDate.parse(modositando.getBegin());
         szulidoInput.setValue(datum);
+
     }
 }

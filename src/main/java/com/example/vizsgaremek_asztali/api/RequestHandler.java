@@ -6,23 +6,28 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public class RequestHandler {
+
     private RequestHandler(){}
+
     public static Response get(String url) throws IOException {
         HttpURLConnection conn = setupConnection(url);
         return getResponse(conn);
     }
+
     public static Response post(String url, String data) throws IOException {
         HttpURLConnection conn = setupConnection(url);
         conn.setRequestMethod("POST");
         addRequestBody(conn, data);
         return getResponse(conn);
     }
+
     public static Response put(String url, String data) throws IOException {
         HttpURLConnection conn = setupConnection(url);
         conn.setRequestMethod("PUT");
         addRequestBody(conn, data);
         return getResponse(conn);
     }
+
     public static Response delete(String url) throws IOException {
         HttpURLConnection conn = setupConnection(url);
         conn.setRequestMethod("DELETE");
@@ -71,9 +76,7 @@ public class RequestHandler {
 
     public static Response tokenAuthorization(String url, String token) throws IOException {
         HttpURLConnection conn = setConnection(url);
-
         conn.setRequestProperty("Authorization", "Bearer " + token);
-
         return getResponse(conn);
     }
 
@@ -83,7 +86,6 @@ public class RequestHandler {
         conn.setRequestProperty("Accept", "application/json");
         conn.setConnectTimeout(10000);
         conn.setReadTimeout(10000);
-
         return conn;
     }
 }
