@@ -1,9 +1,10 @@
-package com.example.vizsgaremek_asztali.user;
+package com.example.vizsgaremek_asztali.superAdmin;
 
 import com.example.vizsgaremek_asztali.Controller;
 import com.example.vizsgaremek_asztali.ElethangApp;
-import com.example.vizsgaremek_asztali.adoption.Adoption;
-import com.example.vizsgaremek_asztali.adoption.AdoptionApi;
+import com.example.vizsgaremek_asztali.user.User;
+import com.example.vizsgaremek_asztali.user.UserApi;
+import com.example.vizsgaremek_asztali.user.UserHozzaadController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,32 +26,42 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class UserController extends Controller {
-    @FXML
-    private TextArea leirasTextArea;
+public class SuperAdminUserController extends Controller {
     @FXML
     private TextField keresesTextField;
     @FXML
-    private TableView<User> userTable;
+    private TableColumn szulIdoCol;
     @FXML
-    private TableColumn<User,String> szulIdoCol;
+    private TextArea leirasTextArea;
     @FXML
     private TableColumn<User,Integer> adminCol;
+    @FXML
+    private TableColumn<User,String> falhasznalonevCol;
     @FXML
     private TableColumn<User,String> cimCol;
     @FXML
     private TableColumn<User,Integer> idCol;
     @FXML
+    private Button userTorol;
+    @FXML
     private TableColumn<User,String> emailCol;
+    @FXML
+    private TableView<User> userTable;
     @FXML
     private TableColumn<User,String> nevCol;
     @FXML
     private TableColumn<User,String> jelszoCol;
     @FXML
-    private TableColumn<User,String> falhasznalonevCol;
-    @FXML
     private TableColumn<User,String> telefonCol;
+    @FXML
+    private Button adminJogButton;
+    @FXML
+    private Button lefokozButton;
     private ObservableList<User> userLista = FXCollections.observableArrayList();
+
+
+
+
 
 
     public void initialize(){
@@ -71,6 +82,9 @@ public class UserController extends Controller {
     }
 
     public void userListaFeltolt() {
+        userTorol.setDisable(true);
+        adminJogButton.setDisable(true);
+        lefokozButton.setDisable(true);
         try {
             userLista.clear();
             userLista.addAll(UserApi.get());
@@ -116,7 +130,7 @@ public class UserController extends Controller {
     }
 
     @Deprecated
-    public void onHozzaadUser(ActionEvent actionEvent) {
+    public void onHozzaadAdmin(ActionEvent actionEvent) {
         try {
             UserHozzaadController hozzadas = (UserHozzaadController) ujAblak("FXML/users/hozzaad-view.fxml", "Admin hozzáadása",
                     700, 400);
@@ -127,7 +141,19 @@ public class UserController extends Controller {
         }
     }
 
-    @Deprecated
+    @FXML
+    public void onHozzaadSuperAdmin(ActionEvent actionEvent) {
+        try {
+            SuperAdminHozzadController hozzadas = (SuperAdminHozzadController) ujAblak("FXML/superAdmin/superAdminHozzaad-view.fxml", "Super Admin hozzáadása",
+                    700, 400);
+            hozzadas.setRunnableAfterHozzaadas(this::userListaFeltolt);
+            hozzadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+    }
+
+    @FXML
     public void onUserTorol(ActionEvent actionEvent) {
         int selectedIndex = userTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex == -1){
@@ -152,28 +178,95 @@ public class UserController extends Controller {
         }
     }
 
-    @Deprecated
+    @FXML
     public void onAdminJog(ActionEvent actionEvent) {
         User felhasznalo = userTable.getSelectionModel().getSelectedItem();
-        if (felhasznalo.getAdmin() == 0) {
-            if (!confirm("Valóban törölni szeretné "  +felhasznalo.getName() + "-t admin jogosultsággal felruházni?")){
-                return;
-            }
-            try {
-                User letrehozott = UserApi.adminJog(felhasznalo);
-                if (letrehozott != null){
-                    alert("Sikeres hozzáadás");
-                    userLista.clear();
-                    userListaFeltolt();
-                } else {
-                    alert("Sikertelen hozzáadás");
+        if (felhasznalo.getId() == ElethangApp.BEJELENTKEZETT.getId()) {
+            alert("A saját jogosultságát biztonsági okok miatt nem módosíthatja!");
+        }else {
+            if (felhasznalo.getAdmin() == 0) {
+                if (!confirm("Valóban szeretné " + felhasznalo.getName() + "-t admin jogosultsággal felruházni?")) {
+                    return;
                 }
-            } catch (Exception e) {
-                hibaKiir(e);
-            }
+                try {
+                    User letrehozott = UserApi.adminJog(felhasznalo);
+                    if (letrehozott != null) {
+                        alert("Sikeres hozzáadás");
+                        userLista.clear();
+                        userListaFeltolt();
+                    } else {
+                        alert("Sikertelen hozzáadás");
+                    }
+                } catch (Exception e) {
+                    hibaKiir(e);
+                }
 
-        }else{
-            alert("A kiválasztott felhasználó már rendelkezik Admin jogosultsággal!");
+            }else if (felhasznalo.getAdmin() == 1) {
+                if (!confirm("Valóban szeretné " + felhasznalo.getName() + "-t super admin jogosultsággal felruházni?")) {
+                    return;
+                }
+                try {
+                    User letrehozott = UserApi.adminJog(felhasznalo);
+                    if (letrehozott != null) {
+                        alert("Sikeres hozzáadás");
+                        userLista.clear();
+                        userListaFeltolt();
+                    } else {
+                        alert("Sikertelen hozzáadás");
+                    }
+                } catch (Exception e) {
+                    hibaKiir(e);
+                }
+
+            } else {
+                alert("A kiválasztott felhasználó már nem lehet magasabb jogosultsággal felruházni!");
+            }
+        }
+    }
+
+    @FXML
+    public void onLefokoz(ActionEvent actionEvent) {
+        User felhasznalo = userTable.getSelectionModel().getSelectedItem();
+        if (felhasznalo.getId() == ElethangApp.BEJELENTKEZETT.getId()) {
+            alert("A saját jogosultságát biztonsági okok miatt nem módosíthatja!");
+        }else {
+            if (felhasznalo.getAdmin() == 2) {
+                if (!confirm("Valóban szeretné " + felhasznalo.getName() + "-t fokozni adminná?")) {
+                    return;
+                }
+                try {
+                    User letrehozott = UserApi.adminJogElvesz(felhasznalo);
+                    if (letrehozott != null) {
+                        alert("Sikeres művelet");
+                        userLista.clear();
+                        userListaFeltolt();
+                    } else {
+                        alert("Sikertelen művelet");
+                    }
+                } catch (Exception e) {
+                    hibaKiir(e);
+                }
+
+            } else if (felhasznalo.getAdmin() == 1) {
+                if (!confirm("Valóban szeretné " + felhasznalo.getName() + "-t fokozni általános felhasználóvá?")) {
+                    return;
+                }
+                try {
+                    User letrehozott = UserApi.adminJogElvesz(felhasznalo);
+                    if (letrehozott != null) {
+                        alert("Sikeres művelet");
+                        userLista.clear();
+                        userListaFeltolt();
+                    } else {
+                        alert("Sikertelen művelet");
+                    }
+                } catch (Exception e) {
+                    hibaKiir(e);
+                }
+
+            } else {
+                alert("A kiválasztott felhasználó már nem lehet lejebb fokozni!");
+            }
         }
     }
 
@@ -223,6 +316,12 @@ public class UserController extends Controller {
 
     @FXML
     public void onSelectUser(Event event) {
+        int selectedIndex = userTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex != -1) {
+            userTorol.setDisable(false);
+            adminJogButton.setDisable(false);
+            lefokozButton.setDisable(false);
+        }
         User leiraskiir= (User) userTable.getSelectionModel().getSelectedItem();
         leirasTextArea.setText("Cím:\n"+leiraskiir.getAddress()+"\n\nEmail cím:\n"+leiraskiir.getEmail()+"\n\nTitikositott jelszó:\n"+leiraskiir.getPassword());
 
@@ -372,6 +471,9 @@ public class UserController extends Controller {
             hibaKiir(e);
         }
     }
+
+
+
 
 
 }

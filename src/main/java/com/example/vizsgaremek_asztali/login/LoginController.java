@@ -53,12 +53,17 @@ public class LoginController extends Controller {
                 Token token = LoginApi.postLogin(login);
                 User felhAdatai = LoginApi.getLoginData(token.getToken());
                 ElethangApp.BEJELENTKEZETT = felhAdatai;
-                if (felhAdatai.getAdmin() >= 1) {
+                if (felhAdatai.getAdmin() == 1) {
                     Controller oldalvaltas = ujAblak("FXML/users/users-view.fxml", "Élethang alapitvány",
                             1100, 600);
                     oldalvaltas.getStage().show();
                     this.stage.close();
-                } else {
+                } else if (felhAdatai.getAdmin() == 2) {
+                    Controller oldalvaltas = ujAblak("FXML/superAdmin/superAdminUsers-view.fxml", "Élethang alapitvány",
+                            1100, 600);
+                    oldalvaltas.getStage().show();
+                    this.stage.close();
+                }else {
                     alert("Nem rendelkezik admin jogosultsággal!");
                 }
             } catch (IOException e) {

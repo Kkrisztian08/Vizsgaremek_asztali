@@ -56,4 +56,10 @@ public class UserApi {
         String json = Api.put(BASE_URL + "/api/adminPermission", uj.getId(), ujJson);
         return jsonConverted.fromJson(json, User.class);
     }
+
+    public static User adminJogElvesz(User uj) throws IOException {
+        String ujJson = jsonConverted.toJson(uj);
+        String json = Api.put(BASE_URL + "/api/adminPermissionGone", uj.getId(), ujJson);
+        return jsonConverted.fromJson(json, User.class);
+    }
 }

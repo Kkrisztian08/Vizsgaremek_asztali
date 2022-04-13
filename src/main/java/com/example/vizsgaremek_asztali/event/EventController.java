@@ -1,6 +1,7 @@
 package com.example.vizsgaremek_asztali.event;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.ElethangApp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -284,10 +285,18 @@ public class EventController extends Controller {
     @FXML
     public void onUsersClick(ActionEvent actionEvent) {
         try {
-            Controller oldalvaltas = ujAblak("FXML/users/users-view.fxml", "Élethang alapitvány",
-                    1100, 600);
-            oldalvaltas.getStage().show();
-            this.stage.close();
+            if ( ElethangApp.BEJELENTKEZETT.getAdmin() == 1) {
+                Controller oldalvaltas = ujAblak("FXML/users/users-view.fxml", "Élethang alapitvány",
+                        1100, 600);
+                oldalvaltas.getStage().show();
+                this.stage.close();
+            }else if ( ElethangApp.BEJELENTKEZETT.getAdmin() == 2) {
+                Controller oldalvaltas = ujAblak("FXML/superAdmin/superAdminUsers-view.fxml", "Élethang alapitvány",
+                        1100, 600);
+                oldalvaltas.getStage().show();
+                this.stage.close();
+            }
+
         } catch (Exception e) {
             hibaKiir(e);
         }

@@ -32,4 +32,6 @@ module com.example.vizsgaremek_asztali {
     opens com.example.vizsgaremek_asztali.user to com.google.gson, javafx.fxml;
     exports com.example.vizsgaremek_asztali.userdata;
     opens com.example.vizsgaremek_asztali.userdata to com.google.gson, javafx.fxml;
+    exports com.example.vizsgaremek_asztali.superAdmin;
+    opens com.example.vizsgaremek_asztali.superAdmin to com.google.gson, javafx.fxml;
 }
