@@ -161,19 +161,23 @@ public class SuperAdminUserController extends Controller {
             return;
         }
         User torlendoUser = userTable.getSelectionModel().getSelectedItem();
-        if (!confirm("Valóban törölni szeretné "  +torlendoUser.getName() + " adatait")){
-            return;
-        }
-        if (torlendoUser.getAdmin()==2) {
-            alert("A Super Admint biztonsági okok miatt nem lehet kitörölni!");
+        if (torlendoUser.getId() == ElethangApp.BEJELENTKEZETT.getId()) {
+            alert("A saját fiókját nem törölheti!");
         }else {
-            try {
-                boolean sikeres= UserApi.delete(torlendoUser.getId());
-                alert(sikeres? "Sikeres törlés": "Sikertelen törlés");
-                userLista.clear();
-                userListaFeltolt();
-            } catch (IOException e) {
-                hibaKiir(e);
+            if (!confirm("Valóban törölni szeretné " + torlendoUser.getName() + " adatait")) {
+                return;
+            }
+            if (torlendoUser.getAdmin() == 2) {
+                alert("A Super Admint biztonsági okok miatt nem lehet kitörölni!");
+            } else {
+                try {
+                    boolean sikeres = UserApi.delete(torlendoUser.getId());
+                    alert(sikeres ? "Sikeres törlés" : "Sikertelen törlés");
+                    userLista.clear();
+                    userListaFeltolt();
+                } catch (IOException e) {
+                    hibaKiir(e);
+                }
             }
         }
     }
