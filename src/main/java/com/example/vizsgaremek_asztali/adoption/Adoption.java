@@ -51,14 +51,16 @@ public class Adoption {
         String tipus;
         if (adoptionTypeId == 1) {
             tipus = "ált. örökbefogadás";
-        } else {
+        } else if(adoptionTypeId == 2) {
             tipus = "virtuális örökbefogadás";
+        }else {
+            tipus="";
         }
         return tipus;
     }
 
     @Override
     public String toString() {
-        return String.format("%s, %s",this.getUserId(),this.getBegin());
+        return String.format("id: %s, kezdeti dátum: %s",this.getId(),this.getBegin());
     }
 }

@@ -1,6 +1,8 @@
 package com.example.vizsgaremek_asztali.user;
 
 import com.example.vizsgaremek_asztali.Controller;
+import com.example.vizsgaremek_asztali.adoption.Adoption;
+import com.example.vizsgaremek_asztali.adoption.AdoptionApi;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -158,14 +160,23 @@ public class UserController extends Controller {
     @FXML
     public void onAdminJog(ActionEvent actionEvent) {
         User felhasznalo = userTable.getSelectionModel().getSelectedItem();
-        //int jogosultsag=felhasznalo.getAdmin();
         if (felhasznalo.getAdmin() == 0) {
             if (!confirm("Valóban törölni szeretné "  +felhasznalo.getName() + "-t admin jogosultsággal felruházni?")){
                 return;
             }
-            felhasznalo.setAdmin(1);
-            userLista.clear();
-            userListaFeltolt();
+            try {
+                User letrehozott = UserApi.adminJog(felhasznalo);
+                if (letrehozott != null){
+                    alert("Sikeres hozzáadás");
+                    userLista.clear();
+                    userListaFeltolt();
+                } else {
+                    alert("Sikertelen hozzáadás");
+                }
+            } catch (Exception e) {
+                hibaKiir(e);
+            }
+
         }else{
             alert("A kiválasztott felhasználó már rendelkezik Admin jogosultsággal!");
         }

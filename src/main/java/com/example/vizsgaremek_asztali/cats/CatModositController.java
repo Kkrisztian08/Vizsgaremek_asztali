@@ -23,8 +23,6 @@ public class CatModositController extends Controller {
     private Spinner<Integer> kedvelesInput;
     @FXML
     private ComboBox<String> nemInput;
-    @FXML
-    private ComboBox<Integer> orokbefogadasInput;
     private Cat modositando;
 
     @FXML
@@ -36,7 +34,6 @@ public class CatModositController extends Controller {
         String leiras=leirasInput.getText().trim();
         int erdeklodes=0;
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
-        Integer orobefogadasIndex=orokbefogadasInput.getSelectionModel().getSelectedIndex();// ez majd akkor kell ha már megvan adoption osztáyl
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -105,7 +102,6 @@ public class CatModositController extends Controller {
             alert(alertBuilder.toString());
             return;
         }
-        Integer orokbefogadasId = orokbefogadasInput.getValue();
         formazottSzuldatum=szuldatum.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         modositando.setName(nev);
@@ -114,7 +110,6 @@ public class CatModositController extends Controller {
         modositando.setExternal_property(kultul);
         modositando.setDescription(leiras);
         modositando.setInterest(erdeklodes);
-        modositando.setAdoption_id(orokbefogadasId);
 
         try {
             Cat modositott= CatApi.put(modositando);
@@ -157,7 +152,6 @@ public class CatModositController extends Controller {
         leirasInput.setText(modositando.getDescription());
         kedvelesInput.getValueFactory().setValue(modositando.getInterest());
         nemInput.setValue(modositando.getGender());
-        orokbefogadasInput.setValue(modositando.getAdoption_id());
         LocalDate datum=LocalDate.parse(modositando.getLikely_bday());
         szulidoInput.setValue(datum);
     }

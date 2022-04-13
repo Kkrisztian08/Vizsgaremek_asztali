@@ -3,27 +3,62 @@ package com.example.vizsgaremek_asztali.programApplication;
 import com.example.vizsgaremek_asztali.Controller;
 import com.example.vizsgaremek_asztali.adoption.Adoption;
 import com.example.vizsgaremek_asztali.adoption.AdoptionApi;
+import com.example.vizsgaremek_asztali.adoptionType.AdoptionType;
+import com.example.vizsgaremek_asztali.adoptionType.AdoptionTypeApi;
+import com.example.vizsgaremek_asztali.programInfo.ProgramInfo;
+import com.example.vizsgaremek_asztali.programInfo.ProgramInfoApi;
+import com.example.vizsgaremek_asztali.user.User;
+import com.example.vizsgaremek_asztali.user.UserApi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ProgramApplicationModositController extends Controller {
     @FXML
-    private ComboBox<Integer> pTypeIdInput;
+    private ComboBox<User> userIdInput;
     @FXML
-    private ComboBox<Integer> userIdInput;
+    private ComboBox<ProgramInfo> pInfoInput;
     private ProgramApplication modositando;
-    @FXML
-    private ComboBox pInfoIdInput;
+
+    private List<User> userList;
+    private List<ProgramInfo> pInfoList;
+
+    public void initialize(){
+        userList = new ArrayList<>();
+        try {
+            userList= UserApi.get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (User user : userList){
+            userIdInput.getItems().add(user);
+        }
+        userIdInput.getSelectionModel().selectFirst();
+
+        pInfoList = new ArrayList<>();
+        try {
+            pInfoList= ProgramInfoApi.get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (ProgramInfo info : pInfoList){
+            pInfoInput.getItems().add(info);
+        }
+        pInfoInput.getSelectionModel().selectFirst();
+
+    }
+
 
     @FXML
     public void onModositas(ActionEvent actionEvent) {
-        int programTypeIndex = pTypeIdInput.getSelectionModel().getSelectedIndex();
-        int userIndex = userIdInput.getSelectionModel().getSelectedIndex();
-        int programHDIndex = pInfoIdInput.getSelectionModel().getSelectedIndex();
+        int pInfoIndex = pInfoInput.getSelectionModel().getSelectedItem().getId();
+        int userIndex = userIdInput.getSelectionModel().getSelectedItem().getId();
+
 
         boolean hiba =false;
         StringBuilder alertBuilder=new StringBuilder();
@@ -34,6 +69,7 @@ public class ProgramApplicationModositController extends Controller {
         }
 
         modositando.setUserid(userIndex);
+        modositando.setProgramInfo(pInfoIndex);
 
         try {
             ProgramApplication modositott= ProgramApplicationApi.put(modositando);
@@ -63,7 +99,11 @@ public class ProgramApplicationModositController extends Controller {
         ertekekBeallitasa();
     }
     private void ertekekBeallitasa() {
-        userIdInput.setValue(modositando.getUserid());
+        User user=userList.stream().filter(user1 -> user1.getId()==modositando.getUserid()).findFirst().get();
+        userIdInput.setValue(user);
+        ProgramInfo info=pInfoList.stream().filter(info1 -> info1.getId()==modositando.getProgramInfo()).findFirst().get();
+        pInfoInput.setValue(info);
+
 
     }
 }

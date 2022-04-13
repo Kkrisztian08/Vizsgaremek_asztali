@@ -62,7 +62,7 @@ public class LoginController extends Controller {
                     alert("Nem rendelkezik admin jogosultsággal!");
                 }
             } catch (IOException e) {
-                //hibaKiir(e);
+                hibaKiir(e);
                 alertBejelentkezés("Nem megfelelő felhasználónév vagy jelszó!");
             }
     }

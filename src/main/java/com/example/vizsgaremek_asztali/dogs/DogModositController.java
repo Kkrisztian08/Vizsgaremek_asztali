@@ -32,24 +32,8 @@ public class DogModositController extends Controller {
     private TextArea kultulInput;
     @FXML
     private ComboBox<String> nemInput;
-    @FXML
-    private ComboBox<Adoption> orokbefogadasInput;
     private Dog modositando;
-    private List<Adoption> adoptionList;
 
-
-    public void initialize(){
-        adoptionList = new ArrayList<>();
-        try {
-            adoptionList= AdoptionApi.get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        for (Adoption adoption : adoptionList){
-            orokbefogadasInput.getItems().add(adoption);
-        }
-        orokbefogadasInput.getSelectionModel();
-    }
 
     @FXML
     public void onModositas(ActionEvent actionEvent) {
@@ -135,7 +119,6 @@ public class DogModositController extends Controller {
         }
 
 
-        Integer orobefogadasIndex=orokbefogadasInput.getSelectionModel().getSelectedItem().getId();
         Integer orobefogadasid=null;
 
         if (hiba) {
@@ -151,11 +134,7 @@ public class DogModositController extends Controller {
         modositando.setExternal_property(kultul);
         modositando.setDescription(leiras);
         modositando.setInterest(erdeklodes);
-        if (orobefogadasIndex == -1){
-            modositando.setAdoption_id(orobefogadasid);
-        }else {
-            modositando.setAdoption_id(orobefogadasIndex);
-        }
+
 
         try {
             Dog modositott=DogApi.put(modositando);

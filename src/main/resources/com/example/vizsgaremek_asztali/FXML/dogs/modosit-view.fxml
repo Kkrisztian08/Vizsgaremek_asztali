@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#hibaVege" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: white;" stylesheets="@../../css/FelugroAblak.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.dogs.DogModositController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#hibaVege" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: white;" stylesheets="@../../css/FelugroAblak.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.vizsgaremek_asztali.dogs.DogModositController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -50,11 +47,7 @@
          <font>
             <Font size="15.0" />
          </font></Label>
-        <Label text="Örökbefogadási id:" GridPane.rowIndex="4">
-         <font>
-            <Font size="15.0" />
-         </font></Label>
-        <Label text="Érdeklődés mértéke:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+        <Label text="Érdeklődés mértéke:" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
             <Font size="15.0" />
          </font></Label>
@@ -103,11 +96,7 @@
             </font>
         </Button>
       <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #14856B;" GridPane.columnSpan="4" />
-      <ComboBox fx:id="orokbefogadasInput" maxWidth="1.7976931348623157E308" onAction="#hibakMegszuntet" stylesheets="@../../css/FelugroAblak.css" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <GridPane.margin>
-            <Insets right="10.0" />
-         </GridPane.margin></ComboBox>
-      <Spinner fx:id="kedvelesInput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="4">
+      <Spinner fx:id="kedvelesInput" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="4">
           <valueFactory>
               <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="1" max="10" min="1" />
           </valueFactory>

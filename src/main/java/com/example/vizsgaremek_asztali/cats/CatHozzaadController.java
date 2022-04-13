@@ -14,13 +14,9 @@ public class CatHozzaadController extends Controller {
     @FXML
     private DatePicker szulidoInput;
     @FXML
-    private TextField fajInput;
-    @FXML
     private TextArea leirasInput;
     @FXML
     private TextArea kultulInput;
-    @FXML
-    private Spinner<Integer> kedvelesInput;
     @FXML
     private ComboBox<String> nemInput;
     private Runnable runnableAfterHozzaadas;
@@ -33,7 +29,7 @@ public class CatHozzaadController extends Controller {
         String formazottSzuldatum;
         String kultul=kultulInput.getText().trim();
         String leiras=leirasInput.getText().trim();
-        int erdeklodes=0;
+        int erdeklodes=1;
         Integer  orokbefogadasid= null;
         int nemIndex = nemInput.getSelectionModel().getSelectedIndex();
 
@@ -83,17 +79,6 @@ public class CatHozzaadController extends Controller {
             hiba=true;
         }
 
-        try {
-            erdeklodes =  kedvelesInput.getValue();
-        } catch (Exception ex){
-            System.out.println(ex);
-            alert("Az érdeklődés mértéke csak 1 és 10 közötti szám lehet");
-            return;
-        }
-        if (erdeklodes < 1 || erdeklodes > 10) {
-            alert("Az érdeklődés mértéke csak 1 és 10 közötti szám lehet");
-            return;
-        }
 
         if (hiba) {
             alert(alertBuilder.toString());

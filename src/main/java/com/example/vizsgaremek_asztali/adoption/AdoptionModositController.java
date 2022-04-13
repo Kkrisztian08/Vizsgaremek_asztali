@@ -116,6 +116,8 @@ public class AdoptionModositController extends Controller {
     private void ertekekBeallitasa() {
         User user=userList.stream().filter(user1 -> user1.getId()==modositando.getUserId()).findFirst().get();
         userIdInput.setValue(user);
+        AdoptionType type=typeList.stream().filter(type1 -> type1.getId()==modositando.getAdoptionTypeId()).findFirst().get();
+        adoptionTypeIdInput.setValue(type);
         LocalDate datum=LocalDate.parse(modositando.getBegin());
         szulidoInput.setValue(datum);
 

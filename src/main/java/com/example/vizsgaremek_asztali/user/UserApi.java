@@ -1,7 +1,6 @@
 package com.example.vizsgaremek_asztali.user;
 
 import com.example.vizsgaremek_asztali.api.Api;
-import com.example.vizsgaremek_asztali.dogs.Dog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -50,5 +49,11 @@ public class UserApi {
     public static int getSuperAdminCount() throws IOException {
         String countString = Api.get(BASE_URL + "/api/super_admin_count");
         return Integer.parseInt(countString);
+    }
+
+    public static User adminJog(User uj) throws IOException {
+        String ujJson = jsonConverted.toJson(uj);
+        String json = Api.put(BASE_URL + "/api/adminPermission", uj.getId(), ujJson);
+        return jsonConverted.fromJson(json, User.class);
     }
 }

@@ -83,7 +83,8 @@ public class AdoptionCatHozzaadController extends Controller {
                 alert("Sikertelen hozzáadás");
             }
         } catch (Exception e) {
-            hibaKiir(e);
+            //hibaKiir(e);
+            alert("A kiválasztott állat már örökbe van fogadva.");
         }
     }
 
