@@ -95,14 +95,14 @@
                         </Button>
                   <Button fx:id="adminJogButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" onAction="#onAdminJog" stylesheets="@../../css/TablazatosOldalak.css" text="Feljogosítás" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../icons/statistics.png" />
+                              <Image url="@../../icons/upgrade.png" />
                            </image>
                         </ImageView>
                      </graphic>
                      <padding>
-                        <Insets left="30.0" />
+                        <Insets left="27.0" />
                      </padding>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -110,14 +110,14 @@
                   </Button>
                   <Button fx:id="lefokozButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" onAction="#onLefokoz" stylesheets="@../../css/TablazatosOldalak.css" text="Lefokozás" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../icons/statistics.png" />
+                              <Image url="@../../icons/down.png" />
                            </image>
                         </ImageView>
                      </graphic>
                      <padding>
-                        <Insets left="30.0" />
+                        <Insets left="27.0" />
                      </padding>
                      <cursor>
                         <Cursor fx:constant="HAND" />
