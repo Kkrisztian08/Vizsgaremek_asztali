@@ -93,7 +93,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                  <Button fx:id="adminJogButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" onAction="#onAdminJog" stylesheets="@../../css/TablazatosOldalak.css" text="Admin Jog" textFill="WHITE">
+                  <Button fx:id="adminJogButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" minHeight="65.0" minWidth="200.0" mnemonicParsing="false" onAction="#onAdminJog" stylesheets="@../../css/TablazatosOldalak.css" text="Feljogosítás" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -197,13 +197,9 @@
                         </Button>
                         <HBox alignment="CENTER" minHeight="70.0" minWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
                             <children>
-                                <Button id="rnd" mnemonicParsing="false" onAction="#onHozzaadSuperAdmin" stylesheets="@../../css/TablazatosOldalak.css" text="Super Admin Hozzáadása">
-                           <HBox.margin>
-                              <Insets right="20.0" />
-                           </HBox.margin></Button>
                                 <Button id="rnd" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="150.0" mnemonicParsing="false" onAction="#onHozzaadAdmin" stylesheets="@../../css/TablazatosOldalak.css" text="Admin Hozzáadása">
                                     <HBox.margin>
-                                        <Insets right="20.0" />
+                                        <Insets />
                                     </HBox.margin>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -211,7 +207,7 @@
                                 </Button>
                                 <Button id="rnd" fx:id="userTorol" disable="true" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="150.0" mnemonicParsing="false" onAction="#onUserTorol" stylesheets="@../../css/TablazatosOldalak.css" text="Törlés">
                                     <HBox.margin>
-                                        <Insets right="20.0" />
+                                        <Insets left="40.0" right="40.0" />
                                     </HBox.margin>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -222,7 +218,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                     <HBox.margin>
-                                        <Insets right="20.0" />
+                                        <Insets />
                                     </HBox.margin>
                                 </Button>
                             </children>

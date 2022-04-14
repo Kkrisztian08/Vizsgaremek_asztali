@@ -144,7 +144,7 @@ public class CatController extends Controller {
             return;
         }
         Cat torlendoMacska = macskakTable.getSelectionModel().getSelectedItem();
-        if (!confirm("Valóban törölni szeretné "  +torlendoMacska.getName() + " kutya adatait")){
+        if (!confirm("Valóban törölni szeretné "  +torlendoMacska.getName() + " macska adatait")){
             return;
         }
         try {

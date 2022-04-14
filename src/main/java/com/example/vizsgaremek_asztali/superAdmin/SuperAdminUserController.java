@@ -129,22 +129,10 @@ public class SuperAdminUserController extends Controller {
         userTable.setItems(sortedList);
     }
 
-    @Deprecated
+    @FXML
     public void onHozzaadAdmin(ActionEvent actionEvent) {
         try {
             UserHozzaadController hozzadas = (UserHozzaadController) ujAblak("FXML/users/hozzaad-view.fxml", "Admin hozzáadása",
-                    700, 400);
-            hozzadas.setRunnableAfterHozzaadas(this::userListaFeltolt);
-            hozzadas.getStage().show();
-        } catch (Exception e) {
-            hibaKiir(e);
-        }
-    }
-
-    @FXML
-    public void onHozzaadSuperAdmin(ActionEvent actionEvent) {
-        try {
-            SuperAdminHozzadController hozzadas = (SuperAdminHozzadController) ujAblak("FXML/superAdmin/superAdminHozzaad-view.fxml", "Super Admin hozzáadása",
                     700, 400);
             hozzadas.setRunnableAfterHozzaadas(this::userListaFeltolt);
             hozzadas.getStage().show();
@@ -235,7 +223,7 @@ public class SuperAdminUserController extends Controller {
             alert("A saját jogosultságát biztonsági okok miatt nem módosíthatja!");
         }else {
             if (felhasznalo.getAdmin() == 2) {
-                if (!confirm("Valóban szeretné " + felhasznalo.getName() + "-t fokozni adminná?")) {
+                if (!confirm("Valóban szeretné " + felhasznalo.getName() + "-t lefokozni adminná?")) {
                     return;
                 }
                 try {
@@ -252,7 +240,7 @@ public class SuperAdminUserController extends Controller {
                 }
 
             } else if (felhasznalo.getAdmin() == 1) {
-                if (!confirm("Valóban szeretné " + felhasznalo.getName() + "-t fokozni általános felhasználóvá?")) {
+                if (!confirm("Valóban szeretné " + felhasznalo.getName() + "-t lefokozni általános felhasználóvá?")) {
                     return;
                 }
                 try {
@@ -475,8 +463,6 @@ public class SuperAdminUserController extends Controller {
             hibaKiir(e);
         }
     }
-
-
 
 
 
