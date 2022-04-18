@@ -20,7 +20,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -183,11 +182,11 @@ public class SuperAdminUserController extends Controller {
                 try {
                     User letrehozott = UserApi.adminJog(felhasznalo);
                     if (letrehozott != null) {
-                        alert("Sikeres hozzáadás");
+                        alert("Sikeres jogosultság módosítás");
                         userLista.clear();
                         userListaFeltolt();
                     } else {
-                        alert("Sikertelen hozzáadás");
+                        alert("Sikertelen jogosultság módosítás");
                     }
                 } catch (Exception e) {
                     hibaKiir(e);
@@ -200,11 +199,11 @@ public class SuperAdminUserController extends Controller {
                 try {
                     User letrehozott = UserApi.adminJog(felhasznalo);
                     if (letrehozott != null) {
-                        alert("Sikeres hozzáadás");
+                        alert("Sikeres jogosultság módosítás");
                         userLista.clear();
                         userListaFeltolt();
                     } else {
-                        alert("Sikertelen hozzáadás");
+                        alert("Sikertelen jogosultság módosítás");
                     }
                 } catch (Exception e) {
                     hibaKiir(e);
